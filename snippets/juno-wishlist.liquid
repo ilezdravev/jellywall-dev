@@ -1,0 +1,61 @@
+{%- case get -%}
+  {%- when 'product-button' -%}
+
+
+  {% assign productIdString = product.id | append: '' %}
+  {% assign isInWishList = false %}
+  {% if customer %}
+    {% if customer.metafields.global.wishlist != blank %}
+      {% assign wishListProducts = customer.metafields.global.wishlist | split: "," %}
+      {% comment %}<!-- numbers will {{product.id}}_{{variant.id}} /-->{% endcomment %}
+      {% for thisWishListProduct in wishListProducts %}
+        {% assign thisProductId = thisWishListProduct | split: "_" | first %}
+        {% if productIdString == thisProductId %}
+          {% assign isInWishList = true %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endif %}
+  <div id="productWishListWrapper"{% if isInWishList %} class="added"{% endif %}>
+    <p class="wishlistAdded"><span class="icon"><i class="bx bx-heart"></i></span> In your wishlist</p>
+    <a href="#" class="button btn wishlistAdded removeFromWishlist" data-id="{{product.id}}">Remove from wishlist</a>
+    <a href="#" id="addToWishlist" class="button btn wishlistNotAdded" data-id="{{product.id}}"><span class="icon"><i class="bx bx-heart"></i></span> Add to wishlist</a>
+  </div>
+
+
+
+  {%- when 'collection-init' -%}
+  {% assign customerWishlistProductIds = "" %}
+  {% if customer.metafields.global.wishlist != blank %}
+    {% assign wishListProducts = customer.metafields.global.wishlist | split: "," %}
+    {% comment %}<!-- numbers will {{product.id}}_{{variant.id}} /-->{% endcomment %}
+    {% for thisWishListProduct in wishListProducts %}
+      {% assign thisProductId = thisWishListProduct | split: "_" | first %}
+      {% unless customerWishlistProductIds == "" %}{% assign customerWishlistProductIds = customerWishlistProductIds | append: "___" %}{% endunless %}
+      {% assign customerWishlistProductIds = customerWishlistProductIds | append: thisProductId %}
+    {% endfor %}
+  {% endif %}
+  {% assign customerWishlistProductIdsArray = customerWishlistProductIds | split: "___" %}
+
+
+  {%- when 'collection-button' -%}
+  {% assign thisProductId = product.id | append: "" %}
+  <div class="collectionWishlistButton{% if customerWishlistProductIdsArray contains thisProductId %} added{% endif %}" data-id="{{product.id}}" data-account="{% if customer %}true{% else %}false{% endif %}">  
+    <span class="icon"><i class="bx bx-heart"></i></span>
+  </div>
+
+
+  {%- when 'wishlist-summary' -%}
+  <div id="wishlistWrapper"><div id="wishlistPanel"><button type="button" class="closeToggle button-icon"><span class="icon"><i class="bx bx-x close"></i></span></button>
+  {% if customer %}
+    <script>var junoWishlistCustomer = "{{customer.id}}";</script>
+  {% endif %}
+    <div id="wishlistOutput"></div>
+    <script>
+    var junoWishlistStore = "{{ shop.secure_url | remove: 'https://'}}";
+    jQuery(function() { getWishlist(false); });
+    </script>
+  </div></div>
+
+{%- endcase -%}

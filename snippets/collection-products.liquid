@@ -1,0 +1,14 @@
+{% assign number_of_products = settings.number_of_products | times: 1  %}
+{% paginate collection.products by number_of_products %}
+<div class="product-grid">
+    {% include 'variable-products-grid-item-collection-products' %}
+    {% for product in collection.products %}                
+        {% include 'product-grid-item' %}
+    {% else %}
+	<p class="no-products">
+		{{ 'collections.general.no_matches' | t }}
+	</p>
+    {% endfor %}
+</div>
+<div class="collection-pagination">{% if paginate.pages > 1 %}{{ paginate | default_pagination: next: '<span class="icon"><i class="bx bx-chevron-right"></i></span>', previous: '<span class="icon"><i class="bx bx-chevron-left"></i></span>' }}{% endif %}</div>
+{% endpaginate %}

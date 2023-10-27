@@ -1,0 +1,8 @@
+{% if product.price_varies %}
+    {{ 'products.product.price_varies' | t }} {{ product.price | money }}
+{% else %}
+    {{ product.price | money }}
+    {% if product.compare_at_price > product.price %}
+        <s class="compare-at-price">{{ product.compare_at_price | money }}</s>
+    {% endif %}
+{% endif %}

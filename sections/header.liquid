@@ -1,0 +1,35 @@
+
+{% if template == "index" and page_description %}
+    {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<meta {% if disabled_by_yoast_seo %}itemprop="description"{% endif %} content="{{ page_description }}" />
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+    {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<meta {% if disabled_by_yoast_seo %}itemprop="name"{% endif %} content="{{ shop.name }}" />
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+{% endif %}
+<div class="wrapper"> 
+    <div class="row">
+        <div class="col-left">
+              <button aria-label="Toggle Navigation" type="button" id="navToggle" class="button-icon hide-for-desktop"><span class="icon"><i class='bx bx-menu' ></i></span></button>
+        </div>
+        <div class="  logo">
+           <a href="{{shop.url}}" {% if disabled_by_yoast_seo %}itemprop="url"{% endif %}><img src="{{ 'logo.png' | asset_url }}" width="81" height="18"  alt="{{ shop.name }}"></a>
+        </div>
+<!--         <div class="navigation">      
+            <div id="shopify-section-navigation" class="shopify-section"> </div>
+        </div> -->
+        <div class="col-right">
+            <ul class="nav-functions">
+                <li><a aria-label="Toggle Search" href="#" id="searchToggle" title="Search"><span class="icon"><i class='bx bx-search'></i><i class='bx bx-x close'></i></span></a></li>
+                <li class="hide-for-mobile"><a href="{{ shop.url }}/account" id="userToggle"><span class="icon"><i class='bx bx-user'></i><i class='bx bx-x close'></i></span></a></li>
+                <li><a href="{{ shop.url }}/cart" id="cartToggle" title="View Cart"><span class="icon"><i class='bx bx-shopping-bag'></i></span><span class="count" id="cartCount">{{ cart.item_count }}</span></a></li>
+            </ul>
+        </div>
+    </div> 
+</div>
+
+

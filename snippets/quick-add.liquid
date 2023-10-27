@@ -1,0 +1,9 @@
+{% if product.options.size > 0 %}
+{% include 'product-setup-option' %}
+<div class="product-quick-add">
+ 
+    {% if colour_option_position > 0 %}
+        {% include 'product-first-option' %}
+    {% endif %}
+</div>
+{% endif %}

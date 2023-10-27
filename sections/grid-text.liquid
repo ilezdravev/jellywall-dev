@@ -1,0 +1,347 @@
+{% if section.blocks.size > 0 %}
+<div class="text-section cms-section grid-{{ section.blocks.size }} {{ section.settings.custom_class }} {{ section.settings.add_padding_top }} {{ section.settings.add_padding_bottom }} {{ section.settings.add_margin_top }} {{ section.settings.add_margin_bottom }} {{ section.settings.add_border_top }} {{ section.settings.add_border_bottom }} {{ section.settings.border_width }}" {% if section.settings.background_color != '' or section.settings.background_image %}style="{% if section.settings.background_color != '' %}background-color: {{ section.settings.background_color }};{% endif %}{% if section.settings.background_image %}background-image: url({{ section.settings.background_image }});{% endif %}"{% endif %}>
+    <div class="wrapper {{ section.settings.max_width }}">
+        <div class="row">
+            {% if section.settings.title != blank or section.settings.heading_subtitle != blank %}
+                <div class="section-header {{ section.settings.heading_align }} {{ section.settings.heading_text_color }}">
+                    {% if section.settings.title != blank %}
+                        <h2 class="title {{ section.settings.heading_title_tag }}">{{ section.settings.title }}</h2>
+                    {% endif %}
+                    {% if section.settings.heading_subtitle != blank %}
+                    <div class="sub-title">
+                        {{ section.settings.heading_subtitle }}
+                    </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+            <div class="row-flex {{ block.settings.content_width }}">
+                {% for block in section.blocks %}
+                    <div class="col-text {{ block.settings.column_vertical_align }} {{ section.settings.content_align }} {{ block.settings.column_order }} {{ block.settings.text_color }}">
+                        <div class="text-content">
+                            {% if block.settings.title != blank %}
+                                <h3 class="title {{ block.settings.title_tag }}">{{ block.settings.title }}</h3>
+                            {% endif %}
+                            {% if block.settings.content != blank or block.settings.link_1 != blank or block.settings.link_2 != blank %}
+                            <div class="content">
+                                {% if block.settings.content != blank %}
+                                    <div class="text">{{ block.settings.content }}</div>
+                                {% endif %}
+                                {% if block.settings.link_1 != blank or block.settings.link_2 != blank %}
+                                <div class="buttons {{ block.settings.button_position }}">
+                                    {% if block.settings.link_1 != blank %}
+                                        <a class="{{ block.settings.button_style_1 }}" href="{{ block.settings.link_1 }}">{{ block.settings.button_text_1 }}</a>
+                                    {% endif %}	
+                                    {% if block.settings.link_2 != blank %}
+                                        <a class="{{ block.settings.button_style_2 }}" href="{{ block.settings.link_2 }}">{{ block.settings.button_text_2 }}</a>
+                                    {% endif %}	
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>    
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% schema %}
+    {
+        "name": "Text - Grid",
+        "max_blocks": 12,
+        "settings": [
+            {
+                "type": "select",
+                "id": "max_width",
+                "label": "Max width",
+                "options": [
+                    { "value": "", "label": "Wide Width" },
+                    { "value": "full-width", "label": "Full Width" }
+                ],
+                "default": ""
+            },
+            {
+                "type": "color",
+                "id": "background_color",
+                "label": "Background Color"
+            },
+            {
+                "type": "image_picker",
+                "id": "background_image",
+                "label": "Background Image"
+            },
+            {
+		        "type": "select",
+		        "id": "add_border_top",
+		        "label": "Add border top?",
+		        "options": [
+                    { "value": "border-top", "label": "Yes" },
+                    { "value": "", "label": "No" }
+		        ],
+		        "default": ""
+		    },
+            {
+		        "type": "select",
+		        "id": "add_border_bottom",
+		        "label": "Add border bottom?",
+		        "options": [
+                    { "value": "border-bottom", "label": "Yes" },
+                    { "value": "", "label": "No" }
+		        ],
+		        "default": ""
+		    },
+            {
+                "type": "select",
+                "id": "border_width",
+                "label": "Border Width",
+                "options": [
+                    { "value": "", "label": "Border Ful Width" },
+                    { "value": "border-content-center", "label": "Border Wide Width" }
+                ],
+                "default": ""
+            },
+            {
+                "type": "select",
+                "id": "add_padding_top",
+                "label": "Add padding top?",
+                "options": [
+                    { "value": "padding-top", "label": "Yes" },
+                    { "value": "", "label": "No" }
+                ],
+                "default": ""
+            },
+            {
+                "type": "select",
+                "id": "add_padding_bottom",
+                "label": "Add padding bottom?",
+                "options": [
+                    { "value": "padding-bottom", "label": "Yes" },
+                    { "value": "", "label": "No" }
+                ],
+                "default": ""
+            },
+            {
+                "type": "select",
+                "id": "add_margin_top",
+                "label": "Add margin top?",
+                "options": [
+                    { "value": "margin-top", "label": "Yes" },
+                    { "value": "", "label": "No" }
+                ],
+                "default": ""
+            },
+            {
+                "type": "select",
+                "id": "add_margin_bottom",
+                "label": "Add margin bottom?",
+                "options": [
+                    { "value": "margin-bottom", "label": "Yes" },
+                    { "value": "", "label": "No" }
+                ],
+                "default": ""
+            },
+            {
+                "type": "text",
+                "id": "custom_class",
+                "label": "Custom class"
+            },
+            {
+				"type": "select",
+				"id": "heading_align",
+				"label": "Heading text align",
+				"options": [
+					{ "value": "text-left", "label": "Left" },
+					{ "value": "text-center", "label": "Center" },
+					{ "value": "text-right", "label": "Right" }
+				],
+				"default": "text-center"
+			},
+			{
+				"type": "select",
+				"id": "heading_text_color",
+				"label": "Heading Text color",
+				"options": [
+					{ "value": "text-light", "label": "Light" },
+					{ "value": "text-dark", "label": "Dark" }
+				],
+				"default": "text-dark"
+			},
+			{
+				"type": "text",
+				"id": "title",
+				"label": "Heading Title",
+				"default": "Headline Lorem Ipsum"
+			},
+			{
+				"type": "select",
+				"id": "heading_title_tag",
+				"label": "Heading H Tag",
+				"options": [
+					{ "value": "h1", "label": "H1" },
+					{ "value": "h2", "label": "H2" },
+					{ "value": "h3", "label": "H3" },
+					{ "value": "h4", "label": "H4" },
+					{ "value": "h5", "label": "H5" },
+                    { "value": "h6", "label": "H6" },
+                    { "value": "h7", "label": "H7" },
+                    { "value": "h8", "label": "H8" },
+                    { "value": "h9", "label": "H9" }
+				],
+				"default": "h2"
+			},  
+			{
+				"type": "richtext",
+				"id": "heading_subtitle",
+				"label": "Heading Subtitle",
+                "default": "<p>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vivamus suscipit tortor eget</p>"
+			}
+        ],
+        "blocks": [
+            {
+                "type": "text",
+                "name": "Text",
+                "settings": [
+                    {
+                        "type": "select",
+                        "id": "column_order",
+                        "label": "Column Order",
+                        "options": [
+                            { "value": "order-1", "label": "1" },
+                            { "value": "order-2", "label": "2" },
+                            { "value": "order-3", "label": "3" },
+                            { "value": "order-4", "label": "4" },
+                            { "value": "order-5", "label": "5" },
+                            { "value": "order-6", "label": "6" },
+                            { "value": "order-7", "label": "7" },
+                            { "value": "order-8", "label": "8" },
+                            { "value": "order-9", "label": "9" },
+                            { "value": "order-10", "label": "10" },
+                            { "value": "order-11", "label": "11" },
+                            { "value": "order-12", "label": "12" }
+                        ],
+                        "default": "order-1"
+                    },
+                    {
+                        "type": "select",
+                        "id": "column_vertical_align",
+                        "label": "Column Vertical align",
+                        "options": [
+                            { "value": "top", "label": "Top" },
+                            { "value": "middle", "label": "Middle" },
+                            { "value": "bottom", "label": "Bottom" }
+                        ],
+                        "default": "middle"
+                    },
+                    {
+                        "type": "select",
+                        "id": "content_align",
+                        "label": "Content align",
+                        "options": [
+                            { "value": "text-left", "label": "Left" },
+                            { "value": "text-center", "label": "Center" },
+                            { "value": "text-right", "label": "Right" }
+                        ],
+                        "default": "text-left"
+                    },
+                    {
+                        "type": "select",
+                        "id": "text_color",
+                        "label": "Text color",
+                        "options": [
+                            { "value": "text-light", "label": "Light" },
+                            { "value": "text-dark", "label": "Dark" }
+                        ],
+                        "default": "text-dark"
+                    },
+                    {
+                        "type": "select",
+                        "id": "title_tag",
+                        "label": "Title H Tag",
+                        "options": [
+                            { "value": "h1", "label": "H1" },
+                            { "value": "h2", "label": "H2" },
+                            { "value": "h3", "label": "H3" },
+                            { "value": "h4", "label": "H4" },
+                            { "value": "h5", "label": "H5" },
+                            { "value": "h6", "label": "H6" },
+                            { "value": "h7", "label": "H7" },
+                            { "value": "h8", "label": "H8" },
+                            { "value": "h9", "label": "H9" }
+                        ],
+                        "default": "h2"
+                    },  
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title",
+                        "default": "Heading"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "content",
+                        "label": "Content",
+                        "default": "Lorem ipsum dolor sit amet"
+                    },
+                    {
+                        "type": "url",
+                        "id": "link_1",
+                        "label": "Button Link 1"
+                    },
+                    {
+                        "type": "text",
+                        "id": "button_text_1",
+                        "label": "Button Text 1",
+                        "default": "Shop Now"
+                    },
+                    {
+                        "type": "select",
+                        "id": "button_style_1",
+                        "label": "Button style 1",
+                        "options": [
+                            { "value": "button", "label": "Dark" },
+                            { "value": "button button-second", "label": "Dark Solid" },
+                            { "value": "button white", "label": "Light" },
+                            { "value": "button button-second white", "label": "Light Solid" },
+                            { "value": "button-text", "label": "Button Text" }
+                        ],
+                        "default": "button"
+                    },
+                    {
+                        "type": "url",
+                        "id": "link_2",
+                        "label": "Button Link 2"
+                    },
+                    {
+                        "type": "text",
+                        "id": "button_text_2",
+                        "label": "Button Text 2",
+                        "default": "Shop Now"
+                    },
+                    {
+                        "type": "select",
+                        "id": "button_style_2",
+                        "label": "Button style 2",
+                        "options": [
+                            { "value": "button", "label": "Dark" },
+                            { "value": "button button-second", "label": "Dark Solid" },
+                            { "value": "button white", "label": "Light" },
+                            { "value": "button button-second white", "label": "Light Solid" },
+                            { "value": "button-text", "label": "Button Text" }
+                        ],
+                        "default": "button"
+                    }
+                ]
+            }
+        ],
+        "presets": [{
+            "name": "Text - Grid",
+            "category": "Content",
+            "blocks": [
+                {
+                    "type": "text"
+                }
+            ]
+        }]
+    }
+{% endschema %}

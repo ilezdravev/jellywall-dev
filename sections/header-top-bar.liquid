@@ -1,0 +1,95 @@
+ {% if section.settings.show_promo == true %}
+<div id="top-bar" {% if section.settings.show_promo == true %} {% endif %}>
+    <div class="wrapper">
+        <div class="row">
+            {% if section.blocks.size > 0 %}
+                <div id="promo-text-carousel" class="promo-text {{ section.settings.add_carousel }}">
+                    {% for block in section.blocks %}
+                        <div class="item">
+                              <span class="icon hidden-on-mobile">
+                                  <i class="bx bx-usp {% if block.settings.promo_text_2 != blank %}{{ block.settings.promo_text_2 | escape }}{% endif %}"></i>
+                              </span> 
+                            {% unless block.settings.promo_text == blank %}
+                                {% if block.settings.link != blank %}<a href="{{ block.settings.link }}">{% endif %}
+                                    {{ block.settings.promo_text | escape }}
+                                {% if block.settings.link != blank %}</a>{% endif %}
+                            {% endunless %}
+                        </div> 
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endif %}
+ <script type="text/javascript">
+   $(function() {
+  // Owl Carousel
+  var owl = $("#promo-text-carousel");
+  owl.owlCarousel({
+    items: 1,
+    autoplay:true,
+    autoplayTimeout:10000,
+    autoplaySpeed:500,
+    margin: 10,
+    loop: true,
+    pagination: false,
+    dots: false,
+    nav: false
+  });
+});
+</script>
+{% schema %}
+    {
+        "name": "Top bar",
+        "settings": [
+            {
+				"label": "Show Promo Text?",
+				"type": "checkbox",
+      			"id": "show_promo",
+				"default": true
+			},
+            {
+				"label": "Hide Promo Text On Mobile?",
+				"type": "checkbox",
+      			"id": "hide_promo_mobile",
+				"default": true
+			},
+            {
+                "type": "select",
+                "id": "add_carousel",
+                "label": "Add Carousel?",
+                "options": [
+                    { "value": "owl-carousel", "label": "Yes" },
+                    { "value": "", "label": "No" }
+                ],
+                "default": ""
+            }
+        ],
+        "blocks": [
+            {
+                "type": "promo",
+                "name": "Promo Text",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "promo_text",
+                        "label": "Promo",
+                        "default": "Free shipping available on orders over £100"
+                    },
+                    {
+                        "type": "text",
+                        "id": "promo_text_2",
+                        "label": "Promo",
+                        "default": "Free shipping  over £105"
+                    },
+                    {
+                        "type": "url",
+                        "id": "link",
+                        "label": "Link"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

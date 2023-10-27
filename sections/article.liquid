@@ -1,0 +1,224 @@
+{% paginate article.comments by 50 %}
+{% assign number_of_comments = article.comments_count %}
+{% if comment and comment.created_at %}
+{% assign number_of_comments = article.comments_count | plus: 1 %}
+{% endif %}
+
+<div class="article-single">
+	{%if article.image%}
+	<div class="top-banner" style="background-image: url({{ article.image.src | img_url: 'original' }});">
+		<!-- <img src="{{ article.image.src | img_url: 'original' }}"> -->
+	</div>
+	{%endif%}
+	<div class="wrapper">
+		<div class="blog-center cms-content-center">
+			<div class="page-title">
+				<h1> {{ article.title }} </h1>
+				<!-- <p><span class="date"><time pubdate datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%b %d, %Y' }}</time></span></p> -->
+			</div>
+			<div class="cms-content">
+				{{ article.content }}
+			</div>
+			{% comment %} {% if blog.comments_enabled? and article.comments_count > 0 %}
+			<div class="meta">
+				
+				<span class="meta-comments"> <a href="#comments"><i class="fa fa-comment"></i> {{ article.comments_count }} {{ article.comments_count | pluralize: 'comment','comments' }}</a> </span>
+				{% endif %}
+				{% if article.tags.size > 0 %}
+				<span class="tags"> {% for tag in article.tags %} <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{% if forloop.first %}<i class="fa fa-tag"></i> {% endif %}{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+					{% endfor %} </span>
+				
+			</div>
+			{% endif %} {% endcomment %}
+			<!-- <div id="shareOn">
+				<ul>
+					<li><span>Share on</span></li>
+					<li>
+						<a target="_blank" href="//www.facebook.com/sharer.php?u={{shop.url}}{{ article.url }}" class="fb"> <i class="fa fa-facebook-official" aria-hidden="true"></i> </a>
+					</li>
+					<li>
+						<a target="_blank" href="//twitter.com/share?url={{shop.url}}{{ article.url }}" class="tw"> <i class="fa fa-twitter" aria-hidden="true"></i> </a>
+					</li>
+					<li>
+						<a target="_blank" href="//pinterest.com/pin/create/button/?url={{shop.url}}{{ article.url }}&amp;media={{ article.image.src | img_url: 'original' }}&amp;description={{ article.title }}" class="pin"> <i class="fa fa-pinterest" aria-hidden="true"></i> </a>
+					</li>
+					<li>
+						<a target="_blank" href="#" class="ins"> <i class="fa fa-instagram" aria-hidden="true"></i> </a>
+					</li>
+					<li>
+						<a target="_blank" href="//plus.google.com/share?url={{shop.url}}{{ article.url }}" class="gp"> <i class="fa fa-google-plus" aria-hidden="true"></i> </a>
+					</li>
+				</ul>
+			</div> -->
+		</div>
+
+		{% if blog.comments_enabled? %}
+		<div id="comments">
+
+			{% comment %}If a comment was just submitted with no blank field.{% endcomment %}
+			{% if comment and comment.created_at %}
+			<p class="success feedback">
+				{% if blog.moderated? %}
+				Your comment was posted successfully. We will publish it in a little while, as our blog is moderated.
+				{% else %}
+				Your comment was posted successfully! Thank you!
+				{% endif %}
+			</p>
+			{% endif %}
+
+			{% if number_of_comments > 0 %}
+			<ul>
+				{% comment %}If a comment was just submitted with no blank field, let's show it.{% endcomment %}
+				{% if comment and comment.created_at %}
+				<li id="{{ comment.id }}" class="comment first{% if article.comments_count == 0 %} last{% endif %}">
+					<h3 class="comment-author">{{ comment.author }} says...</h3>
+					<div class="comment-content">
+						{{ comment.content }}
+					</div>
+					<p class="comment-date">
+						On {{ comment.created_at | date: "%B %d, %Y" }}
+					</p>
+				</li>
+				{% endif %}
+				{% comment %}Showing the rest of the comments.{% endcomment %}
+				{% for comment in article.comments %}
+				<li id="{{ comment.id }}" class="comment{% unless number_of_comments > article.comments_count %}{% if forloop.first %} first{% endif %}{% endunless %}{% if forloop.last %} last {% endif %}">
+					<h3 class="comment-author">{{ comment.author }} says...</h3>
+					<div class="comment-content">
+						{{ comment.content }}
+					</div>
+					<p class="comment-date">
+						On {{ comment.created_at | date: "%B %d, %Y" }}
+					</p>
+				</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+
+			{% comment %}Comments are paginated.{% endcomment %}
+			{% if paginate.pages > 1 %}
+			<div id="pagination">
+				{{ paginate | default_pagination }}
+			</div>
+			{% endif %}
+
+			{% comment %}Comment submission form.{% endcomment %}
+			{% form "new_comment", article %}
+
+			<h3 id="add-comment-title">Leave a comment</h3>
+
+			{% if form.errors %}
+			<div class="feedback error">
+				{{ form.errors | default_errors }}
+			</div>
+			{% endif %}
+
+			<p>
+				<label for="comment-author">Name</label>
+				<input required{% if form.errors contains "author" %} class="error"{% endif %} type="text" name="comment[author]" placeholder="Your name" id="comment-author" value="{{ form.author }}" />
+			</p>
+
+			<p>
+				<label for="comment-email">Email</label>
+				<input required{% if form.errors contains "email" %} class="error"{% endif %} type="email" name="comment[email]" placeholder="your@email.com" id="comment-email" value="{{ form.email }}" />
+			</p>
+
+			<p>
+				<label for="comment-body">Message</label>
+				<textarea required{% if form.errors contains "body" %} class="error"{% endif %} name="comment[body]" id="comment-body">{{ form.body }}</textarea>
+			</p>
+
+			<input type="submit" value="Post Comment" />
+
+			{% if form.errors %}
+			<script>
+				window.location.hash = '#add-comment-title';
+			</script>
+			{% endif %}
+
+			{% if form.posted_successfully? %}
+			<script>
+				window.location.hash = '#comments';
+			</script>
+			{% endif %}
+
+			{% endform %}
+			
+		</div>
+		{% endif %}
+
+		{% endpaginate %}
+	</div>
+</div>
+
+
+{% assign otherBlogMarkup = '' %}
+{% assign numberAdded = 0 %}
+{% for tag in article.tags %}
+
+{% for otherBlog in blog.articles %}
+
+{% if otherBlog.handle != article.handle %}
+{% if otherBlog.tags contains tag %}
+{% if numberAdded < 3 %}
+{% assign otherBlogMarkup = otherBlogMarkup | append: '<div class="article"><a class="thumbnail" href="' | append: otherBlog.url | append: '">' %}
+
+{% if otherBlog.image %}
+        {% assign image_src = otherBlog.image.src  | img_url: '466x582', crop: 'center'  %}
+        {% else %}
+        {% assign img_tag = '<' | append: 'img' %}
+        {% if otherBlog.content contains img_tag %}
+        {% assign src = otherBlog.content | split: 'src="' %}
+        {% assign src = src[1] | split: '"' | first %}
+        {% if src %}
+            
+            {% assign fileImageSrc = src | replace: '_small', '' | replace: '_compact', '' | replace: '_medium', '' | replace: '_large', '' | replace: '_grande', '' %}
+                                    {% assign fileImageSrcSplit = fileImageSrc | split: "/" %}
+{% assign imageFileName = fileImageSrcSplit.last | split: '?' | first %}
+        {% assign image_src = imageFileName | file_img_url: '466x239', crop: 'center' %}
+              {%else%}
+        {% assign image_src = 'blogFallBackImage.jpg' | asset_img_url: '466x239', crop: 'center'  %}
+        {% endif %}
+        {% endif %}
+        {% endif %}
+
+{% assign otherBlogMarkup = otherBlogMarkup | append: '<img src="' | append: image_src | append: '">' %}
+{% assign otherBlogMarkup = otherBlogMarkup | append: '</a><h2 class="title"><a href="' | append: otherBlog.url | append: '">' | append: otherBlog.title | append: '</a></h2>' %}
+{% assign articleContent = otherBlog.excerpt_or_content | strip_html | truncatewords: 45 %}
+{% assign otherBlogMarkup = otherBlogMarkup | append: '<p>' | append: articleContent | append: '</p>' %}
+
+{% assign otherBlogMarkup = otherBlogMarkup | append: '</div>' %}
+{% assign numberAdded = numberAdded | plus: 1 %}
+{% endif %}
+{% endif %}
+{% endif %}
+
+
+{% endfor %}
+{% endfor %}
+
+{% if otherBlogMarkup != '' %}
+<div id="related-articles">
+	<div class="template-blog">
+		<div class="wrapper">
+			<h4 class="related-blog-title">You may also like</h4>
+			<div class="articles">
+				{{otherBlogMarkup}}
+			</div>
+		</div>
+	</div>
+</div>
+{% endif %}
+{% include 'gtm-blog-article' %}
+{% schema %}
+  {
+    "name": "Article",
+    "settings": []
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

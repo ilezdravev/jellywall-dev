@@ -1,0 +1,130 @@
+<div class="wrapper">
+<div class="page-title">
+{% paginate blog.articles by 5 %}
+
+{% if current_tags %}
+<h1>{{ blog.title | link_to: blog.url }} <span class="quiet">&raquo;</span> {{ current_tags.first }}</h1>
+{% else %}
+<h1>{{ blog.title }}</h1>
+{% endif %}
+</div>
+
+
+<div id="blogFilters">
+  <div class="select-dropdown">
+    <span class="select-dropdown-toggle">View by category <i class='bx bx-chevron-down'></i></span>
+    <ul class="select-dropdown-content">
+      {% assign count = 0 %}  
+  {% assign numberOfTags = current_tags | size %}     
+      <li{%if numberOfTags == 0%} class="active"{%endif%}><a href="{{ blog.url }}">All</a></li>
+      {% for tag in blog.all_tags %}
+      {% assign isActiveTag = 'false' %}
+      {% if current_tags contains tag %}
+  {% assign isActiveTag = 'true' %}
+      {% endif %}
+        <li{%if isActiveTag == 'true'%} class="active"{%endif%}><a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a></li>
+        {% assign count = count | plus: 1 %}
+                        {% assign modulo = count | modulo: 7 %}
+        {% if modulo == 0 %}
+        </ul>
+        <ul>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+
+<div class="articles">
+
+  {% for article in blog.articles %}
+  
+  {% comment %}
+    Let's extract a blog image.
+    We will look for an image in the excerpt first, and in the blog post itself second.
+    We will remove the image suffix to grab as big an image as we can.
+  {% endcomment %}
+
+
+
+{% assign article_has_image = false %}
+
+
+{% if article.image %}
+{% assign article_has_image = true %}
+{% assign image_src = article.image.src  | img_url: '345x345', crop: 'center'  %}
+
+{% else %}
+{% assign img_tag = '<' | append: 'img' %}
+{% if article.content contains img_tag %}
+
+  {% assign src = article.content | split: 'src="' %}
+
+
+  {% assign src = src[1] | split: '"' | first %}
+
+
+
+
+  {% if src %}
+    {% assign article_has_image = true %}
+     {% assign fileImageSrc = src | replace: '_small', '' | replace: '_compact', '' | replace: '_medium', '' | replace: '_large', '' | replace: '_grande', '' %}
+                            {% assign fileImageSrcSplit = fileImageSrc | split: "/" %}
+
+
+{% assign imageFileName = fileImageSrcSplit.last | split: '?' | first %}
+        {% assign image_src = imageFileName | file_img_url: '466x582', crop: 'center' %}
+{%else%}
+{% assign image_src = 'blogFallBackImage.jpg' | asset_img_url: '345x345'  %}
+
+  {% endif %}
+{% endif %}
+{% endif %}
+  
+  <div class="article{% if forloop.first %} first{% endif %}{% if forloop.last %} last{% endif %} clear">
+  	<a class="thumbnail" href="{{ article.url }}">   
+		     {% if article_has_image %}
+              <img src="{{image_src}}">
+              {% else %}
+              <img src="{{'blogFallBackImage.jpg' | asset_img_url: '899x466', crop: 'center'}}">
+              {% endif %}
+		 </a>
+    <h2 class="title">
+      <a href="{{ article.url }}">{{ article.title }}</a>
+    </h2>
+    <!-- <h3 class="date">
+      <time pubdate datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%b %d, %Y' }}</time>
+    </h3> -->
+    <p>{{ article.excerpt_or_content | strip_html | truncatewords: 20 }}</p>
+
+    </div>
+
+  
+{% endfor %}
+</div>
+
+{% if paginate.pages > 1 %}
+<div class="collection-pagination">	
+	<div class="toolbar-container">			
+		{{ paginate | default_pagination | replace: 'Previous', 'Newer articles' | replace: 'Next', 'Older articles' }}
+	</div>
+</div>
+{% endif %}
+			
+{% endpaginate %}
+ </div>
+
+
+ {% include 'gtm-blog' %}
+{% schema %}
+  {
+    "name": "Blog",
+    "settings": []
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

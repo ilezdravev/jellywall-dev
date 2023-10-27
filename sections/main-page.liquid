@@ -1,0 +1,51 @@
+{% if section.settings.enable_title or section.settings.enable_content %}
+<div class="cms-page">
+    {% if section.settings.enable_breadcrumbs %}
+	    {% include 'breadcrumbs' %}
+    {% endif %}
+    <div class="wrapper">
+        {% if section.settings.enable_title %}
+        <div class="page-title">
+            <h1 class="h4">{{ page.title }}</h1>
+        </div>
+        {% endif %}
+        {% if section.settings.enable_content %}
+        <div class="row">
+            <div class="cms-content">
+                {{ page.content }}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+{% include 'gtm-page' %}
+
+
+{% schema %}
+{
+    "name": "t:sections.main-page.name",
+    "tag": "section",
+    "class": "spaced-section",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "enable_breadcrumbs",
+            "default": true,
+            "label": "t:sections.main-page.settings.enable_breadcrumbs.label"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_title",
+            "default": true,
+            "label": "t:sections.main-page.settings.enable_title.label"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_content",
+            "default": true,
+            "label": "t:sections.main-page.settings.enable_content.label"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,21 @@
+{% layout none %}
+{
+  "products":
+    [
+      {%- for tag in current_tags -%}
+        {
+          {%- assign product_handle = tag | handle -%}
+          {%- assign product = all_products[product_handle] -%}
+                  
+          "id":{{ product.id | json }},          
+          "custom_html": 
+            {%- capture custom_html -%}
+            {%- render 'boost-sd-price' | product: product -%}
+            {%- endcapture -%}
+            {{ custom_html | json }}
+
+        }
+        {%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ]
+}

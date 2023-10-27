@@ -1,0 +1,59 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "enable_breadcrumbs": true,
+        "enable_title": true,
+        "enable_content": true
+      }
+    },
+    "1626430267cd06a102": {
+      "type": "grid-text",
+      "blocks": {
+        "1626430267cd06a102-0": {
+          "type": "text",
+          "settings": {
+            "column_order": "order-1",
+            "column_vertical_align": "middle",
+            "content_align": "text-left",
+            "text_color": "text-dark",
+            "title_tag": "h2",
+            "title": "Heading",
+            "content": "Lorem ipsum dolor sit amet",
+            "link_1": "",
+            "button_text_1": "Shop Now",
+            "button_style_1": "button",
+            "link_2": "",
+            "button_text_2": "Shop Now",
+            "button_style_2": "button"
+          }
+        }
+      },
+      "block_order": [
+        "1626430267cd06a102-0"
+      ],
+      "settings": {
+        "max_width": "",
+        "background_color": "",
+        "add_border_top": "",
+        "add_border_bottom": "",
+        "border_width": "",
+        "add_padding_top": "",
+        "add_padding_bottom": "",
+        "add_margin_top": "",
+        "add_margin_bottom": "",
+        "custom_class": "",
+        "heading_align": "text-center",
+        "heading_text_color": "text-dark",
+        "title": "Headline Lorem Ipsum",
+        "heading_title_tag": "h2",
+        "heading_subtitle": "<p>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vivamus suscipit tortor eget<\/p>"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1626430267cd06a102"
+  ]
+}

@@ -1,0 +1,20 @@
+{% include 'ajax-cart-template' %}
+{{ 'timber.js' | asset_url | script_tag }}
+{{ 'handlebars.min.js' | asset_url | script_tag }}
+{{ 'ajax-cart.js' | asset_url | script_tag }}
+<script>
+    jQuery(document).ready(function() {
+        ajaxCart.init({
+            formSelector: '#addToCartForm',
+            cartContainer: '#cartContainer',
+            addToCartSelector: '#addToCart',
+            cartCountSelector: '#cartCount',
+            cartCostSelector: '#cartCost',
+            moneyFormat: {{ shop.money_format | json }}
+        });
+        ajaxCart.load();
+    });
+    jQuery(document.body).on('afterCartLoad.ajaxCart', function(evt, cart) {
+        // Bind to 'afterCartLoad.ajaxCart' to run any javascript after the cart has loaded in the DOM
+    });
+</script>

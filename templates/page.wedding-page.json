@@ -1,0 +1,308 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "enable_breadcrumbs": true,
+        "enable_title": false,
+        "enable_content": true
+      }
+    },
+    "e232b6ec-d53b-43cc-8e5d-dd930f5340c1": {
+      "type": "banner-image",
+      "blocks": {
+        "template--16754058166503__e232b6ec-d53b-43cc-8e5d-dd930f5340c1-1682520061061c3d55-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Bay-black-boots-banner-DT.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/Bay-black-boots-banner-Mobile.jpg",
+            "image_svg": "",
+            "image_lazy_load": false,
+            "image_alt": "",
+            "image_link": "",
+            "video_link": "",
+            "video_file": "",
+            "video_options": "loop",
+            "content_location": "content-over-bottom",
+            "content_alignment": "text-center",
+            "content_order": "one",
+            "content_colour": "#ffffff",
+            "highlight": "",
+            "title_tag": "h2",
+            "title": "Main Banner",
+            "subtitle_tag": "h7",
+            "subtitle": "",
+            "description_tag": "h9",
+            "description": "",
+            "button_link_1": "",
+            "button_text_1": "",
+            "button_style_1": "button",
+            "button_link_2": "",
+            "button_text_2": "",
+            "button_style_2": "button",
+            "button_position": "",
+            "shop_the_image_products": "",
+            "shop_the_image_button_text": "View Products",
+            "shop_the_image_number": 3,
+            "shop_the_image_device": "",
+            "shop_the_image_position": "bottom-left"
+          }
+        }
+      },
+      "block_order": [
+        "template--16754058166503__e232b6ec-d53b-43cc-8e5d-dd930f5340c1-1682520061061c3d55-0"
+      ],
+      "settings": {
+        "add_padding_bottom": "",
+        "add_margin_bottom": "",
+        "custom_class": "",
+        "section_background": "#ffffff",
+        "section_width": "full-width",
+        "heading_show": false,
+        "heading_align": "text-center",
+        "heading_text_color": "text-dark",
+        "title": "",
+        "heading_title_tag": "h2",
+        "heading_subtitle": "",
+        "add_carousel": ""
+      }
+    },
+    "6d98b301-7397-4792-894e-8954afe5f7d8": {
+      "type": "featured-collection",
+      "settings": {
+        "max_width": "",
+        "background_color": "",
+        "add_border_top": "",
+        "add_border_bottom": "",
+        "border_width": "border-content-center",
+        "add_padding_top": "",
+        "add_padding_bottom": "padding-bottom",
+        "add_margin_top": "",
+        "add_margin_bottom": "",
+        "custom_class": "",
+        "heading_align": "text-left",
+        "heading_text_color": "text-dark",
+        "title": "The Smart Wedding",
+        "heading_title_tag": "h6",
+        "heading_subtitle": "",
+        "collection": "wedding-shoes",
+        "image_lazy_load": true,
+        "grid": "10",
+        "add_carousel": "owl-carousel"
+      }
+    },
+    "dc00b922-5961-4ab4-9f46-d4f27610c9f8": {
+      "type": "banner-image",
+      "blocks": {
+        "template--16754058166503__dc00b922-5961-4ab4-9f46-d4f27610c9f8-1682520061061c3d55-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Bay-black-boots-banner-DT.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/Bay-black-boots-banner-Mobile.jpg",
+            "image_svg": "",
+            "image_lazy_load": true,
+            "image_alt": "",
+            "image_link": "",
+            "video_link": "",
+            "video_file": "",
+            "video_options": "loop",
+            "content_location": "content-over-middle",
+            "content_alignment": "text-center",
+            "content_order": "one",
+            "content_colour": "#ffffff",
+            "highlight": "",
+            "title_tag": "h2",
+            "title": "Thin Banner",
+            "subtitle_tag": "h6",
+            "subtitle": "",
+            "description_tag": "h8",
+            "description": "",
+            "button_link_1": "",
+            "button_text_1": "",
+            "button_style_1": "button",
+            "button_link_2": "",
+            "button_text_2": "",
+            "button_style_2": "button",
+            "button_position": "",
+            "shop_the_image_products": "",
+            "shop_the_image_button_text": "View Products",
+            "shop_the_image_number": 3,
+            "shop_the_image_device": "",
+            "shop_the_image_position": "bottom-left"
+          }
+        }
+      },
+      "block_order": [
+        "template--16754058166503__dc00b922-5961-4ab4-9f46-d4f27610c9f8-1682520061061c3d55-0"
+      ],
+      "settings": {
+        "add_padding_bottom": "",
+        "add_margin_bottom": "",
+        "custom_class": "",
+        "section_background": "#ffffff",
+        "section_width": "full-width",
+        "heading_show": false,
+        "heading_align": "text-center",
+        "heading_text_color": "text-dark",
+        "title": "",
+        "heading_title_tag": "h2",
+        "heading_subtitle": "",
+        "add_carousel": ""
+      }
+    },
+    "022a1a5f-dc2d-469d-b603-2e2e21b23147": {
+      "type": "featured-collection",
+      "settings": {
+        "max_width": "",
+        "background_color": "",
+        "add_border_top": "",
+        "add_border_bottom": "",
+        "border_width": "border-content-center",
+        "add_padding_top": "",
+        "add_padding_bottom": "padding-bottom",
+        "add_margin_top": "",
+        "add_margin_bottom": "",
+        "custom_class": "",
+        "heading_align": "text-left",
+        "heading_text_color": "text-dark",
+        "title": "The Casual Wedding",
+        "heading_title_tag": "h6",
+        "heading_subtitle": "",
+        "collection": "boots",
+        "image_lazy_load": true,
+        "grid": "10",
+        "add_carousel": "owl-carousel"
+      }
+    },
+    "3cc288c6-413c-4b5b-ad56-eadefdb8a811": {
+      "type": "banner-image-multicolumn",
+      "blocks": {
+        "template--16754058166503__3cc288c6-413c-4b5b-ad56-eadefdb8a811-1682520501232fee90-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Seymour-bannerArtboard-1_1920x804_crop_center_618eb136-b2b6-4f03-b08f-870951d53925.png",
+            "mobile_image": "shopify:\/\/shop_images\/Loafers-bannerArtboard-2_2x_0ecaaceb-df4c-4fbc-833c-4f1e55edb6f7.jpg",
+            "image_svg": "",
+            "image_lazy_load": true,
+            "image_alt": "",
+            "image_link": "",
+            "video_link": "",
+            "video_file": "",
+            "video_options": "loop",
+            "content_location": "content-below",
+            "content_alignment": "text-left",
+            "content_order": "one",
+            "content_colour": "#111111",
+            "highlight": "",
+            "title_tag": "h6",
+            "title": "",
+            "subtitle_tag": "h6",
+            "subtitle": "",
+            "description_tag": "h9",
+            "description": "",
+            "button_link_1": "",
+            "button_text_1": "",
+            "button_style_1": "button",
+            "button_link_2": "",
+            "button_text_2": "",
+            "button_style_2": "button",
+            "button_position": "",
+            "shop_the_image_products": "",
+            "shop_the_image_button_text": "View Products",
+            "shop_the_image_number": 3,
+            "shop_the_image_device": "",
+            "shop_the_image_position": "bottom-left"
+          }
+        },
+        "template--16754058166503__3cc288c6-413c-4b5b-ad56-eadefdb8a811-1682520501232fee90-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Seymour-bannerArtboard-1_1920x804_crop_center_618eb136-b2b6-4f03-b08f-870951d53925.png",
+            "mobile_image": "shopify:\/\/shop_images\/Loafers-bannerArtboard-2_2x_0ecaaceb-df4c-4fbc-833c-4f1e55edb6f7.jpg",
+            "image_svg": "",
+            "image_lazy_load": true,
+            "image_alt": "",
+            "image_link": "",
+            "video_link": "",
+            "video_file": "",
+            "video_options": "loop",
+            "content_location": "content-below",
+            "content_alignment": "text-left",
+            "content_order": "one",
+            "content_colour": "#111111",
+            "highlight": "",
+            "title_tag": "h6",
+            "title": "",
+            "subtitle_tag": "h6",
+            "subtitle": "",
+            "description_tag": "h9",
+            "description": "",
+            "button_link_1": "",
+            "button_text_1": "",
+            "button_style_1": "button",
+            "button_link_2": "",
+            "button_text_2": "",
+            "button_style_2": "button",
+            "button_position": "",
+            "shop_the_image_products": "",
+            "shop_the_image_button_text": "View Products",
+            "shop_the_image_number": 3,
+            "shop_the_image_device": "",
+            "shop_the_image_position": "bottom-left"
+          }
+        }
+      },
+      "block_order": [
+        "template--16754058166503__3cc288c6-413c-4b5b-ad56-eadefdb8a811-1682520501232fee90-0",
+        "template--16754058166503__3cc288c6-413c-4b5b-ad56-eadefdb8a811-1682520501232fee90-1"
+      ],
+      "settings": {
+        "add_padding_bottom": "padding-top padding-bottom",
+        "add_margin_bottom": "",
+        "custom_class": "",
+        "section_background": "#ffffff",
+        "section_width": "standard",
+        "heading_show": false,
+        "heading_align": "text-center",
+        "heading_text_color": "text-dark",
+        "title": "",
+        "heading_title_tag": "h2",
+        "heading_subtitle": "",
+        "add_carousel": ""
+      }
+    },
+    "af567748-70b5-45fb-af02-cf0cc2532771": {
+      "type": "featured-collection",
+      "settings": {
+        "max_width": "",
+        "background_color": "",
+        "add_border_top": "",
+        "add_border_bottom": "",
+        "border_width": "border-content-center",
+        "add_padding_top": "",
+        "add_padding_bottom": "padding-bottom",
+        "add_margin_top": "",
+        "add_margin_bottom": "",
+        "custom_class": "",
+        "heading_align": "text-left",
+        "heading_text_color": "text-dark",
+        "title": "Brogues",
+        "heading_title_tag": "h6",
+        "heading_subtitle": "",
+        "collection": "brogues",
+        "image_lazy_load": true,
+        "grid": "10",
+        "add_carousel": "owl-carousel"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "e232b6ec-d53b-43cc-8e5d-dd930f5340c1",
+    "6d98b301-7397-4792-894e-8954afe5f7d8",
+    "dc00b922-5961-4ab4-9f46-d4f27610c9f8",
+    "022a1a5f-dc2d-469d-b603-2e2e21b23147",
+    "3cc288c6-413c-4b5b-ad56-eadefdb8a811",
+    "af567748-70b5-45fb-af02-cf0cc2532771"
+  ]
+}

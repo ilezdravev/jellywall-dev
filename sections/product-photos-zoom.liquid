@@ -1,0 +1,84 @@
+{% layout none %}
+<head>
+  {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<link rel="canonical" href="{{ canonical_url }}" />
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+</head>
+<div id="product-photos-zoom">
+	<div class="photos-zoom-container">
+		<div class="owl-carousel">
+			{% if product.media.size > 1 %}
+				{% for media in product.media %}
+					{% unless media.alt contains 'colour_' %}
+						<div class="item">
+							{% case media.media_type %}
+                            {% when 'image' %}
+								<div class="image">
+									<picture>
+										<source media="(min-width: 991px)" srcset="{{ media | img_url: 'master' }}">
+										<img loading="lazy" importance="low" src="{{ media | img_url: 'master' }}" alt="{{ product.title | escape }}" />
+									</picture>
+								</div>
+                            {% when 'external_video' %}
+                                <div class="video" data-media-id="{{ media.id }}">
+									<picture>
+										<source media="(min-width: 991px)" srcset="{{ product | img_url: 'master' }}">
+										<img loading="lazy" importance="low" src="{{ product | img_url: 'master' }}" alt="{{ product.title | escape }}" />
+									</picture>
+                                    {{ media | external_video_tag }}
+                                </div>
+                            {% when 'video' %}
+                                <div class="video" data-media-id="{{ media.id }}">
+									<picture>
+										<source media="(min-width: 991px)" srcset="{{ product | img_url: 'master' }}">
+										<img loading="lazy" importance="low" src="{{ product | img_url: 'master' }}" alt="{{ product.title | escape }}" />
+									</picture>
+                                    {{ media | video_tag: controls: true, image_size: "master1280" }}
+                                </div>
+                            {% when 'model' %}
+                                <div class="video" data-media-id="{{ media.id }}">
+									<picture>
+										<source media="(min-width: 991px)" srcset="{{ product | img_url: 'master' }}">
+										<img loading="lazy" importance="low" src="{{ product | img_url: 'master' }}" alt="{{ product.title | escape }}" />
+									</picture>
+                                    {{ media | model_viewer_tag }}
+                                </div>
+                            {% else %}
+                            <div class="video" data-media-id="{{ media.id }}">
+								<picture>
+									<source media="(min-width: 991px)" srcset="{{ product | img_url: 'master' }}">
+									<img loading="lazy" importance="low" src="{{ product | img_url: 'master' }}" alt="{{ product.title | escape }}" />
+								</picture>
+                                {{ media | media_tag }}
+                            </div>
+                            {% endcase %}
+						</div>
+					{% endunless %}
+				{% endfor %}
+			{% else %}
+				<div class="item">
+					<div class="image" style="background-image: url({{ product | img_url: 'master1280' }})">
+						<picture>
+							<source media="(min-width: 991px)" srcset="{{ product | img_url: 'master1280' }}">
+							<img src="{{ product | img_url: 'master1280' }}" alt="{{ product.title | escape }}" />
+						</picture>
+					</div>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% schema %}
+  {
+    "name": "Product Photos Zoom",
+    "settings": []
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

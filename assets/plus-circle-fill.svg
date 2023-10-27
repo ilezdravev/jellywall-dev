@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 17</title>
+    <defs>
+        <polygon id="path-1" points="0 24 24 24 24 0 0 0"></polygon>
+    </defs>
+    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Hell-Bunny_Cart" transform="translate(-484.000000, -575.000000)">
+            <g id="Group-6" transform="translate(484.000000, 575.000000)">
+                <path d="M24,12 C24,5.37221053 18.6277895,0 12,0 C5.37221053,0 0,5.37221053 0,12 C0,18.6277895 5.37221053,24 12,24 C18.6277895,24 24,18.6277895 24,12" id="Fill-1" fill="#000000"></path>
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="Clip-4"></g>
+                <polygon id="Fill-3" fill="#FFFFFF" mask="url(#mask-2)" points="11.4934737 16.7696842 12.5052632 16.7696842 12.5052632 6.66442105 11.4934737 6.66442105"></polygon>
+                <polygon id="Fill-5" fill="#FFFFFF" mask="url(#mask-2)" points="6.94736842 12.2235789 17.0526316 12.2235789 17.0526316 11.2117895 6.94736842 11.2117895"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

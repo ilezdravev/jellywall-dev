@@ -1,0 +1,111 @@
+{% if searchItem %}
+    {% assign product = searchItem %}
+{% endif %}
+<div class="product-item" {% if disabled_by_yoast_seo %}itemscope{% endif %} data-product-id="{{ product.id }}">
+    {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<meta {% if disabled_by_yoast_seo %}itemprop="brand"{% endif %} content="{{ product.vendor }}" />
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+    {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<meta {% if disabled_by_yoast_seo %}itemprop="sku"{% endif %} content="{{ product.first_available_variant.sku }}" />
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+    {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<meta {% if disabled_by_yoast_seo %}itemprop="description"{% endif %} content="{{ product.description | strip_html | escape}}" />
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+    <div class="product-image-wrap">
+        <a href="{{ product.url }}" class="image">
+            <picture class="feature">
+                <source media="(min-width: 1600px)"  srcset="{{ product | img_url: '365x' }}">
+                <source media="(min-width: 1200px)"  srcset="{{ product | img_url: '320x' }}">
+                <source media="(min-width: 991px)"  srcset="{{ product | img_url: '216x' }}">
+                <source media="(min-width: 768px)"  srcset="{{ product | img_url: '210x' }}">
+                <source media="(min-width: 426px)"  srcset="{{ product | img_url: '327x' }}">
+                <source media="(min-width: 376px)"  srcset="{{ product | img_url: '333x' }}">
+                <source media="(min-width: 321px)"  srcset="{{ product | img_url: '283x' }}">
+                <source media="(min-width: 300px)"  srcset="{{ product | img_url: '228x' }}">
+                <source srcset="{{ product | img_url: '320x' }}">
+                <img loading="lazy" importance="low" src="{{ product | img_url: '640x' }}" width="640" height="640" alt="{{ product.featured_image.alt | escape }}" {% if disabled_by_yoast_seo %}itemprop="image"{% endif %} />
+            </picture>  
+            {% if product.images[1] != blank %}
+            <picture class="second">                
+                <source media="(min-width: 1600px)"  srcset="{{ product.images[1] | img_url: '365x' }}">
+                <source media="(min-width: 1200px)"  srcset="{{ product.images[1] | img_url: '320x' }}">
+                <source media="(min-width: 991px)"  srcset="{{ product.images[1] | img_url: '216x' }}">
+                <source media="(min-width: 768px)"  srcset="{{ product.images[1] | img_url: '210x' }}">
+                <source media="(min-width: 426px)"  srcset="{{ product.images[1] | img_url: '327x' }}">
+                <source media="(min-width: 376px)"  srcset="{{ product.images[1] | img_url: '333x' }}">
+                <source media="(min-width: 321px)"  srcset="{{ product.images[1] | img_url: '283x' }}">
+                <source media="(min-width: 300px)"  srcset="{{ product.images[1] | img_url: '228x' }}">
+                <source srcset="{{ product.images[1] | img_url: '320x' }}">
+                <img loading="lazy" importance="low" width="640" height="640" src="{{ product.images[1] | img_url: '640x' }}" alt="{{ product.featured_image.alt | escape }}" {% if disabled_by_yoast_seo %}itemprop="image"{% endif %} />
+            </picture>
+            {% endif %}
+        </a>
+       <!-- {% if settings.wishlist_enabled %}
+            {% include 'juno-wishlist', get: 'collection-button' %}
+        {% endif %}-->
+    </div><!-- .prod-image-wrap -->
+    <div class="product-caption">
+        <div class="trustpilot-widget-container">
+            <div class="hider"></div>
+            <!-- TrustBox widget - Product Mini MultiSource -->
+            <div class="trustpilot-widget"
+                 data-locale="<?= $localCode ?>"
+                 data-template-id="54d39695764ea907c0f34825"
+                 data-businessunit-id="5a475c72b894c903d4a1060a"
+                 data-style-height="24px"
+                 data-style-width="100%"
+                 data-theme="light"
+                 data-sku="{{ product.first_available_variant.sku}}">
+            </div>
+            <!-- End TrustBox widget -->
+        </div>
+        {% include 'quick-add' %}
+        <div class="product-detail"> 
+            <h6 class="product-name" {% if disabled_by_yoast_seo %}itemprop="name"{% endif %}><a href="{{ product.url }}">{{ product.title | downcase }}</a></h6>
+            <span class="product-price{% if product.compare_at_price > product.price %} product-price-sale{% endif %}" {% if disabled_by_yoast_seo %}itemprop="offers"{% endif %} {% if disabled_by_yoast_seo %}itemscope{% endif %} {% if disabled_by_yoast_seo %}itemtype="http://schema.org/Offer"{% endif %}>
+            {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<meta {% if disabled_by_yoast_seo %}itemprop="priceCurrency"{% endif %} content="{{ shop.currency }}" />
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+            {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<meta {% if disabled_by_yoast_seo %}itemprop="url"{% endif %} content="{{ shop.url }}{{ product.url }}" />
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+            {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<meta {% if disabled_by_yoast_seo %}itemprop="price"{% endif %} content="{{ product.price | money_without_currency | replace: ',', '' }}" />
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+            {% if product.available %}
+                {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<link {% if disabled_by_yoast_seo %}itemprop="availability"{% endif %} href="http://schema.org/InStock" />
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+            {% else %}
+                {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<link {% if disabled_by_yoast_seo %}itemprop="availability"{% endif %} href="http://schema.org/OutOfStock" />
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+            {% endif %}
+                {% if product.price_varies %}
+                    {{ 'products.product.price_varies' | t }} {{ product.price | money }}
+                {% else %}
+                    {{ product.price | money }}
+                    {% if product.compare_at_price > product.price %}
+                        <s class="compare-at-price">{{ product.compare_at_price | money }}</s>
+                    {% endif %}
+                {% endif %}
+            </span>
+        </div>
+    </div><!-- .prod-caption -->
+</div>

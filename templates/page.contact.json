@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-contact-template",
+      "blocks": {
+        "333a246c-b955-46b3-8ff0-386ec32f4607": {
+          "type": "background",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "333a246c-b955-46b3-8ff0-386ec32f4607"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

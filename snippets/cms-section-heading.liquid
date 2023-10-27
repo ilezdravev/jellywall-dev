@@ -1,0 +1,22 @@
+{%- assign heading_show = section.settings.heading_show -%}
+{%- assign heading_title = section.settings.title -%}
+{%- assign heading_title_tag = section.settings.heading_title_tag -%}
+{%- assign heading_subtitle = section.settings.heading_subtitle -%}
+{%- assign heading_align = section.settings.heading_align | append: ' ' -%}
+{%- assign heading_text_color = section.settings.heading_text_color | append: ' ' -%}
+{%- assign heading_class =  class | append: '__heading' -%}
+
+{%- if heading_title == blank and heading_subtitle == blank -%}
+    {%- assign heading_show = false -%}
+{%- endif -%}
+
+{%- if heading_show == true -%}
+    <div class="{{- heading_class | append: heading_align | append: heading_text_color  -}}">
+        {%- unless heading_title == blank -%}
+            <h2 class="{{- heading_class | append: '--title ' | append: heading_title_tag -}}">{{ heading_title }}</h2>
+        {%- endunless -%}
+        {%- unless heading_subtitle == blank -%}
+            <div class="{{- heading_class | append: '--subtitle ' -}}">{{ heading_subtitle }}</div>
+        {%- endunless -%}
+    </div>
+{%- endif -%}

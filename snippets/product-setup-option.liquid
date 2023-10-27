@@ -1,0 +1,84 @@
+{% if product.options.size > 0 %}
+	{% assign first_option = '' %}
+	{% assign second_option = '' %}
+	{% assign third_option = '' %}
+	{% assign first_option_position = 0 %}
+	{% assign second_option_position = 0 %}
+	{% assign third_option_position = 0 %}
+	<!-- If has Colour -->
+	{% assign colour_option = '' %}
+	{% assign colour_option_position = 0 %}
+	{% for option in product.options %}
+		{% assign option_postion = forloop.index | prepend: 'option' %}
+		{% if option == 'Color' or option == 'Colour' %}	
+			{% assign colour_option = option %}
+            {% assign colour_option_position = forloop.index %}
+			{% capture colour_option_array %}
+				{% for variant in product.variants %}
+					{% assign option_value = variant[option_postion] | strip_html | strip %}
+					<li data-value="{{ option_value }}"><span class="colour-name">{{ option_value }}</span></li>::
+				{% endfor %}
+			{% endcapture %}
+			{% capture colour_option_variants_image %}
+				{% for variant in product.variants %}
+					<img src="{{ variant.image.src | img_url: '40x40', crop: 'center' }}" width="40" height="40" />::
+				{% endfor %}
+			{% endcapture %}
+		{% endif %}
+	{% endfor %}
+	<!-- Options -->
+	{% if colour_option_position > 0 %}
+		{% for option in product.options %}
+			{% if colour_option_position == 1 %}
+				{% case forloop.index %}
+					{% when 2 %}
+						{% assign second_option = option %}
+						{% assign second_option_position = forloop.index %}	
+
+					{% when 3 %}
+						{% assign third_option = option %}
+						{% assign third_option_position = forloop.index %}
+				{% endcase %}
+			{% endif %}
+			{% if colour_option_position == 2 %}
+				{% case forloop.index %}
+					{% when 1 %}
+						{% assign second_option = option %}
+						{% assign second_option_position = forloop.index %}	
+
+					{% when 3 %}
+						{% assign third_option = option %}
+						{% assign third_option_position = forloop.index %}
+				{% endcase %}
+			{% endif %}
+			{% if colour_option_position == 3 %}
+				{% case forloop.index %}
+					{% when 1 %}
+						{% assign second_option = option %}
+						{% assign second_option_position = forloop.index %}	
+
+					{% when 2 %}
+						{% assign third_option = option %}
+						{% assign third_option_position = forloop.index %}
+				{% endcase %}
+			{% endif %}
+		{% endfor %}
+	{% else %}	
+		{% for option in product.options %}
+			{% assign option_postion = forloop.index %}
+			{% case forloop.index %}
+				{% when 1 %}
+					{% assign first_option = option %}
+					{% assign first_option_position = forloop.index %}
+
+				{% when 2 %}
+					{% assign second_option = option %}
+					{% assign second_option_position = forloop.index %}	
+
+				{% when 3 %}
+					{% assign third_option = option %}
+					{% assign third_option_position = forloop.index %}
+			{% endcase %}
+		{% endfor %}
+	{% endif %}
+{% endif %}

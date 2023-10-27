@@ -1,0 +1,40 @@
+<style>
+  .swatch_item{
+    width:30px;
+    display:inline-block;
+    margin:0 10px 25px 0;
+  }
+  .swatch_item.selected{
+    border: 2px solid #ae2126;
+    border-radius: 20px;
+    height: 30px;
+  }
+  .swatches_label{
+    font-size:14px;
+    font-family:Poppins;
+    font-weight:500;
+    color:#111;
+    margin-bottom:15px;
+    line-height:1.1;
+    display:block;
+  }
+</style>
+
+{% assign current_product = product %}
+  <div id="swatch_container">
+    <span class="swatches_label">{{ current_product.metafields.product.colour }}</span>
+{% paginate collections.all.products by 1000 %}
+{% for product in collections.all.products %}
+{% if product.title == current_product.title %}
+  {% if product.available %}
+      <div class="swatch_item{% if product.handle == current_product.handle %} selected{% endif %}">
+        <a title="{{ product.title | escape }} {{ product.metafields.product.colour | escape }}" href="{% if product.handle == current_product.handle %}#{% else %}{{ product.url }}{% endif %}">
+          {% assign swatch_image = product.metafields.product.colour_group | downcase | prepend: "swatch-" | append: ".png" %}
+          <img src="{{ swatch_image | asset_img_url }}" alt="{{ product.title | escape }} {{ product.metafields.product.colour | escape }}">
+        </a>
+      </div>
+    {% endif %}
+{% endif %}
+{% endfor %}
+{% endpaginate %}
+  </div>

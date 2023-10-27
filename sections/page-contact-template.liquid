@@ -1,0 +1,113 @@
+<div class="layout-2-col-full  contact-page">
+	<div class="col-left">
+		{% assign pageContent =  page.content | split: "<hr>" %}
+		<h1 class="title">{{ page.title }}</h1>
+		<div class="sub">{{ pageContent[0] }}</div>
+		<div class="contact-center">
+		{% form 'contact' %}
+			{% if form.posted_successfully? %}
+			<div class="successForm feedback form--success">
+				{{ 'contact.form.post_success' | t }}
+			</div>
+			{% endif %}
+	
+			{% if form.errors %}
+			<div class="errorForm feedback">
+				<!-- {{ form.errors.size }} or {{ form.errors | size }} -->
+				<p>
+					Your contact form has {{ form.errors | size | pluralize: "an error", "a few errors" }}. To submit your form, make the following changes and try again:
+				</p>
+				{% for field in form.errors %}
+				<p>
+					The {{ field | capitalize | replace: 'Body', 'Message' }} field {{ form.errors.messages[field] }}.
+				</p>
+				{% endfor %}
+			</div>
+			{% endif %}
+	
+			<div id="contactFormWrapper">
+				<!-- <h4>Send us an enquiry</h4> -->
+				<ul class="form-list-2">
+					<li><input placeholder="{{ 'contact.form.email' | t }}" type="email" required id="contactFormEmail" name="contact[email]"></li>
+					<li>
+						<div class="select-style">
+							<label for="helpWith">What can we help you with?</label>
+							<select name="contact[help]" id="helpWith">
+								<option value="">General help</option>
+							</select>
+						</div>
+					</li>
+					<li><textarea placeholder="{{ 'contact.form.message' | t }}" required rows="10" id="contactFormMessage" name="contact[body]"></textarea></li>
+					<li class="buttons">
+						<input type="submit" class="button-primary" id="contactFormSubmit" value="Send message" />
+					</li>
+				</ul>
+				<!-- <input placeholder="{{ 'contact.form.name' | t }}" type="text" required id="contactFormName" name="contact[name]"> -->
+				<!-- <p>
+					<input placeholder="{{ 'contact.form.email' | t }}" type="email" required id="contactFormEmail" name="contact[email]">
+				</p>
+				<p>
+					<input placeholder="{{ 'contact.form.phone' | t }}" type="telephone" id="contactFormTelephone" name="contact[phone]">
+				</p>
+				<p>
+					<textarea placeholder="{{ 'contact.form.message' | t }}" required rows="10" id="contactFormMessage" name="contact[body]"></textarea>
+				</p> -->
+				<!-- <p>
+					<input type="submit" class="button-primary" id="contactFormSubmit" value="Send your message" />
+				</p> -->
+			</div>
+			{% endform %}
+			
+			{{ pageContent[1] }}
+			
+		</div>
+	</div>
+	<div class="col-right">
+		{% for block in section.blocks %}
+        <div class="image" style="background-image: url({{ block.settings.image | img_url: 'master' }});">
+            {% if block.settings.image %}
+                <picture>
+                    <source media="(min-width: 1024px)" srcset="{{ block.settings.image | img_url: 'master' }}">
+                    <img src="{{ block.settings.image | img_url: 'master' }}" alt="" />
+                </picture>
+            {% else %}
+                <div class="placeholder-background">
+                    {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+               </div>
+            {% endif %}
+        </div>
+      {% endfor %}
+	</div>
+</div>
+
+
+{% include 'gtm-page' %}
+
+{% schema %}
+  {
+    "name": "Contact Page",
+    "settings": [],
+    "class": "col-img",
+    "max_blocks": 1,
+    "blocks": [     
+        {
+            "type": "background",
+            "name": "Banner",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                }
+            ]
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

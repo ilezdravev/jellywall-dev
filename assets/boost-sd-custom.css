@@ -1,0 +1,369 @@
+/*********************** Custom CSS for Boost AI Search & Discovery  ************************/
+
+.boost-sd__search-result-toolbar-container {
+  display: none;
+}
+.boost-sd__search-form-wrapper {
+  padding: 20px 16px;
+}
+.boost-sd__quick-view-btn {
+  margin-bottom: 20px;
+}
+.boost-sd__quick-view-vendor {
+  margin-bottom: 10px;
+}
+.boost-sd__button--as-search {
+  border-radius: 0;
+}
+#boost-sd__instant-search-container  .boost-sd__search-bar-wrapper {
+  z-index: 9997;
+}
+.boost-sd__suggestion-queries-item-badge.boost-sd__suggestion-queries-item-badge--sale {
+  left: unset;
+  right: 0;
+  width: auto;
+  background-color: rgb(174, 33, 38);
+  font-size: 10px;
+  padding: 4px 7px;
+}
+@media only screen and (max-width: 768px) {
+  .boost-sd__toolbar-item--product-count {
+    margin-bottom: 20px;
+  }
+  .boost-sd__toolbar-item--view-as {
+    justify-content: center;
+    flex-basis: 100%;
+    display: none;
+  }
+  .boost-sd__view-all {
+    padding-bottom: 130px;
+  }
+}
+
+
+@media only screen and (min-width: 62em) {
+  .boost-sd__filter-tree-vertical--sticky {
+    min-width: 500px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .boost-sd__filter-tree-vertical--left .boost-sd__filter-tree-vertical-content {
+    padding: 20px 35px; 
+  }
+
+  .boost-sd__toolbar--3_1 .boost-sd__toolbar-item:nth-child(2) {
+    margin-right: 130px;
+  }
+
+  .boost-sd__view-as-icon--grid--2 {
+    display: none;
+  }
+
+  .boost-sd__filter-tree-vertical-show-result {
+    display: none;
+  }
+}
+
+.boost-sd__product-price .boost-sd__product-price-content {
+    gap: 5px;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
+.boost-sd__button--result {
+  background-color: #ae2126;
+}
+
+.boost-sd__radio-label:not(.boost-sd__radio-label--hide-text):hover {
+    color: #111;
+    background-color: transparent;
+    border: unset;
+}
+.boost-sd__radio-label--selected:not(.boost-sd__radio-label--hide-text) {
+    --boostsd-radio-label-color-selected: #111;
+    --boostsd-radio-label-border-color-selected: transparent;
+    --boostsd-radio-label-background-color-selected: transparent;
+}
+
+.boost-sd__filter-option {
+  padding: 20px 0;
+}
+
+.boost-sd__filter-option:first-of-type {
+  padding: 20px 0;
+}
+.boost-sd__pagination-infinite-scroll-container .boost-sd__product-count {
+  display: none;
+}
+.boost-sd__toolbar-content {
+  max-width: 111.3rem !important;
+}
+
+.boost-sd__filter-tree-toggle-button {
+  float: left;
+  background: 0 0;
+  color: #111;
+  border: 1px solid #e0e0e0;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  width: auto;
+  padding: 11px 24px;
+  border-radius: unset;
+}
+
+.boost-sd__filter-tree-toggle-button-icon {
+  color: #000;
+  float: left;
+  background-image: url(filter-icon.svg);
+  content: ' ' !important;
+  width: 18px;
+  height: 18px;
+  background-size: cover;
+  background-position: center
+}
+
+.boost-sd__filter-tree-toggle-button:hover {
+  --boostsd-filter-tree-toggle-button-color: #fff;
+  color: #fff !important;
+  background-color: #111;
+  border-color: #111;
+}
+
+.boost-sd__sorting {
+  border: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  padding: 15px 30px;
+  cursor: pointer;
+  color: #111;
+  letter-spacing: .1em;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.boost-sd__sorting-list {
+  top: -8px;
+  right: -30px;
+  padding: 10px 15px;
+  width: auto;
+}
+
+.boost-sd__sorting-option {
+  min-width: 200px;
+  padding: 10px 20px;
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.8;
+  white-space: nowrap;
+  cursor: pointer;
+  text-align: center;
+  color: #000;
+  margin-bottom: 7px;
+  padding: 7px 40px;
+  background-color: #f0f0f0;
+  letter-spacing: normal;
+}
+
+.boost-sd__filter-tree-toggle-button-icon svg {
+  display: none;
+}
+
+.boost-sd-layout {
+  padding: 0 50px;
+}
+
+.boost-sd__product-title {
+  width: 70%
+}
+.boost-sd__product-price {
+  width: 30%;
+  text-align: left;
+}
+
+.boost-sd__search-bar-wrapper,
+.boost-sd__search-bar {
+  top: 100px;
+}
+
+.boost-sd__header-item {
+  color: #000;
+}
+
+.boost-sd__search-bar-wrapper--desktop-style3 .boost-sd__search-bar-autocomplete {
+  top: 232px!important;
+}
+
+.boost-sd__instant-search-results--full-width {
+  height: 88%;
+}
+
+.boost-sd__suggestion-queries-item:not(:has(>ul li)):hover,
+.boost-sd__suggestion-queries-item:not(:has(>ul li))[aria-selected=true] {
+  background-color: transparent;
+  border: none;
+}
+
+.boost-sd__suggestion-queries-item-title {
+  color: #000;
+}
+
+.boost-sd__suggestion-queries-item:not(:has(>ul li)):hover .boost-sd__suggestion-queries-item-title,
+.boost-sd__suggestion-queries-item:not(:has(>ul li))[aria-selected=true] .boost-sd__suggestion-queries-item-title {
+  text-decoration: underline;
+}
+
+.boost-sd__suggestion-queries-item-badge--sale {
+    background-color: rgb(213, 4, 4);
+    max-width: 100%;
+    width: 100%;
+    text-align: center;
+    font-size: 11px;
+}
+
+@media only screen and (max-width: 992px) {
+  .boost-sd__instant-search-results--mobile {
+    height: 92%;
+  }
+
+  .boost-sd__search-bar-wrapper--mobile-style1 .boost-sd__search-bar-autocomplete {
+    top: 150px !important;
+  }
+
+  .boost-sd__search-bar-wrapper, .boost-sd__search-bar {
+      top: 86px;
+  }
+}
+body {
+  --boostsd-general-page-width-desktop: 111.3rem;
+  --boost-sd-app-filter-title-font-size: 16px;
+  --boost-sd-app-filter-option-font-size: 14px;
+  --boost-sd-app-filter-title-text-color: #111;
+  --boostsd-product-title-font-size: 14px;
+  --boostsd-product-title-line-height: 24px;
+  --boostsd-product-title-font-weight: 400;
+  --boostsd-product-title-color: #111;
+  --boostsd-product-price-font-size: 14px;
+  --boostsd-product-price-line-height: 24px;
+  --boostsd-product-price-font-weight: 400;
+  --boostsd-product-price-color: #111;
+  --boostsd-product-count-color: #111;
+  --boostsd-product-price-text-align: right;
+  --boostsd-product-swatch-options-margin: 0;
+  --boostsd-product-swatch-margin-top: 0;
+  --boostsd-product-swatch-margin-bottom: 0;
+  --boostsd-product-info-gap: 0;
+  --boostsd-filter-option-swatch-border: 1px solid #fff;
+}
+
+.boost-sd__radio-label--non-radius {
+    font-size: 14px;
+    font-weight: 500;
+    color: #111;
+    text-transform: none;
+    padding: 0;
+    border: none;
+    height: auto;
+    line-height: initial;
+}
+.boost-sd__product-count {
+  font-size: 14px;
+}
+.collection-page .description-block .collection-description {
+    box-sizing: content-box; 
+}
+
+@media only screen and (max-width: 61.99em) {
+  body {
+    --boostsd-toolbar-padding-top: 0;
+    --boost-sd-app-filter-title-font-size: 12px; 
+    --boost-sd-app-filter-option-font-size: 12px;
+    --boostsd-product-swatch-options-margin: 0;
+    --boostsd-product-swatch-margin-top: 0;
+    --boostsd-product-swatch-margin-bottom: 0;
+    --boostsd-product-info-gap: 0;
+    --boostsd-toolbar-border-color: transparent;
+  }
+
+  .boost-sd__toolbar-inner {
+    padding: 0;
+  }
+
+  .boost-sd__filter-tree-vertical-sticky-overlay {
+    z-index: 90005;
+  }
+
+  .boost-sd__filter-option:first-of-type {
+    padding: 16px 20px;
+  }
+
+  .boost-sd__filter-option-swatch-item-img:hover::before,
+  .boost-sd__filter-option-swatch-item-img:hover {
+    border: none;
+  }
+
+  .boost-sd__filter-option-swatch-item-img--selected:hover::before {
+    inset: 0;
+    border: 2px solid #fff;
+  }
+  .boost-sd__filter-option-swatch-item-img--selected:hover {
+    border: 1px solid #222;
+  }
+
+  .boost-sd__product-filter-fallback {
+    min-height: 800px;
+  }
+  .boost-sd__filter-tree-vertical-close-filter--right {
+    left: -41px;
+  }
+
+  .boost-sd__filter-tree-vertical-toolbar-middle {
+    color: #111;
+    letter-spacing: 1.2px;
+  }
+
+  .boost-sd__filter-option-range-slider-range-amount {
+    width: 100%;
+  }
+  .boost-sd-layout {
+    width: calc(100% - 32px);
+    padding-left: var(--boostsd-general-gutter-mobile, 16px);
+    padding-right: var(--boostsd-general-gutter-mobile, 16px);
+  }
+
+  .boost-sd__product-title, .boost-sd__product-price {
+    width: 100%;
+    text-align: left;
+  }
+
+  .boost-sd__sorting,
+  .boost-sd__filter-tree-toggle-button {
+    border: unset;
+  }
+
+  .boost-sd__filter-tree-toggle-button {
+    font-size: 14px;
+    padding: 13px 24px;
+  }
+
+  .boost-sd__toolbar-top-mobile .boost-sd__sorting {
+    flex: 0 0 43%;
+  }
+
+  .boost-sd__sorting-list {
+    width: fit-content;
+  }
+
+  .boost-sd__toolbar-item--view-as {
+    padding-bottom: 12px;
+  }
+
+  .boost-sd__filter-option {
+    border-top: none;
+  }
+
+  .boost-sd__filter-option-title {
+    text-transform: uppercase;
+  }
+}

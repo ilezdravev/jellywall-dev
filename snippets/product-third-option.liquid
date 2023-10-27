@@ -1,0 +1,15 @@
+{% if third_option != '' and third_option_position > 0 %}
+	{% if product.options_by_name[third_option].values.size > 1 %}
+		{% assign third_select_option = third_option_position | times: 1 | minus: 1 | prepend: '#product-select-option-'%}
+		{% assign third_option_position = third_option_position | prepend: 'option'%}
+		<div class="select-option third-option" data-position="third-option" data-option="{{ third_option_position }}" data-select-option="{{ third_select_option }}" data-index="3">
+			<span class="label">{{ third_option | prepend: 'Select ' }}</span>
+			<ul>
+				{% for option_value in product.options_by_name[third_option].values %}
+					{% assign option_value = option_value | strip_html | strip %}
+					<li data-value="{{ option_value }}">{{ option_value }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+	{% endif %}
+{% endif %}	

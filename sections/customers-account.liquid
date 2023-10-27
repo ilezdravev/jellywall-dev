@@ -1,0 +1,19 @@
+<div class="page-2-columns my-account dashboard">
+	<div class="wrapper">
+        <div class="row">
+            <div class="col-medium-4">
+                {% include 'account-sidebar' %}
+            </div>
+            {% if settings.dashboard_banner %}
+                <div class="col-medium-8 col-image">
+                    <div class="image" style="background-image: url({{ settings.dashboard_banner | img_url: 'master' }});">
+                        <picture>
+                            <source media="(min-width: 1024px)" srcset="{{ settings.dashboard_banner | img_url: 'master' }}">
+                            <img src="{{ settings.dashboard_banner | img_url: 'master' }}" alt="" />
+                        </picture>
+                    </div>        
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

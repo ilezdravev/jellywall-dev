@@ -1,0 +1,56 @@
+{% if colour_option_position > 0 %}
+	{% assign colour_option_array = colour_option_array | split: '::' | uniq %}
+	{% assign colour_option_variants_image = colour_option_variants_image | split: '::' | uniq %}
+	{% assign colour_select_option = colour_option_position | times: 1 | minus: 1 | prepend: '#product-select-option-'%}
+	{% assign colour_option_position = colour_option_position | prepend: 'option'%}
+	{% if colour_option_array.size > colour_option_variants_image.size %}
+		<div class="first-option select-option colour-option" data-position="first-option" data-option="{{ colour_option_position }}" data-select-option="{{ colour_select_option }}" data-index="1">
+			<span class="label">{{ colour_option | prepend: 'Select ' }}</span>
+			<ul>
+				{% for option_value in product.options_by_name[colour_option].values %}
+					{% assign option_value = option_value | strip_html | strip %}
+					{% assign option_value_downcase = option_value | downcase %}
+					{% if product.images.size > 1 %}
+						{% for image in product.images %}
+							{% if image.alt contains 'colour_' %}
+								{% assign image_alt  = image.alt | replace: 'colour_', '' | strip_html | strip %}
+								{% assign image_alt_downcase  = image_alt | downcase %}
+								{% if image_alt == option_value_downcase %}
+									<li data-value="{{ option_value }}"><span class="colour-image"><img src="{{ image | img_url: '40x40', crop: 'center' }}" width="40" height="40" alt="{{ option_value }}" /></span><span class="colour-name">{{ option_value }}</span></li>
+									{% break %}
+								{% endif %}
+							{% endif %}
+						{% endfor %}
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
+	{% else %}
+		<div class="select-option first-option colour-option" data-position="first-option" data-option="{{ colour_option_position }}" data-select-option="{{ colour_select_option }}" data-index="1">
+			<span class="label">{{ colour_option | prepend: 'Select ' }}</span>
+			<ul>
+			{% for colour_option in colour_option_array %}
+				{% unless colour_option == blank %}
+					{{ colour_option }}
+				{% endunless %}
+			{% endfor %}
+			</ul>
+		</div>
+	{% endif %}	
+{% else %}
+	{% if first_option != '' and first_option_position > 0 %}
+		{% if product.options_by_name[first_option].values.size > 1 %}
+			{% assign first_select_option = first_option_position | times: 1 | minus: 1 | prepend: '#product-select-option-'%}
+			{% assign first_option_position = first_option_position | prepend: 'option'%}
+			<div class="select-option first-option" data-position="first-option" data-option="{{ first_option_position }}" data-select-option="{{ first_select_option }}" data-index="1">
+				<span class="label">{{ first_option | prepend: 'Select ' }} <a href="#size-guide" >Size Guide</a> </span> 
+				<ul>
+					{% for option_value in product.options_by_name[first_option].values %}
+						{% assign option_value = option_value | strip_html | strip %}
+						<li data-value="{{ option_value }}">{{ option_value }}</li>
+					{% endfor %}
+				</ul>
+			</div>
+		{% endif %}
+	{% endif %}	
+{% endif %}	

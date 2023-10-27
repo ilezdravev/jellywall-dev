@@ -1,0 +1,93 @@
+<div class="blog-featured cms-section {{ block.settings.custom_class }} {{ block.settings.add_padding_top }} {{ block.settings.add_padding_bottom }} {{ block.settings.add_margin_top }} {{ block.settings.add_margin_bottom }} {{ block.settings.add_border_top }} {{ block.settings.add_border_bottom }} {{ block.settings.border_width }}"{% if block.settings.background_color != '' or block.settings.background_image %} style="{% if block.settings.background_color != '' %}background-color: {{ block.settings.background_color }};{% endif %}{% if block.settings.background_image %}background-image: url({{ block.settings.background_image | img_url: 'master' }});{% endif %}"{% endif %}>
+    <div class="wrapper {{ block.settings.max_width }}">
+		<div class="row"> 
+            {% if block.settings.title != blank or block.settings.heading_subtitle != blank %}
+            <div class="section-header {{ block.settings.heading_align }} {{ block.settings.heading_text_color }}">
+                {% if block.settings.title != blank %}
+                    <{{ block.settings.heading_title_tag }} class="title">{{ block.settings.title }}</{{ block.settings.heading_title_tag }}>
+                {% endif %}
+                {% if block.settings.heading_subtitle != blank %}
+                    <div class="sub-title">
+                        {{ block.settings.heading_subtitle }}
+                    </div>
+                {% endif %}
+            </div>
+            {% endif %}
+            {% assign blog = blogs[block.settings.blog] %}
+            <div class="articles {{ block.settings.add_carousel }}">
+            {% unless blog.articles_count == 0 %}
+                {% for article in blog.articles limit: block.settings.post_limit %}
+                    <div class="article">    
+                        <div class="article-image-wrap">
+                            <a href="{{ article.url }}" class="image">
+                                <picture>
+                                {% if article.image %}
+                                    <img src="{{ article.image | img_url: '455x585', crop: 'center' }}"  alt="{{ article.title }}"/>
+                                {% else %}
+                                    <img src="{{ 'article-image.jpg' | asset_url }}"  alt="{{ article.title }}"/>
+                                {% endif %}
+                                </picture>
+                            </a>
+                        </div>
+                        <div class="article-caption">
+                            <h6 class="article-name" {% if disabled_by_yoast_seo %}itemprop="name"{% endif %}><a href="{{ blog.url }}">{{ article.title }}</a></h6>
+                            {% if block.settings.blog_show_author %}
+                                <span class="article-author">{{ 'blogs.article.by_author' | t: author: article.author }}</span>
+                            {% endif %}
+                            {% if block.settings.blog_show_excerpt %}
+                                <div class="article-excerpt">
+                                    {% if article.excerpt.size > 0 %}
+                                        {{ article.excerpt | strip_html | truncate: 150 }}
+                                    {% else %}
+                                        {{ article.content | strip_html | truncate: 150 }}
+                                    {% endif %}
+                                    <div class="article-more">
+                                        <a class="button-text" href="{{ article.url }}">Read more</a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% if block.settings.blog_show_date %}
+                                <span class="article-date">{{ article.published_at | time_tag: format: 'month_day_year' }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                {% for i in (1..block.settings.post_limit) %}
+                    <div class="article">
+                        <div class="article-image-wrap">
+                            <a href="#" class="image">
+                                <picture>
+                                    <img src="{{ 'article-image.jpg' | asset_url }}"  alt="Blog Title"/>
+                                </picture>
+                            </a>
+                        </div>
+                        <div class="article-caption">
+                            <h6 class="article-name" {% if disabled_by_yoast_seo %}itemprop="name"{% endif %}><a href="#">Blog Title</a></h6>
+                            {% if block.settings.blog_show_author %}
+                                <span class="article-author">Author</span>
+                            {% endif %}
+                            {% if block.settings.blog_show_date %}
+                                <span class="article-date">{{ 'now' | data | time_tag: format: 'month_day_year' }}</span>
+                            {% endif %}
+                            {% if block.settings.blog_show_excerpt %}
+                                <div class="article-excerpt">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                                    <div class="article-more">
+                                        <a class="button-text" href="#">Read more</a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endunless %}
+            </div>
+            {% if block.settings.show_view_all %}
+                <div class="view-all">
+                    <a href="{{ blog.url }}">{{ 'blogs.article.view_all' | t }}</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

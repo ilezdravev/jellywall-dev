@@ -1,0 +1,81 @@
+
+{%- assign shop_image_url = block.settings.shop_the_image_products -%}
+{%- assign shop_image_text = block.settings.shop_the_image_button_text -%}
+{%- assign shop_image_number = block.settings.shop_the_image_number -%}
+{%- assign shop_image_device = block.settings.shop_the_image_device -%}
+{%- assign shop_image_position = block.settings.shop_the_image_position -%}
+{%- assign shop_image_collection = collections[shop_image_url] -%}
+
+
+{%- if shop_image_collection.products.size > 0 and shop_image_device != "" -%}
+<div class="shop-image {{ shop_image_position }}">
+    <div class="shop-image__container">
+        <div class="shop-image__overlay" onclick="$(event.currentTarget).parents('.shop-image').removeClass('show');"></div>
+        <div class="shop-image__list">
+            <div class="shop-image__heading">
+                <button type="button" class="shop-image__close" onclick="$(event.currentTarget).parents('.shop-image').removeClass('show');">
+                    <span class="icon"><i class="bx bx-x close"></i></span>
+                </button>
+                <h6 class="shop-image__heading--title">{{ shop_image_text }}</h6>
+            </div>
+            {% for product in shop_image_collection.products limit: shop_image_number %}
+            <div class="shop-image__item">
+                <div class="shop-image__item--image">
+                    <a href="{{ product.url | within: shop_image_collection }}">
+                        <picture>
+                            <source srcset="{{ product | img_url: '100x' }} 1x, {{ product | img_url: '150x' }} 2x">
+                            <img loading="lazy" importance="low" src="{{ product | img_url: '100x' }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}" alt="{{ product.featured_image.alt | escape }}" {% if disabled_by_yoast_seo %}itemprop="image"{% endif %} />
+                        </picture>  
+                    </a>
+                </div>
+                <div class="shop-image__item--detail">
+                    <a class="shop-image__item--name" href="{{ product.url | within: shop_image_collection }}">{{ product.title }}</a>
+                    <p class="shop-image__item--price">
+                        {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<meta {% if disabled_by_yoast_seo %}itemprop="priceCurrency"{% endif %} content="{{ shop.currency }}" />
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+                        {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<meta {% if disabled_by_yoast_seo %}itemprop="url"{% endif %} content="{{ shop.url }}{{ product.url }}" />
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+                        {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<meta {% if disabled_by_yoast_seo %}itemprop="price"{% endif %} content="{{ product.price | money_without_currency | replace: ',', '' }}" />
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+                        {% if product.available %}
+                            {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<link {% if disabled_by_yoast_seo %}itemprop="availability"{% endif %} href="http://schema.org/InStock" />
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+                        {% else %}
+                            {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<link {% if disabled_by_yoast_seo %}itemprop="availability"{% endif %} href="http://schema.org/OutOfStock" />
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+                        {% endif %}
+                        {% if product.price_varies %}
+                            {{ 'products.product.price_varies' | t }} {{ product.price | money }}
+                        {% else %}
+                            {{ product.price | money }}
+                            {% if product.compare_at_price > product.price %}
+                                <s class="compare-at-price">{{ product.compare_at_price | money }}</s>
+                            {% endif %}
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <button type="button" class="shop-image__view" onclick="$(event.currentTarget).parents('.shop-image').toggleClass('show');">
+        <span class="shop-image__view--icon icon"><i class="bx bx-shopping-bag"></i></span>
+        <span class="shop-image__view--text">{{ shop_image_text }}</span>
+    </button>
+</div>
+{%- endif -%}

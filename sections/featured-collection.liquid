@@ -1,0 +1,249 @@
+<div class="featured-collections cms-section {{ section.settings.custom_class }} {{ section.settings.add_padding_top }} {{ section.settings.add_padding_bottom }} {{ section.settings.add_margin_top }} {{ section.settings.add_margin_bottom }} {{ section.settings.add_border_top }} {{ section.settings.add_border_bottom }} {{ section.settings.border_width }}"{% if section.settings.background_color != '' or section.settings.background_image %} style="{% if section.settings.background_color != '' %}background-color: {{ section.settings.background_color }};{% endif %}{% if section.settings.background_image %}background-image: url({{ section.settings.background_image | img_url: 'master' }});{% endif %}"{% endif %}>
+    {% if section.settings.title != blank or section.settings.heading_subtitle != blank %}
+    <div class="section-header {{ section.settings.heading_align }} {{ section.settings.heading_text_color }}">
+        <div class="wrapper">
+        {% if section.settings.title != blank %}
+            <{{ section.settings.heading_title_tag }} class="title">{{ section.settings.title }}</{{ section.settings.heading_title_tag }}>
+        {% endif %}
+        {% if section.settings.heading_subtitle != blank %}
+            <div class="sub-title">
+                {{ section.settings.heading_subtitle }}
+            </div>
+        {% endif %}
+        </div>
+    </div>
+    {% endif %}
+    <div class="wrapper {{ section.settings.max_width }}">
+		<div class="row"> 
+			{% assign collection = collections[section.settings.collection] %}
+			{% assign product_limit = section.settings.grid %}
+			<div class="product-grid {{ section.settings.add_carousel }}">
+				{% for product in collection.products limit: product_limit %}
+						{% include 'product-grid-item' %}
+					{% else %}
+					{% for i in (1..product_limit) %}
+						<div class="item">
+							<div class="product-image-wrap">
+								<a href="#" class="image">
+									<picture>
+										{% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+										{{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+									</picture>
+								</a>
+							</div>
+							<div class="product-caption">
+								<h2 class="product-name" {% if disabled_by_yoast_seo %}itemprop="name"{% endif %}><a href="#">Product Title</a></h2>
+								<span class="product-price">Product Price</span>
+							</div>
+						</div>
+					{% endfor %}
+				{% endfor %}
+			</div>
+		</div>
+	 </div>
+</div>
+
+{% schema %}
+{
+    "name": "Featured Collection",
+    "settings": [
+        {
+            "type": "select",
+            "id": "max_width",
+            "label": "Max width",
+            "options": [
+                { "value": "", "label": "Wide Width" },
+                { "value": "full-width", "label": "Full Width" }
+            ],
+            "default": ""
+        },
+        {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background Color"
+        },
+        {
+            "type": "image_picker",
+            "id": "background_image",
+            "label": "Background Image"
+        },
+        {
+            "type": "select",
+            "id": "add_border_top",
+            "label": "Add border top?",
+            "options": [
+                { "value": "border-top", "label": "Yes" },
+                { "value": "", "label": "No" }
+            ],
+            "default": ""
+        },
+        {
+            "type": "select",
+            "id": "add_border_bottom",
+            "label": "Add border bottom?",
+            "options": [
+                { "value": "border-bottom", "label": "Yes" },
+                { "value": "", "label": "No" }
+            ],
+            "default": ""
+        },
+        {
+            "type": "select",
+            "id": "border_width",
+            "label": "Border Width",
+            "options": [
+                { "value": "", "label": "Border Ful Width" },
+                { "value": "border-content-center", "label": "Border Wide Width" }
+            ],
+            "default": ""
+        },
+        {
+            "type": "select",
+            "id": "add_padding_top",
+            "label": "Add padding top?",
+            "options": [
+                { "value": "padding-top", "label": "Yes" },
+                { "value": "", "label": "No" }
+            ],
+            "default": ""
+        },
+        {
+            "type": "select",
+            "id": "add_padding_bottom",
+            "label": "Add padding bottom?",
+            "options": [
+                { "value": "padding-bottom", "label": "Yes" },
+                { "value": "", "label": "No" }
+            ],
+            "default": ""
+        },
+        {
+            "type": "select",
+            "id": "add_margin_top",
+            "label": "Add margin top?",
+            "options": [
+                { "value": "margin-top", "label": "Yes" },
+                { "value": "", "label": "No" }
+            ],
+            "default": ""
+        },
+        {
+            "type": "select",
+            "id": "add_margin_bottom",
+            "label": "Add margin bottom?",
+            "options": [
+                { "value": "margin-bottom", "label": "Yes" },
+                { "value": "", "label": "No" }
+            ],
+            "default": ""
+        },
+        {
+            "type": "text",
+            "id": "custom_class",
+            "label": "Custom class"
+        },
+        {
+            "type": "select",
+            "id": "heading_align",
+            "label": "Heading text align",
+            "options": [
+                { "value": "text-left", "label": "Left" },
+                { "value": "text-center", "label": "Center" },
+                { "value": "text-right", "label": "Right" }
+            ],
+            "default": "text-center"
+        },
+        {
+            "type": "select",
+            "id": "heading_text_color",
+            "label": "Heading Text color",
+            "options": [
+                { "value": "text-light", "label": "Light" },
+                { "value": "text-dark", "label": "Dark" }
+            ],
+            "default": "text-dark"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Heading Title",
+            "default": "Featured Blog"
+        },
+        {
+            "type": "select",
+            "id": "heading_title_tag",
+            "label": "Heading H Tag",
+            "options": [
+                { "value": "h1", "label": "H1" },
+                { "value": "h2", "label": "H2" },
+                { "value": "h3", "label": "H3" },
+                { "value": "h4", "label": "H4" },
+                { "value": "h5", "label": "H5" },
+                { "value": "h6", "label": "H6" }
+            ],
+            "default": "h2"
+        },
+        {
+            "type": "richtext",
+            "id": "heading_subtitle",
+            "label": "Heading Subtitle",
+            "default": "<p>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vivamus suscipit tortor eget</p>"
+        },
+		{
+			"id": "collection",
+			"type": "collection",
+			"label": "Collection"
+		},
+        {
+			"id": "image_lazy_load",
+			"type": "checkbox",
+			"label": "Image - Lazyload",
+            "default": true
+		},
+		{
+			"type": "select",
+			"id": "grid",
+			"label": "Number of Products",
+			"options": [
+                { "value": "3", "label": "3" },
+                { "value": "4", "label": "4" },
+                { "value": "5", "label": "5" },
+                { "value": "6", "label": "6" },
+                { "value": "7", "label": "7" },
+                { "value": "8", "label": "8" },
+                { "value": "9", "label": "9" },
+                { "value": "10", "label": "10" },
+                { "value": "11", "label": "11" },
+                { "value": "12", "label": "12" },
+                { "value": "13", "label": "13" },
+                { "value": "14", "label": "14" },
+                { "value": "15", "label": "15" },
+                { "value": "16", "label": "16" },
+                { "value": "17", "label": "17" },
+                { "value": "18", "label": "18" },
+                { "value": "19", "label": "19" },
+                { "value": "20", "label": "20" }
+            ],
+            "default": "3"
+		},
+		{
+            "type": "select",
+            "id": "add_carousel",
+            "label": "Add carousel?",
+            "options": [
+                { "value": "owl-carousel", "label": "Yes" },
+                { "value": "", "label": "No" }
+            ],
+            "default": ""
+        }
+    ],
+    "presets": [
+		{
+			"name": "Featured Collection",
+			"category": "Featured"
+		}
+    ]
+}
+{% endschema %}
+
+

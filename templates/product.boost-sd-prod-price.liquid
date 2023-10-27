@@ -1,0 +1,9 @@
+{%- capture custom_html -%}
+{%- render 'boost-sd-price' | product: product -%}
+{%- endcapture -%}
+    
+{% layout none %}
+{
+  "id":{{ product.id | json }},          
+  "price":{{ custom_html | json }}
+}

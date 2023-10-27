@@ -1,0 +1,156 @@
+
+{% if template == "index" and page_description %}
+    {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<meta {% if disabled_by_yoast_seo %}itemprop="description"{% endif %} content="{{ page_description }}" />
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+    {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<meta {% if disabled_by_yoast_seo %}itemprop="name"{% endif %} content="{{ shop.name }}" />
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+{% endif %} 
+<div class="wrapper"> 
+     <div class="row">
+        <div class="col-left logo">
+           <a href="{{shop.url}}" {% if disabled_by_yoast_seo %}itemprop="url"{% endif %}><img src="{{ 'logo.png' | asset_url }}" width="81" height="18"  alt="{{ shop.name }}"></a>
+        </div>a
+        <div class="navigation"> 
+            
+<div id="shopify-section-navigation" class="shopify-section"> 
+{% assign nav_primary = section.settings.nav_primary %}
+{% assign nav_additional_1 = section.settings.nav_additional_1 %}
+{% assign nav_additional_2 = section.settings.nav_additional_2 %}
+{% if linklists[nav_primary].links.size > 0 %} 
+    <div class="wrapper">
+        <div class="row">
+            <nav class="nav">
+                <button type="button" id="closeToggleMenu" class="closeToggle button-icon"><span class="icon"><i class="bx bx-x close"></i></span></button>
+                <ul class="nav-primary">
+                    {% for link in linklists[nav_primary].links %}
+                        {% assign child_list_handle = link.title | handle %} 
+                        <li class="level0 {{ link.handle }} {% if linklists[child_list_handle].links.size > 0 %}parent{% endif %}">
+                            <a href="{{ link.url }}" class="level0"><span>{{ link.title }}</span></a>
+                            {% if linklists[child_list_handle].links.size > 0 %}
+                                <span class="toggle heading">{{ link.title }}</span>
+                                <div class="nav-drop">
+                                    <div class="wrapper">
+                                        <div class="row">
+                                            <div class="heading">
+                                                <span class="toggle button-icon"><span class="icon"><i class='bx bx-chevron-left'></i></span></span>
+                                                <a href="{{ link.url }}" class="level0">{{ link.title }}</a>
+                                            </div>
+                                            <!-- Column Level1 -->
+                                            <div class="col-sub level1">
+                                                <ul class="nav-sub"> 
+                                                    {% for child_link in linklists[child_list_handle].links %} 
+                                                        {% assign grand_child_list_handle = child_link.title | handle %}        
+                                                        {% if linklists[grand_child_list_handle].links.size == 0 %}
+                                                            <li class="level1"><a href="{{ child_link.url }}" class="level1">{{ child_link.title }}</a></li>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>    
+                                            {% for child_link in linklists[child_list_handle].links %} 
+                                                {% assign grand_child_list_handle = child_link.title | handle %}
+                                                {% if linklists[grand_child_list_handle].links.size > 0 %}
+                                                <!-- Column Level2 --> 
+                                                <div class="col-sub level2">
+                                                    <ul class="nav-sub">
+                                                        <li class="level1"><a href="{{ child_link.url }}" class="level1">{{ child_link.title }}</a></li>
+                                                        {% for grand_child_link in linklists[grand_child_list_handle].links %}
+                                                            <li class="level2"><a href="{{ grand_child_link.url }}" class="level2">{{ grand_child_link.title }}</a></li> 
+                                                        {% endfor %}
+                                                    </ul>
+                                                </div>   
+                                                {% endif %}     
+                                            {% endfor %}    
+                                            <!-- Column Banner -->
+                                           <div class="column-banner">
+                                            {% for block in section.blocks %}
+                                                {% if block.settings.parent == link.title and  block.settings.image != blank %}
+                                                    <div class="col-banner">
+                                                        <div class="image {{ block.settings.text_color }}">
+                                                        {% if block.settings.link != blank %}<a class="image" href="{{ block.settings.link }}">{% endif %}
+                                                            <picture>
+                                                                <img loading="lazy" importance="low" src="{{ block.settings.image | img_url: '686x324', crop: 'center'}}" alt="{% if block.settings.title != blank %}{{ block.settings.title }}{% else %}{{ block.settings.subtitle }}{% endif %}">
+                                                            </picture>
+                                                            <span class="caption">
+                                                                {% if block.settings.title != blank %}
+                                                                    <span class="title">{{ block.settings.title }}</span>
+                                                                {% endif %}
+                                                                {% if block.settings.subtitle != blank %}
+                                                                    <span class="subtitle">{{ block.settings.subtitle }}</span>
+                                                                {% endif %}
+                                                            </span>
+                                                        {% if block.settings.link != blank %}</a>{% endif %}
+                                                        </div>
+                                                    </div>
+                                                {% endif %} 
+                                            {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- Nav Drop -->
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+                <ul class="nav-additional">
+                    {% if linklists[nav_additional_1].links.size > 0 %} 
+                        <li class="links">
+                            <h6 class="h9">{{ linklists[nav_additional_1].title }}</h6>
+                            <ul>
+                                {% for link in linklists[nav_additional_1].links %}
+                                <li>
+                                    <a href="{{ link.url }}">{{ link.title }}</a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endif %}
+                    {% if linklists[nav_additional_2].links.size > 0 %} 
+                        <li class="links">
+                            <h6 class="h9">{{ linklists[nav_additional_2].title }}</h6>
+                            <ul>
+                                {% for link in linklists[nav_additional_2].links %}
+                                <li>
+                                    <a href="{{ link.url }}">{{ link.title }}</a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endif %}
+                    <li class="user">
+                        <a href="/account" class="account"><span class="icon"><i class='bx bx-user'></i></span>Account</a>
+                        <a href="/pages/wishlist/" class="account"><span class="icon"><i class='bx bx-heart' ></i></span>Wishlist</a>
+                    </li>
+                </ul>
+            </nav> 
+    </div>
+
+    </div>
+</div>
+{% endif %}
+</div>
+</div>
+        <div class="col-right">
+            <ul class="nav-functions">
+                <li><a aria-label="Toggle Search" href="#" id="searchToggle" title="Search"><span class="icon"><i class='bx bx-search'></i><i class='bx bx-x close'></i></span></a></li>
+                <li class="hide-for-mobile"><a href="{{ shop.url }}/account" id="userToggle"><span class="icon"><i class='bx bx-user'></i><i class='bx bx-x close'></i></span></a></li>
+                <li><a href="{{ shop.url }}/cart" id="cartToggle" title="View Cart"><span class="icon"><i class='bx bx-shopping-bag'></i></span><span class="count" id="cartCount">{{ cart.item_count }}</span></a></li>
+            </ul>
+        </div>
+    </div> 
+</div>
+
+
+
+
+{% schema %}
+  {
+    "name": "Header-m",
+    "settings": []
+  }
+{% endschema %} 

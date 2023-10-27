@@ -1,0 +1,359 @@
+<script class="text/javascript" defer>
+    var JunoProductAdd = (function(module, $) {
+        'use strict';
+          
+        // Public functions
+        var init;
+        
+        // Private general variables
+        var settings, productJson, firstOptionValue, secondOptionValue, thirdOptionValue, firstOptionPostion, secondOptionPostion, thirdOptionPostion, variantsInventory = [], productVariants = [];
+    
+        // Private plugin variables
+        var $productForm, $addToCart, $productPrice, $productOptions, $productOption, $selectOption, $preOder, $selectOptionSize, $elementSelectOption, $firstOption, $secondOption, $thirdOption;
+    
+        // Private functions
+        var selectCallback, selectVariant, optionUnavailable, checkOptionOutOfStock;
+    
+        init = function (options) {
+            settings = {
+                productForm        : '#addToCartForm',
+                addToCart          : '#addToCart',
+                productOptions     : '#product-select',
+                preOder            : '#product-pre-order',
+                productPrice       : '.product-price',
+                selectOption       : '.select-option',
+                firstOption        : '.first-option',
+                secondOption       : '.second-option',
+                thirdOption        : '.third-option'
+            };
+    
+            productJson = {{ product | json }};
+    
+            {% for variant in product.variants %}
+                variantsInventory[{{ variant.id | json }}] = [{{ variant.inventory_quantity | json }}, {{ variant.inventory_policy | json }}];
+                productVariants.push({id: {{ variant.id | json }}, inventory_quantity: {{ variant.inventory_quantity | json }}, inventory_policy: {{ variant.inventory_policy | json }}, option1: {{ variant.option1 | json }}, option2: {{ variant.option2 | json }}, option3: {{ variant.option3 | json }} });
+            {% endfor %}
+    
+            $productForm         = $(settings.productForm);
+            $addToCart           = $productForm.find(settings.addToCart);   
+            $productPrice        = $productForm.find(settings.productPrice);   
+            $productOptions      = $productForm.find(settings.productOptions);
+            $preOder             = $productForm.find(settings.preOder);
+            $firstOption         = $productForm.find(settings.firstOption);
+            $secondOption        = $productForm.find(settings.secondOption);
+            $thirdOption         = $productForm.find(settings.thirdOption);
+            $selectOption        = $productForm.find(settings.selectOption);
+            $selectOptionSize    = $selectOption.size();
+            $elementSelectOption = $selectOption.find('li');
+    
+            new Shopify.OptionSelectors('product-select', { product: productJson, onVariantSelected: selectCallback, enableHistoryState: false });
+            selectVariant();
+        };
+    
+        selectCallback = function(variant, selector) {
+            if (variant) {
+                $addToCart.removeAttr('class');
+                $preOder.html('');
+                if (variant.available) {
+                    if (variant.inventory_management) {
+                        if(variantsInventory[variant.id][0] <= 0){
+                            if(variantsInventory[variant.id][1] == 'continue'){
+                                $preOder.html('<input type="hidden" value="Pre Order" id="properties[preOrder]" name="properties[preOrder]" /><p id="out-of-stock">Sorry, this is out of stock</p>');
+                                $addToCart.addClass('is-preorder').prop('disabled', false);
+                            }else{
+                                $addToCart.addClass('disabled is-soldout').prop('disabled', true);
+                            }
+                        }else{
+                            $addToCart.removeClass('disabled is-soldout').prop('disabled', false);
+                        }
+                    }
+                    if($firstOption.length > 0){
+                        firstOptionPostion = $firstOption.data('option');
+                        firstOptionValue = variant[firstOptionPostion];
+                        optionUnavailable(null, firstOptionValue);
+                    }
+                } else {
+                    $addToCart.addClass('disabled is-soldout').prop('disabled', true);
+                }
+                var checkOptionSelected = 0;
+                $selectOption.each(function(){
+                    $(this).find('li').each(function(){
+                        if($(this).hasClass('selected')){
+                            checkOptionSelected += 1;
+                        }
+                    });
+                });
+                if($selectOptionSize == checkOptionSelected){
+                    if (variant.compare_at_price > variant.price) {
+                    $productPrice.html('<s class="compare-price">'+ Shopify.formatMoney(variant.compare_at_price, "{{ shop.money_format }}") +'</s>&nbsp;<span class="price on-sale">'+ Shopify.formatMoney(variant.price, "{{ shop.money_format }}") +'</span>');
+                    } else {
+                        $productPrice.html('<span class="price">'+ Shopify.formatMoney(variant.price, "{{ shop.money_format }}") + '</span>' );
+                    }
+                }else{
+                    $addToCart.addClass('disabled').prop('disabled', true);
+                }
+            } else {
+                $productForm.addClass('disabled').prop('disabled', true);
+            }
+        };
+    
+        selectVariant = function() {
+            $elementSelectOption.on('click', function(e){
+                e.preventDefault();
+    
+                var $this = $(this), $thisValue, $thisSelectOption, $thisOptionSelector, $thisOptionPosition, $thisOptionIndex, $option, $optionValue;
+    
+                if($this.hasClass('selected') || $this.hasClass('out-of-stock') || $this.hasClass('unavailable')){
+                    return;
+                }
+    
+                $thisValue          = $this.data('value');
+                $thisSelectOption   = $this.parents(settings.selectOption).eq(0);
+                $thisOptionSelector = $($thisSelectOption.data('select-option'));
+                $thisOptionIndex    = $thisSelectOption.index() + 1;
+    
+                if($firstOption && $firstOption.find('li.selected').data('value') != undefined){
+                    firstOptionValue = $firstOption.find('li.selected').data('value');
+                }
+    
+                if($secondOption && $secondOption.find('li.selected').data('value') != undefined){
+                    secondOptionValue = $secondOption.find('li.selected').data('value');
+                }
+    
+                if($thirdOption && $thirdOption.find('li.selected').data('value') != undefined){
+                    thirdOptionValue = $thirdOption.find('li.selected').data('value');
+                }
+    
+                switch($thisOptionIndex) {
+                    case 1:
+                        firstOptionValue = $thisValue;
+                        $elementSelectOption.removeClass('selected out-of-stock unavailable');
+                        break;
+                    case 2:
+                        secondOptionValue = $thisValue;
+                        break;
+                    case 3:
+                        thirdOptionValue = $thisValue;
+                        break;
+                }
+                $this.addClass('selected');
+                $thisSelectOption.find('li').not($this).removeClass('selected');
+                $thisOptionSelector.val($thisValue).change();
+                optionUnavailable($this, firstOptionValue, secondOptionValue, thirdOptionValue);
+            });
+        }
+    
+        optionUnavailable = function($this, firstOptionValue, secondOptionValue, thirdOptionValue) {
+            var $dataFirstOptionValue, $dataSecondOptionValue, $dataThirdOptionValue, $dataInventoryQuantity, $dataVariantID, $optionOutOfStock, $thisSelectOption, $thisOptionIndex;
+
+            if($this != null){
+                $thisSelectOption   = $this.parents(settings.selectOption).eq(0);
+                $thisOptionIndex    = $thisSelectOption.index() + 1;
+            }
+            
+            //First Option
+            if($firstOption.length > 0){
+                firstOptionPostion = $firstOption.data('option');
+            }
+            //Second Option
+            if($secondOption.length > 0){
+                secondOptionPostion = $secondOption.data('option');
+            }
+            //Third Option
+            if($thirdOption.length > 0){
+                thirdOptionPostion = $thirdOption.data('option');
+            }
+            //Out of Stock 
+            if($firstOption.length > 0){
+                if(firstOptionValue != null){
+                    if($thisOptionIndex == 1){
+                        $elementSelectOption.removeClass('out-of-stock unavailable');
+                    }
+                    $firstOption.find('li[data-value="' + firstOptionValue + '"]').addClass('selected');
+                    // One Option
+                    if($secondOption.length == 0 && $thirdOption.length == 0){
+                        $firstOption.find('li').removeClass('out-of-stock unavailable');
+                        $productOptions.find('option').each(function(){
+                            $dataFirstOptionValue = $(this).data(firstOptionPostion);
+                            $dataInventoryQuantity = parseInt($(this).data('inventory_quantity'));
+                            if($dataInventoryQuantity < 1){
+                                $optionOutOfStock = $dataFirstOptionValue;
+                                $firstOption.find('li').each(function() {
+                                    if($(this).data('value') == $optionOutOfStock){
+                                        $(this).addClass('out-of-stock');
+                                    }
+                                });
+                            }
+                        });
+                        checkOptionOutOfStock($firstOption, firstOptionPostion, firstOptionValue, firstOptionPostion);
+                    }
+                    if($thirdOption.length == 0){
+                        // Two Options
+                        if($secondOption.length > 0){
+                            var $secondOptionValues = [], $secondOptionAvailableValues = [], $secondOptionUnavailableValues = [];
+                            $secondOption.find('li').each(function(){
+                                $secondOptionValues.push($(this).data('value'));
+                            });
+                            $secondOption.find("[data-value='" + $('#product-select').find('option:selected').data('option1') + "']").addClass('selected');
+                            $productOptions.find('option').each(function(){
+                                $dataFirstOptionValue = $(this).data(firstOptionPostion);
+                                $dataSecondOptionValue = $(this).data(secondOptionPostion);
+                                $dataInventoryQuantity = parseInt($(this).data('inventory_quantity'));
+                                if($dataFirstOptionValue == firstOptionValue){
+                                    $secondOptionAvailableValues.push($dataSecondOptionValue);
+                                    if($dataInventoryQuantity < 1){
+                                        $optionOutOfStock = $dataSecondOptionValue;
+                                        $secondOption.find('li').each(function() {
+                                            if($(this).data('value') == $optionOutOfStock){
+                                                $(this).addClass('out-of-stock');
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+                            checkOptionOutOfStock($secondOption, secondOptionPostion, firstOptionValue, firstOptionPostion);
+                            $secondOptionUnavailableValues = array_diff($secondOptionValues,$secondOptionAvailableValues);
+                            if($secondOptionUnavailableValues.length > 0){
+                                $secondOptionUnavailableValues.forEach(function(unavailableValue,index){
+                                    $secondOption.find('li').each(function() {
+                                        if($(this).data('value') == unavailableValue){
+                                            $(this).addClass('unavailable');
+                                        }
+                                    });
+                                });
+                            }
+                        }
+                    }else{
+                        // Three Options
+                        //Select Second Option
+                        if(secondOptionValue != null){
+                            var $thirdOptionValues = [], $thirdOptionAvailableValues = [], $thirdOptionUnavailableValues = [];
+                            $thirdOption.find('li').removeClass('out-of-stock unavailable').each(function(){
+                                $thirdOptionValues.push($(this).data('value'));
+                            });
+                            $productOptions.find('option').each(function(){
+                                $dataFirstOptionValue = $(this).data(firstOptionPostion);
+                                $dataSecondOptionValue = $(this).data(secondOptionPostion);
+                                $dataThirdOptionValue = $(this).data(thirdOptionPostion);
+                                $dataInventoryQuantity = parseInt($(this).data('inventory_quantity'));
+                                
+                                if($dataFirstOptionValue == firstOptionValue && $dataSecondOptionValue == secondOptionValue){
+                                    $thirdOptionAvailableValues.push($dataThirdOptionValue);
+                                    if($dataInventoryQuantity < 1){
+                                        $optionOutOfStock = $dataThirdOptionValue;
+                                        $thirdOption.find('li').each(function() {
+                                            if($(this).data('value') == $optionOutOfStock){
+                                                $(this).addClass('out-of-stock');
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+                            checkOptionOutOfStock($thirdOption, thirdOptionPostion, firstOptionValue, firstOptionPostion, secondOptionValue, secondOptionPostion);
+                            $thirdOptionUnavailableValues = array_diff($thirdOptionValues,$thirdOptionAvailableValues);
+                            if($thirdOptionUnavailableValues.length > 0){
+                                $thirdOptionUnavailableValues.forEach(function(unavailableValue,index){
+                                    $thirdOption.find('li').each(function() {
+                                        if($(this).data('value') == unavailableValue){
+                                            $(this).addClass('unavailable');
+                                        }
+                                    });
+                                });
+                            }
+                        }
+                        //Select Third Option
+                        if(thirdOptionValue != null){
+                            var $secondOptionValues = [], $secondOptionAvailableValues = [], $secondOptionUnavailableValues = [];
+                            $secondOption.find('li').removeClass('out-of-stock unavailable').each(function(){
+                                $secondOptionValues.push($(this).data('value'));
+                            });
+                            $productOptions.find('option').each(function(){
+                                $dataFirstOptionValue = $(this).data(firstOptionPostion);
+                                $dataSecondOptionValue = $(this).data(secondOptionPostion);
+                                $dataThirdOptionValue = $(this).data(thirdOptionPostion);
+                                $dataInventoryQuantity = parseInt($(this).data('inventory_quantity'));
+                                
+                                if($dataFirstOptionValue == firstOptionValue && $dataThirdOptionValue == thirdOptionValue){
+                                    $secondOptionAvailableValues.push($dataSecondOptionValue);
+                                    if($dataInventoryQuantity < 1){
+                                        $optionOutOfStock = $dataSecondOptionValue;
+                                        $secondOption.find('li').each(function() {
+                                            if($(this).data('value') == $optionOutOfStock){
+                                                $(this).addClass('out-of-stock');
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+                            checkOptionOutOfStock($secondOption, secondOptionPostion, firstOptionValue, firstOptionPostion, thirdOptionValue, thirdOptionPostion);
+                            $secondOptionUnavailableValues = array_diff($secondOptionValues,$secondOptionAvailableValues);
+                            if($secondOptionUnavailableValues.length > 0){
+                                $secondOptionUnavailableValues.forEach(function(unavailableValue,index){
+                                    $secondOption.find('li').each(function() {
+                                        if($(this).data('value') == unavailableValue){
+                                            $(this).addClass('unavailable');
+                                        }
+                                    });
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        checkOptionOutOfStock = function($option, optionPosition, selectFirstOptionValue, selectFirstOptionPosition, selectSecondOptionValue, selectSecondOptionPosition) {
+            var $dataInventoryQuantity, $optionOutOfStock;
+            $.getJSON('/cart.js', function (cart) {
+                jQuery.each(cart.items, function(index, item) {
+                  	productVariants.forEach(function(variant, index){
+                      if (item.id == variant.id) {
+                            if(selectFirstOptionValue != null && selectFirstOptionPosition != null){
+                                if(selectSecondOptionValue == null && selectSecondOptionPosition == null){
+                                    if(variant[selectFirstOptionPosition] == selectFirstOptionValue){
+                                        $dataInventoryQuantity = variant.inventory_quantity - parseInt(item.quantity);
+                                        if($dataInventoryQuantity < 1){
+                                            $optionOutOfStock = variant[optionPosition];
+                                            $option.find('li').each(function() {
+                                                if($(this).data('value') == $optionOutOfStock){
+                                                    $(this).removeClass('selected').addClass('out-of-stock');
+                                                }
+                                            });
+                                        }
+                                    }
+                                }else{
+                                    if(variant[selectFirstOptionPosition] == selectFirstOptionValue && variant[selectSecondOptionPosition] == selectSecondOptionValue){
+                                        $dataInventoryQuantity = variant.inventory_quantity - parseInt(item.quantity);
+                                        if($dataInventoryQuantity < 1){
+                                            $optionOutOfStock = variant[optionPosition];
+                                            $option.find('li').each(function() {
+                                                if($(this).data('value') == $optionOutOfStock){
+                                                    $(this).removeClass('selected').addClass('out-of-stock');
+                                                }
+                                            });
+                                        }
+                                    }
+                                }  
+                            }
+                        }
+                   	});
+                });
+            });
+        };
+    
+        module = {
+            init: init
+        };
+        
+        return module; 
+    
+    }(JunoProductAdd || {}, jQuery));
+    
+    jQuery(document).ready(function () {
+        JunoProductAdd.init();
+        jQuery('.product-collapse .title').on('click', function(e){
+            e.preventDefault();
+            jQuery(this).toggleClass('active').next().slideToggle();
+        });
+    });
+</script>

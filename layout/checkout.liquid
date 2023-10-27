@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="{{ locale }}" dir="{{ direction }}" class="{{ checkout_html_classes }} checkout-page">
+    <head
+      <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11121349323"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-11121349323'); </script>
+    <script>(function () { function asyncLoad() { var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = 'https://s3.eu-west-1.amazonaws.com/production-klarna-il-shopify-osm/44241829bcc56116e10834fcdc3b3f3426feef24/baselondon.myshopify.com-1678790688482.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x); }; if (window.attachEvent) { window.attachEvent('onload', asyncLoad); } else { window.addEventListener('load', asyncLoad, false); } })(); </script>>
+        <meta charset="utf-8">
+        <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' /><![endif]-->
+        {%- comment -%}Auto-disabled. Yoast plugin is taking care of SEO output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<title>{{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}</title>
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="language" content="english">
+        <meta http-equiv="Accept-CH" content="DPR,Width,Viewport-Width">
+        {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<meta name="robots" content="noodp,noydir">
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+        <link rel="preconnect" href="//www.google-analytics.com">
+        <link rel="preconnect" href="//fast.fonts.net">
+        <link rel="preconnect" href="//widget.trustpilot.com">
+        <link rel="preconnect" href="//fonts.googleapis.com">
+        <link rel="preconnect" href="//cdn.shopify.com">
+        <link rel="preconnect" href="//pcapredict.com"> 
+        {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<link rel="canonical" href="{{ canonical_url }}" />
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+        {% include 'head-favicon' %} 
+        {{ content_for_header }}
+        {{ checkout_stylesheets }}
+        {{ checkout_scripts }}
+        {{ 'main.min.css' | asset_url | stylesheet_tag }} 
+    
+  {% include "globale-checkout-css" %}
+</head>
+    <body>
+        <div class="content main-content" data-content>
+            <div class="wrap">
+                {{ order_summary_toggle }}
+                <div class="sidebar" role="complementary">
+                    <div class="sidebar__header">
+                        {{ content_for_logo }}
+                    </div>
+                    <div class="sidebar__content">
+                        {{ content_for_order_summary }}
+                        <div class="sidebar__footer">
+                            <h3>Need help?</h3>
+                            <p>Lorem ipsum dolor sit amet consectectur adipiscing</p>
+                            <div class="sidebar__footer-contact">
+                                <a href="tel:+0800 123 4567"><i class='bx bx-phone' ></i> 0800 123 4567</a>
+                                <a href="mailto:help@base.com"><i class='bx bx-envelope'></i> help@base.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main" role="main">
+                    <div class="main__header">
+                        {{ content_for_logo }}
+                        {{ breadcrumb }}
+                        {{ alternative_payment_methods }}
+                    </div>
+                    <div class="main__content">
+                        {{ content_for_layout }}
+                    </div>
+                    <!-- <div class="main__footer">
+                        <p class="copyright">Copyright {{'now' | date: '%Y' }} © All rights reserved.</p>
+                        <h3>Need help?</h3>
+                        <p>Lorem ipsum dolor sit amet consectectur adipiscing</p>
+                        <div class="main__footer-contact">
+                            <a href="tel:+0800 123 4567"><i class='bx bx-phone' ></i> 0800 123 4567</a>
+                            <a href="mailto:help@base.com"><i class='bx bx-envelope'></i> help@base.com</a>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div> 
+    
+  {% include "globale-checkout-js" %}
+</body>
+    {{ tracking_code }}
+    {% include 'gtm-checkout' %}
+
+    <script>
+        var inputChecked = document.querySelectorAll(':checked');
+        var checkedCls = 'input-checked';
+        inputChecked.forEach(function(e) {
+            var closeEl = e.closest('.content-box__row');
+            if (closeEl) {
+                closeEl.classList.add(checkedCls);
+            }
+        });
+        var inputs = document.querySelectorAll('.input-radio, .input-checkbox');
+        inputs.forEach(function(el) {
+            el.addEventListener('change', function() {
+                var attrName = this.getAttribute('name');
+                var type = this.getAttribute('type');
+                var close = this.closest('.content-box__row');
+                if (type == 'radio') {
+                    var radios = document.querySelectorAll('[name="'+attrName+'"]');
+                    
+                    radios.forEach(function(e) {
+                        e.closest('.content-box__row') && e.closest('.content-box__row').classList.remove(checkedCls);
+                    });
+                }
+
+                if (this.checked) {
+                    close.classList.add(checkedCls);
+                } else {
+                    close.classList.remove(checkedCls);
+                }
+            });
+        });
+
+
+        (function($) {
+            if ($('.page--thank-you').length) {
+                $('.page--thank-you .content-box:first-child .os-step__title').prepend($('.os-header__title').text());
+            }
+        })(Checkout.$);
+    </script>
+</html>

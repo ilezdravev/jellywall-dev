@@ -1,0 +1,76 @@
+<div class="faqs-page child">
+    <div class="wrapper">
+        <div class="row">
+            <div class="faqs-sub-pages">
+                <div class="heading">
+                    {% if section.settings.title %}
+                        <h2 class="title">{{ section.settings.title }}</h2>
+                    {% endif %}
+                    {% if section.settings.content %}
+                        <div class="content">
+                            {{ section.settings.content }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="sub-pages">
+                    <ul>
+                        {% for block in section.blocks %}
+                            {% unless block.settings.link == page.url %}
+                                <li>
+                                    <a href="{{ block.settings.link }}">
+                                        {% if block.settings.title %}
+                                            <strong>{{ block.settings.title }}</strong>
+                                        {% endif %}
+                                        {% if block.settings.content %}
+                                            <span>{{ block.settings.content }}</span>
+                                        {% endif %}
+                                    </a>
+                                </li>
+                            {% endunless %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% schema %}
+	{
+		"name": "FAQs Sub Pages",
+		"settings": [
+			{
+				"type": "text",
+				"id": "title",
+				"label": "Heading Title"
+			},
+			{
+				"type": "text",
+				"id": "content",
+				"label": "Heading Content"
+			}
+		],
+		"blocks": [		
+			{
+		        "type": "faqs-page",
+		        "name": "FAQs Page",
+		        "settings":   [
+					{
+						"type": "text",
+						"id": "title",
+						"label": "Title"
+					},
+					{
+						"type": "text",
+						"id": "content",
+						"label": "Content"
+					},
+					{
+                        "type": "url",
+                        "id": "link",
+                        "label": "Link"
+                    }
+		        ]
+			}
+		]
+	}
+{% endschema %}

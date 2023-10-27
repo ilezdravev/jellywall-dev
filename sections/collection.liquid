@@ -1,0 +1,67 @@
+
+{% if settings.wishlist_enabled %}
+    {% include 'juno-wishlist', get: 'collection-init' %}
+{% endif %}
+
+
+{% assign number_of_products = settings.number_of_products | times: 1  %}
+
+<div class="collection-page">
+    
+    <div class="page-title collection-title"> 
+            <div class="row description-block"> 
+                <div class="collection-description">
+                    {% include 'breadcrumbs' %}
+                    <h1 class="h4">{{ collection.title }}</h1> 
+                    <div class="content">{{ collection.description }}</div> 
+                 </div>
+                {%- if collection.image -%}
+                  <div class="collection-img-description" style="background-image: url({{ collection.image.src | collection_img_url: 'original' }});"></div>
+                {%- else -%}
+                  <div class="collection-img-description"></div>
+                {%- endif -%}  
+            </div> 
+    </div>
+</div>
+<style>
+  @media only screen and (max-width: 61.99em) {
+    .boost-sd-layout {
+        width: calc(100% - 32px);
+        padding-left: var(--boostsd-general-gutter-mobile, 16px);
+        padding-right: var(--boostsd-general-gutter-mobile, 16px);
+    }
+    .boost-sd__toolbar-top-mobile {
+/*       width: calc(100% - 32px); */
+    }
+  }
+</style>
+
+  <script>
+    // Function to update the heading based on URL parameters
+    function updateHeading() {
+      // Get the URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+
+      document.querySelector('h1.h4').textContent = "test";
+
+      // Check if the "text" parameter exists
+      if (urlParams.has('text')) {
+        // Get the value of the "text" parameter
+        const textValue = urlParams.get('text');
+
+        // Update the heading with the text value
+        document.querySelector('h1.h4').textContent = textValue;
+      }
+    }
+    
+    $('.boost-sd__product-count').on('DOMSubtreeModified', function(){
+      console.log('changed');
+      updateHeading();
+    });
+
+    // Function to track changes in the div field
+    function trackChanges() {
+      // Get the div field element
+    
+    }
+  </script>

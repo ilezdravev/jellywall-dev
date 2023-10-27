@@ -1,0 +1,128 @@
+{% assign max_blocks = 3 %} 
+{% assign section_class = 'banner-section cms-section' %}
+{% assign section_class = section_class | append: ' grid-' | append: max_blocks %}
+{% if block.settings.image_1 != blank %}
+    {% assign section_class = section_class | append: ' ' | append: 'col-img' %}
+{% else %}
+    {% assign section_class = section_class | append: ' ' | append: 'col-text' %}
+{% endif %}
+{% if block.settings.image_2 != blank %}
+    {% assign section_class = section_class | append: ' ' | append: 'col-img' %}
+{% else %}
+    {% assign section_class = section_class | append: ' ' | append: 'col-text' %}
+{% endif %}
+{% if block.settings.image_3 != blank %}
+    {% assign section_class = section_class | append: ' ' | append: 'col-img' %}
+{% else %}
+    {% assign section_class = section_class | append: ' ' | append: 'col-text' %}
+{% endif %}
+{% assign section_class = section_class | append: ' ' | append: block.settings.custom_class %}
+{% assign section_class = section_class | append: ' ' | append: block.settings.add_padding_top %}
+{% assign section_class = section_class | append: ' ' | append: block.settings.add_padding_bottom %}
+{% assign section_class = section_class | append: ' ' | append: block.settings.add_margin_top %}
+{% assign section_class = section_class | append: ' ' | append: block.settings.add_margin_bottom %}
+{% assign section_class = section_class | append: ' ' | append: block.settings.add_border_top %}
+{% assign section_class = section_class | append: ' ' | append: block.settings.add_border_bottom %}
+{% assign section_class = section_class | append: ' ' | append: block.settings.border_width %}
+<div class="{{ section_class }}" {% if block.settings.background_color != '' or block.settings.background_image %} style="{% if block.settings.background_color != '' %}background-color: {{ block.settings.background_color }};{% endif %}{% if block.settings.background_image %}background-image: url({{ block.settings.background_image | img_url: 'master' }});{% endif %}"{% endif %}>
+    <div class="wrapper {{ block.settings.max_width }}">
+        <div class="row">
+            {% if block.settings.heading_title != blank or block.settings.heading_subtitle != blank %}
+                <div class="section-header {{ block.settings.heading_align }} {{ block.settings.heading_text_color }}">
+                    {% if block.settings.heading_title != blank %}
+                        <h2 class="title {{ block.settings.heading_title_tag }}">{{ block.settings.heading_title }}</h2>
+                    {% endif %}
+                    {% if block.settings.heading_subtitle != blank %}
+                    <div class="sub-title">
+                        {{ block.settings.heading_subtitle }}
+                    </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+            <div class="row-flex">
+                {% for i in (1..max_blocks) %}
+                    {% assign b_column_vertical_align = 'column_vertical_align_' | append: forloop.index %}
+                    {% assign b_image = 'image_' | append: forloop.index %}
+                    {% assign b_mobile_image = 'mobile_image_' | append: forloop.index %}
+                    {% assign b_image_alt = 'image_alt_' | append: forloop.index %}
+                    {% assign b_link = 'link_' | append: forloop.index %}
+                    {% assign b_video_link = 'video_link_' | append: forloop.index %}
+                    {% assign b_video_src = 'video_src_' | append: forloop.index %}
+                    {% assign b_video_controls = 'video_controls_' | append: forloop.index %}
+                    {% assign b_video_loop = 'video_loop_' | append: forloop.index %}
+                    {% assign b_text_color = 'text_color_' | append: forloop.index %}
+                    {% assign b_content_position = 'content_position_' | append: forloop.index %}
+                    {% assign b_vertical_align = 'vertical_align_' | append: forloop.index %}
+                    {% assign b_horizontal_align = 'horizontal_align_' | append: forloop.index %}
+                    {% assign b_title = 'content_title_' | append: forloop.index %}
+                    {% assign b_title_tag = 'content_title_tag_' | append: forloop.index %}
+                    {% assign b_content = 'content_' | append: forloop.index %}
+                    {% assign b_reverse_title_content = 'reverse_title_content_' | append: forloop.index %}
+                    {% assign b_link_1 = 'link_' | append: forloop.index | append: '_a' %}
+                    {% assign b_link_2 = 'link_' | append: forloop.index | append: '_b' %}
+                    {% assign b_button_text_1 = 'button_text_' | append: forloop.index | append: '_a' %}
+                    {% assign b_button_text_2 = 'button_text_' | append: forloop.index | append: '_b' %}
+                    {% assign b_button_style_1 = 'button_style_' | append: forloop.index | append: '_a' %}
+                    {% assign b_button_style_2 = 'button_style_' | append: forloop.index | append: '_b' %}
+                    {% assign b_button_position = 'button_position_' | append: forloop.index %}
+                    {% assign b_column_order = 'column_order_' | append: forloop.index %}
+                    <div class="{% if block.settings[b_image] != blank %}col-img{% else %}col-text{% endif %} {% if block.settings[b_video_link] != blank %}video{% endif %} {{ block.settings[b_column_vertical_align] }} {{ block.settings[b_text_color] }} {{ block.settings[b_column_order] }}">
+                        <div class="inner">
+                            {% if block.settings[b_image] %}
+                            <div class="image">
+                                {% if block.settings[b_link] != blank %}<a class="img" href="{{ block.settings[b_link] }}">{% endif %}
+                                    <picture>
+                                        <source media="(min-width: 992px)" srcset="{{ block.settings[b_image] | img_url: 'master' }}">
+                                        {% if block.settings[b_mobile_image] != blank %}
+                                            <source srcset="{{ block.settings[b_mobile_image] | img_url: 'master' }}">
+                                        {% else %}
+                                            <source srcset="{{ block.settings[b_image] | img_url: '640x480', crop: 'center' }}">
+                                        {% endif %}
+                                        <img src="{{ block.settings[b_image] | img_url: 'master' }}" alt="{% if block.settings[b_image_alt] != blank %}{{ block.settings[b_image_alt] }}{% else %}{% if block.settings[b_title] != blank %}{{ block.settings[b_title] }}{% endif %}{% endif %}" />
+                                    </picture>
+                                {% if block.settings[b_link] != blank %}</a>{% endif %}
+                                {% if block.settings[b_video_src] == blank %}
+                                    {% if block.settings[b_video_link] != blank %}
+                                        <span class="button-play"><span>Play</span></span>
+                                        <div class="video-iframe" data-video-id="{{ block.settings[b_video_link].id }}"></div>
+                                    {% endif %}
+                                {% else %}
+                                    <video preload="auto" autoplay="autoplay" muted="muted" {% if block.settings[b_video_controls] %}controls="controls"{%endif%} {% if block.settings[b_video_loop] %}loop="loop"{%endif%} {% if block.settings[b_image] %}poster="{{ block.settings[b_image] | img_url: 'master' }}"{% endif %} playsinline>
+                                        <source src="{{ block.settings[b_video_src] | append: '.mp4' | file_url  }}" type="video/mp4"></source>
+                                        <source src="{{ block.settings[b_video_src] | append: '.webm' | file_url  }}" type="video/webm"></source>
+                                        <source src="{{ block.settings[b_video_src] | append: '.ogv' | file_url  }}" type="video/ogg"></source>
+                                    </video>
+                                {% endif %}
+                            </div>
+                            {% endif %}
+                            {% if block.settings[b_title] != blank or block.settings[b_content] != blank or block.settings[b_link_1] != blank or block.settings[b_link_2] != blank %}
+                                <div class="caption {{ block.settings[b_content_position] }} {{ block.settings[b_vertical_align] }} {{ block.settings[b_horizontal_align] }}">	
+                                    <div class="wrapper">
+                                        <div class="content {{ block.settings[b_reverse_title_content] }}">
+                                            {% if block.settings[b_title] != blank %}
+                                                <h3 class="title {{ block.settings[b_title_tag] }}">{{ block.settings[b_title] }}</h3>
+                                            {% endif %}
+                                            {% if block.settings[b_content] != blank %}
+                                                <div class="text">{{ block.settings[b_content] }}</div>
+                                            {% endif %}
+                                            {% if block.settings[b_link_1] != blank or block.settings[b_link_2] != blank %}
+                                            <div class="buttons {{ block.settings[b_button_position] }}">
+                                                {% if block.settings[b_link_1] != blank %}
+                                                    <a class="{{ block.settings[b_button_style_1] }}" href="{{ block.settings[b_link_1] }}">{{ block.settings[b_button_text_1] }}</a>
+                                                {% endif %}	
+                                                {% if block.settings[b_link_2] != blank %}
+                                                    <a class="{{ block.settings[b_button_style_2] }}" href="{{ block.settings[b_link_2] }}">{{ block.settings[b_button_text_2] }}</a>
+                                                {% endif %}	
+                                            </div>
+                                            {% endif %}	
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}	
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

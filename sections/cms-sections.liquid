@@ -1,0 +1,4496 @@
+<div class="cms-sections">
+{% for block in section.blocks %}
+	{% case block.type %}
+
+		{% when 'banner-one' %}
+		{% include 'cms-banner-one' %}
+
+		{% when 'banner-two' %}
+		{% include 'cms-banner-two' %}
+
+		{% when 'banner-three' %}
+		{% include 'cms-banner-three' %}
+
+		{% when 'banner-four' %}
+		{% include 'cms-banner-four' %}
+
+		{% when 'banner-carousel' %}
+			{% assign carousel_size = block.settings.grid | times: 1 %}
+			{% assign end_carousel = forloop.index | plus: carousel_size %}
+			{% include 'cms-carousel' %}
+
+		{% when 'onecolumn-content' %}
+		{% include 'cms-text-one' %}
+
+		{% when 'twocolumn-content' %}
+		{% include 'cms-text-two' %}
+
+		{% when 'threecolumn-content' %}
+		{% include 'cms-text-three' %}
+
+		{% when 'featured-collection' %}
+		{% include 'cms-featured-collection' %}
+
+		{% when 'featured-blog' %}
+		{% include 'cms-featured-blog' %}
+
+	{% endcase %}
+
+	{% if end_carousel == forloop.index %}
+		{% include 'cms-end-carousel' %}			
+	{% endif %}
+{% endfor %}
+</div>
+
+{% schema %}
+	{
+		"blocks": [			
+			{
+				"type": "banner-one",
+				"name": "Banner or Video - One",
+				"settings": [
+					{
+						"type": "text",
+						"id": "title",
+						"label": "Section Title",
+						"default": "Headline Lorem Ipsum"
+					},
+					{
+						"type": "select",
+						"id": "max_width",
+						"label": "Max width",
+						"options": [
+							{ "value": "", "label": "Wide Width" },
+							{ "value": "full-width", "label": "Full Width" }
+						],
+						"default": "full-width"
+					},
+					{
+						"type": "color",
+						"id": "background_color",
+						"label": "Background Color"
+					},
+					{
+						"type": "image_picker",
+						"id": "background_image",
+						"label": "Background Image"
+					},
+					{
+						"type": "select",
+						"id": "add_border_top",
+						"label": "Add border top?",
+						"options": [
+							{ "value": "border-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_border_bottom",
+						"label": "Add border bottom?",
+						"options": [
+							{ "value": "border-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "border_width",
+						"label": "Border Width",
+						"options": [
+							{ "value": "", "label": "Border Ful Width" },
+							{ "value": "border-content-center", "label": "Border Wide Width" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_padding_top",
+						"label": "Add padding top?",
+						"options": [
+							{ "value": "padding-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_padding_bottom",
+						"label": "Add padding bottom?",
+						"options": [
+							{ "value": "padding-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_margin_top",
+						"label": "Add margin top?",
+						"options": [
+							{ "value": "margin-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_margin_bottom",
+						"label": "Add margin bottom?",
+						"options": [
+							{ "value": "margin-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "text",
+						"id": "custom_class",
+						"label": "Custom Class (CSS)"
+					},
+					{
+						"type": "select",
+						"id": "heading_align",
+						"label": "Heading text align",
+						"options": [
+							{ "value": "text-left", "label": "Left" },
+							{ "value": "text-center", "label": "Center" },
+							{ "value": "text-right", "label": "Right" }
+						],
+						"default": "text-center"
+					},
+					{
+						"type": "select",
+						"id": "heading_text_color",
+						"label": "Heading Text color",
+						"options": [
+							{ "value": "text-light", "label": "Light" },
+							{ "value": "text-dark", "label": "Dark" }
+						],
+						"default": "text-dark"
+					},
+					{
+						"type": "text",
+						"id": "heading_title",
+						"label": "Heading Title",
+						"default": "Headline Lorem Ipsum"
+					},
+					{
+						"type": "select",
+						"id": "heading_title_tag",
+						"label": "Heading H Tag",
+						"options": [
+							{ "value": "h1", "label": "H1" },
+							{ "value": "h2", "label": "H2" },
+							{ "value": "h3", "label": "H3" },
+							{ "value": "h4", "label": "H4" },
+							{ "value": "h5", "label": "H5" },
+							{ "value": "h6", "label": "H6" },
+							{ "value": "h7", "label": "H7" },
+							{ "value": "h8", "label": "H8" },
+							{ "value": "h9", "label": "H9" }
+						],
+						"default": "h2"
+					},  
+					{
+						"type": "richtext",
+						"id": "heading_subtitle",
+						"label": "Heading Subtitle",
+						"default": "<p>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vivamus suscipit tortor eget</p>"
+					},
+					{
+						"type": "select",
+						"id": "column_order_1",
+						"label": "Column Order 1",
+						"options": [
+							{ "value": "order-1", "label": "1" }
+						],
+						"default": "order-1"
+					},
+					{
+						"type": "image_picker",
+						"id": "image_1",
+						"label": "Image 1"
+					},
+					{
+						"type": "image_picker",
+						"id": "mobile_image_1",
+						"label": "Mobile Image 1"
+					},
+					{
+						"type": "text",
+						"id": "image_alt_1",
+						"label": "Image Alt 1"
+					},
+					{
+						"type": "text",
+						"id": "video_src_1",
+						"label": "Video filename 1",
+						"info": "Upload a .mp4, .webm, .ogv into the Files folder (Settings > Files) all with this name. So if one of your assets is 'my-video.mp4', then just enter 'my-video' here."
+					},
+					{
+						"type": "checkbox",
+						"id": "video_loop_1",
+						"label": "Loop video? 1",
+						"info": "Use to video file",
+						"default": true
+					},
+					{
+						"type": "checkbox",
+						"id": "video_controls_1",
+						"label": "Controls video? 1",
+						"info": "Use to video file",
+						"default": false
+					},
+					{
+						"type": "video_url",
+						"id": "video_link_1",
+						"label": "Video Link 1",
+						"accept": ["youtube"]
+					},
+					{
+						"type": "url",
+						"id": "link_1",
+						"label": "Image Link 1"
+					},
+					{
+						"type": "select",
+						"id": "content_position_1",
+						"label": "Content Position 1",
+						"options": [
+							{ "value": "", "label": "None" },
+							{ "value": "located-image", "label": "Located on the image" },
+							{ "value": "below-image", "label": "Below the image" },
+							{ "value": "above-image", "label": "Above the image" }
+						]
+					},  
+					{
+						"type": "select",
+						"id": "text_color_1",
+						"label": "Text color 1",
+						"options": [
+							{ "value": "text-light", "label": "Light" },
+							{ "value": "text-dark", "label": "Dark" }
+						],
+						"default": "text-dark"
+					},
+					{
+						"type": "select",
+						"id": "vertical_align_1",
+						"label": "Vertical align 1",
+						"options": [
+							{ "value": "top", "label": "Top" },
+							{ "value": "middle", "label": "Middle" },
+							{ "value": "bottom", "label": "Bottom" }
+						],
+						"default": "middle",
+						"info": "Use for Located on the image"
+					},
+					{
+						"type": "select",
+						"id": "horizontal_align_1",
+						"label": "Horizontal align 1",
+						"options": [
+							{ "value": "left", "label": "Left" },
+							{ "value": "center", "label": "Center" },
+							{ "value": "right", "label": "Right" }
+						],
+						"default": "center"
+					},
+					{
+						"type": "select",
+						"id": "reverse_title_content_1",
+						"label": "Reverse title and content 1?",
+						"options": [
+							{ "value": "reverse-title-content", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "text",
+						"id": "content_title_1",
+						"label": "Title",
+						"default": "Banner"
+					},
+					{
+						"type": "select",
+						"id": "content_title_tag_1",
+						"label": "Title H Tag 1",
+						"options": [
+							{ "value": "h1", "label": "H1" },
+							{ "value": "h2", "label": "H2" },
+							{ "value": "h3", "label": "H3" },
+							{ "value": "h4", "label": "H4" },
+							{ "value": "h5", "label": "H5" },
+							{ "value": "h6", "label": "H6" },
+							{ "value": "h7", "label": "H7" },
+							{ "value": "h8", "label": "H8" },
+							{ "value": "h9", "label": "H9" }
+						],
+						"default": "h2"
+					},  
+					{
+						"type": "richtext",
+						"id": "content_1",
+						"label": "Content 1",
+						"default": "<p>Lorem ipsum dolor sit amet</p>"
+					},
+					{
+						"type": "url",
+						"id": "link_1_a",
+						"label": "Button Link 1"
+					},
+					{
+						"type": "text",
+						"id": "button_text_1_a",
+						"label": "Button Text 1",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_1_a",
+						"label": "Button style 1",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "button-text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "url",
+						"id": "link_1_b",
+						"label": "Button Link 2"
+					},
+					{
+						"type": "text",
+						"id": "button_text_1_b",
+						"label": "Button Text 2",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_1_b",
+						"label": "Button style 1",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "button-text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "select",
+						"id": "button_position_1",
+						"label": "Button Position 1",
+						"options": [
+							{ "value": "button-top", "label": "Top" },
+							{ "value": "button-below-content", "label": "Below Content" },
+							{ "value": "button-bottom", "label": "Bottom" }
+						],
+						"default": "button-below-content",
+						"info": "Use for Located on the image"
+					}
+				]
+			},
+			{
+				"type": "banner-two",
+				"name": "Banner or Video - Two",
+				"settings": [
+					{
+						"type": "text",
+						"id": "title",
+						"label": "Section Title",
+						"default": "Headline Lorem Ipsum"
+					},
+					{
+						"type": "select",
+						"id": "max_width",
+						"label": "Max width",
+						"options": [
+							{ "value": "", "label": "Wide Width" },
+							{ "value": "full-width", "label": "Full Width" }
+						],
+						"default": "full-width"
+					},
+					{
+						"type": "color",
+						"id": "background_color",
+						"label": "Background Color"
+					},
+					{
+						"type": "image_picker",
+						"id": "background_image",
+						"label": "Background Image"
+					},
+					{
+						"type": "select",
+						"id": "add_border_top",
+						"label": "Add border top?",
+						"options": [
+							{ "value": "border-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_border_bottom",
+						"label": "Add border bottom?",
+						"options": [
+							{ "value": "border-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "border_width",
+						"label": "Border Width",
+						"options": [
+							{ "value": "", "label": "Border Ful Width" },
+							{ "value": "border-content-center", "label": "Border Wide Width" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_padding_top",
+						"label": "Add padding top?",
+						"options": [
+							{ "value": "padding-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_padding_bottom",
+						"label": "Add padding bottom?",
+						"options": [
+							{ "value": "padding-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_margin_top",
+						"label": "Add margin top?",
+						"options": [
+							{ "value": "margin-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_margin_bottom",
+						"label": "Add margin bottom?",
+						"options": [
+							{ "value": "margin-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "text",
+						"id": "custom_class",
+						"label": "Custom Class (CSS)"
+					},
+					{
+					
+						"type": "select",
+						"id": "heading_align",
+						"label": "Heading text align",
+						"options": [
+							{ "value": "text-left", "label": "Left" },
+							{ "value": "text-center", "label": "Center" },
+							{ "value": "text-right", "label": "Right" }
+						],
+						"default": "text-center"
+					},
+					{
+						"type": "select",
+						"id": "heading_text_color",
+						"label": "Heading Text color",
+						"options": [
+							{ "value": "text-light", "label": "Light" },
+							{ "value": "text-dark", "label": "Dark" }
+						],
+						"default": "text-dark"
+					},
+					{
+						"type": "text",
+						"id": "heading_title",
+						"label": "Heading Title",
+						"default": "Headline Lorem Ipsum"
+					},
+					{
+						"type": "select",
+						"id": "heading_title_tag",
+						"label": "Heading H Tag",
+						"options": [
+							{ "value": "h1", "label": "H1" },
+							{ "value": "h2", "label": "H2" },
+							{ "value": "h3", "label": "H3" },
+							{ "value": "h4", "label": "H4" },
+							{ "value": "h5", "label": "H5" },
+							{ "value": "h6", "label": "H6" },
+							{ "value": "h7", "label": "H7" },
+							{ "value": "h8", "label": "H8" },
+							{ "value": "h9", "label": "H9" }
+						],
+						"default": "h2"
+					},  
+					{
+						"type": "richtext",
+						"id": "heading_subtitle",
+						"label": "Heading Subtitle",
+						"default": "<p>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vivamus suscipit tortor eget</p>"
+					},
+					{
+						"type": "select",
+						"id": "column_order_1",
+						"label": "Column Order 1",
+						"options": [
+							{ "value": "order-1", "label": "1" },
+							{ "value": "order-2", "label": "2" }
+						],
+						"default": "order-1"
+					},
+					{
+						"type": "image_picker",
+						"id": "image_1",
+						"label": "Image 1"
+					},
+					{
+						"type": "image_picker",
+						"id": "mobile_image_1",
+						"label": "Mobile Image 1"
+					},
+					{
+						"type": "text",
+						"id": "image_alt_1",
+						"label": "Image Alt 1"
+					},
+					{
+						"type": "text",
+						"id": "video_src_1",
+						"label": "Video filename 1",
+						"info": "Upload a .mp4, .webm, .ogv into the Files folder (Settings > Files) all with this name. So if one of your assets is 'my-video.mp4', then just enter 'my-video' here."
+					},
+					{
+						"type": "checkbox",
+						"id": "video_loop_1",
+						"label": "Loop video? 1",
+						"info": "Use to video file",
+						"default": true
+					},
+					{
+						"type": "checkbox",
+						"id": "video_controls_1",
+						"label": "Controls video? 1",
+						"info": "Use to video file",
+						"default": false
+					},
+					{
+						"type": "video_url",
+						"id": "video_link_1",
+						"label": "Video Link 1",
+						"accept": ["youtube"]
+					},
+					{
+						"type": "url",
+						"id": "link_1",
+						"label": "Image Link 1"
+					},
+					{
+						"type": "select",
+						"id": "content_position_1",
+						"label": "Content Position 1",
+						"options": [
+							{ "value": "", "label": "None" },
+							{ "value": "located-image", "label": "Located on the image" },
+							{ "value": "below-image", "label": "Below the image" },
+							{ "value": "above-image", "label": "Above the image" }
+						]
+					},  
+					{
+						"type": "select",
+						"id": "text_color_1",
+						"label": "Text color 1",
+						"options": [
+							{ "value": "text-light", "label": "Light" },
+							{ "value": "text-dark", "label": "Dark" }
+						],
+						"default": "text-dark"
+					},
+					{
+						"type": "select",
+						"id": "vertical_align_1",
+						"label": "Vertical align 1",
+						"options": [
+							{ "value": "top", "label": "Top" },
+							{ "value": "middle", "label": "Middle" },
+							{ "value": "bottom", "label": "Bottom" }
+						],
+						"default": "middle",
+						"info": "Use for Located on the image"
+					},
+					{
+						"type": "select",
+						"id": "horizontal_align_1",
+						"label": "Horizontal align 1",
+						"options": [
+							{ "value": "left", "label": "Left" },
+							{ "value": "center", "label": "Center" },
+							{ "value": "right", "label": "Right" }
+						],
+						"default": "center"
+					},
+					{
+						"type": "select",
+						"id": "reverse_title_content_1",
+						"label": "Reverse title and content 1?",
+						"options": [
+							{ "value": "reverse-title-content", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "text",
+						"id": "content_title_1",
+						"label": "Title",
+						"default": "Banner"
+					},
+					{
+						"type": "select",
+						"id": "content_title_tag_1",
+						"label": "Title H Tag 1",
+						"options": [
+							{ "value": "h1", "label": "H1" },
+							{ "value": "h2", "label": "H2" },
+							{ "value": "h3", "label": "H3" },
+							{ "value": "h4", "label": "H4" },
+							{ "value": "h5", "label": "H5" },
+							{ "value": "h6", "label": "H6" },
+							{ "value": "h7", "label": "H7" },
+							{ "value": "h8", "label": "H8" },
+							{ "value": "h9", "label": "H9" }
+						],
+						"default": "h2"
+					},  
+					{
+						"type": "richtext",
+						"id": "content_1",
+						"label": "Content 1",
+						"default": "<p>Lorem ipsum dolor sit amet</p>"
+					},
+					{
+						"type": "url",
+						"id": "link_1_a",
+						"label": "Button Link 1"
+					},
+					{
+						"type": "text",
+						"id": "button_text_1_a",
+						"label": "Button Text 1",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_1_a",
+						"label": "Button style 1",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "button-text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "url",
+						"id": "link_1_b",
+						"label": "Button Link 2"
+					},
+					{
+						"type": "text",
+						"id": "button_text_1_b",
+						"label": "Button Text 2",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_1_b",
+						"label": "Button style 1",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "button-text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "select",
+						"id": "button_position_1",
+						"label": "Button Position 1",
+						"options": [
+							{ "value": "button-top", "label": "Top" },
+							{ "value": "button-below-content", "label": "Below Content" },
+							{ "value": "button-bottom", "label": "Bottom" }
+						],
+						"default": "button-below-content",
+						"info": "Use for Located on the image"
+					},
+					{
+						"type": "select",
+						"id": "column_order_2",
+						"label": "Column Order 2",
+						"options": [
+							{ "value": "order-1", "label": "1" },
+							{ "value": "order-2", "label": "2" }
+						],
+						"default": "order-2"
+					},
+					{
+						"type": "image_picker",
+						"id": "image_2",
+						"label": "Image 2"
+					},
+					{
+						"type": "image_picker",
+						"id": "mobile_image_2",
+						"label": "Mobile Image 2"
+					},
+					{
+						"type": "text",
+						"id": "image_alt_2",
+						"label": "Image Alt 2"
+					},
+					{
+						"type": "text",
+						"id": "video_src_2",
+						"label": "Video filename 2",
+						"info": "Upload a .mp4, .webm, .ogv into the Files folder (Settings > Files) all with this name. So if one of your assets is 'my-video.mp4', then just enter 'my-video' here."
+					},
+					{
+						"type": "checkbox",
+						"id": "video_loop_2",
+						"label": "Loop video? 2",
+						"info": "Use to video file",
+						"default": true
+					},
+					{
+						"type": "checkbox",
+						"id": "video_controls_2",
+						"label": "Controls video? 2",
+						"info": "Use to video file",
+						"default": false
+					},
+					{
+						"type": "video_url",
+						"id": "video_link_2",
+						"label": "Video Link 2",
+						"accept": ["youtube"]
+					},
+					{
+						"type": "select",
+						"id": "column_vertical_align_2",
+						"label": "Column Vertical align 2",
+						"options": [
+							{ "value": "top", "label": "Top" },
+							{ "value": "middle", "label": "Middle" },
+							{ "value": "bottom", "label": "Bottom" }
+						],
+						"default": "middle"
+					},
+					{
+						"type": "url",
+						"id": "link_2",
+						"label": "Image Link 2"
+					},
+					{
+						"type": "select",
+						"id": "content_position_2",
+						"label": "Content Position 2",
+						"options": [
+							{ "value": "", "label": "None" },
+							{ "value": "located-image", "label": "Located on the image" },
+							{ "value": "below-image", "label": "Below the image" },
+							{ "value": "above-image", "label": "Above the image" }
+						]
+					},  
+					{
+						"type": "select",
+						"id": "text_color_2",
+						"label": "Text color 2",
+						"options": [
+							{ "value": "text-light", "label": "Light" },
+							{ "value": "text-dark", "label": "Dark" }
+						],
+						"default": "text-dark"
+					},
+					{
+						"type": "select",
+						"id": "vertical_align_2",
+						"label": "Vertical align 2",
+						"options": [
+							{ "value": "top", "label": "Top" },
+							{ "value": "middle", "label": "Middle" },
+							{ "value": "bottom", "label": "Bottom" }
+						],
+						"default": "middle",
+						"info": "Use for Located on the image"
+					},
+					{
+						"type": "select",
+						"id": "horizontal_align_2",
+						"label": "Horizontal align 2",
+						"options": [
+							{ "value": "left", "label": "Left" },
+							{ "value": "center", "label": "Center" },
+							{ "value": "right", "label": "Right" }
+						],
+						"default": "center"
+					},
+					{
+						"type": "select",
+						"id": "reverse_title_content_2",
+						"label": "Reverse title and content 2?",
+						"options": [
+							{ "value": "reverse-title-content", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "text",
+						"id": "content_title_2",
+						"label": "Title 2",
+						"default": "Banner"
+					},
+					{
+						"type": "select",
+						"id": "content_title_tag_2",
+						"label": "Title H Tag",
+						"options": [
+							{ "value": "h1", "label": "H1" },
+							{ "value": "h2", "label": "H2" },
+							{ "value": "h3", "label": "H3" },
+							{ "value": "h4", "label": "H4" },
+							{ "value": "h5", "label": "H5" },
+							{ "value": "h6", "label": "H6" },
+							{ "value": "h7", "label": "H7" },
+							{ "value": "h8", "label": "H8" },
+							{ "value": "h9", "label": "H9" }
+						],
+						"default": "h2"
+					},  
+					{
+						"type": "richtext",
+						"id": "content_2",
+						"label": "Content 2",
+						"default": "<p>Lorem ipsum dolor sit amet</p>"
+					},
+					{
+						"type": "url",
+						"id": "link_2_a",
+						"label": "Button Link 1"
+					},
+					{
+						"type": "text",
+						"id": "button_text_2_a",
+						"label": "Button Text 1",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_2_a",
+						"label": "Button style 1",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "button-text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "url",
+						"id": "link_2_b",
+						"label": "Button Link 2"
+					},
+					{
+						"type": "text",
+						"id": "button_text_2_b",
+						"label": "Button Text 2",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_2_b",
+						"label": "Button style 2",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "button-text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "select",
+						"id": "button_position_2",
+						"label": "Button Position 2",
+						"options": [
+							{ "value": "button-top", "label": "Top" },
+							{ "value": "button-below-content", "label": "Below Content" },
+							{ "value": "button-bottom", "label": "Bottom" }
+						],
+						"default": "button-below-content",
+						"info": "Use for Located on the image"
+					}
+				]
+			},
+			{
+				"type": "banner-three",
+				"name": "Banner or Video - Three",
+				"settings": [
+					{
+						"type": "text",
+						"id": "title",
+						"label": "Section Title",
+						"default": "Headline Lorem Ipsum"
+					},
+					{
+						"type": "select",
+						"id": "max_width",
+						"label": "Max width",
+						"options": [
+							{ "value": "", "label": "Wide Width" },
+							{ "value": "full-width", "label": "Full Width" }
+						],
+						"default": "full-width"
+					},
+					{
+						"type": "color",
+						"id": "background_color",
+						"label": "Background Color"
+					},
+					{
+						"type": "image_picker",
+						"id": "background_image",
+						"label": "Background Image"
+					},
+					{
+						"type": "select",
+						"id": "add_border_top",
+						"label": "Add border top?",
+						"options": [
+							{ "value": "border-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_border_bottom",
+						"label": "Add border bottom?",
+						"options": [
+							{ "value": "border-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "border_width",
+						"label": "Border Width",
+						"options": [
+							{ "value": "", "label": "Border Ful Width" },
+							{ "value": "border-content-center", "label": "Border Wide Width" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_padding_top",
+						"label": "Add padding top?",
+						"options": [
+							{ "value": "padding-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_padding_bottom",
+						"label": "Add padding bottom?",
+						"options": [
+							{ "value": "padding-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_margin_top",
+						"label": "Add margin top?",
+						"options": [
+							{ "value": "margin-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_margin_bottom",
+						"label": "Add margin bottom?",
+						"options": [
+							{ "value": "margin-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "text",
+						"id": "custom_class",
+						"label": "Custom Class (CSS)"
+					},
+					{
+					
+						"type": "select",
+						"id": "heading_align",
+						"label": "Heading text align",
+						"options": [
+							{ "value": "text-left", "label": "Left" },
+							{ "value": "text-center", "label": "Center" },
+							{ "value": "text-right", "label": "Right" }
+						],
+						"default": "text-center"
+					},
+					{
+						"type": "select",
+						"id": "heading_text_color",
+						"label": "Heading Text color",
+						"options": [
+							{ "value": "text-light", "label": "Light" },
+							{ "value": "text-dark", "label": "Dark" }
+						],
+						"default": "text-dark"
+					},
+					{
+						"type": "text",
+						"id": "heading_title",
+						"label": "Heading Title",
+						"default": "Headline Lorem Ipsum"
+					},
+					{
+						"type": "select",
+						"id": "heading_title_tag",
+						"label": "Heading H Tag",
+						"options": [
+							{ "value": "h1", "label": "H1" },
+							{ "value": "h2", "label": "H2" },
+							{ "value": "h3", "label": "H3" },
+							{ "value": "h4", "label": "H4" },
+							{ "value": "h5", "label": "H5" },
+							{ "value": "h6", "label": "H6" },
+							{ "value": "h7", "label": "H7" },
+							{ "value": "h8", "label": "H8" },
+							{ "value": "h9", "label": "H9" }
+						],
+						"default": "h2"
+					},  
+					{
+						"type": "richtext",
+						"id": "heading_subtitle",
+						"label": "Heading Subtitle",
+						"default": "<p>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vivamus suscipit tortor eget</p>"
+					},
+					{
+						"type": "select",
+						"id": "column_order_1",
+						"label": "Column Order 1",
+						"options": [
+							{ "value": "order-1", "label": "1" },
+							{ "value": "order-2", "label": "2" }
+						],
+						"default": "order-1"
+					},
+					{
+						"type": "image_picker",
+						"id": "image_1",
+						"label": "Image 1"
+					},
+					{
+						"type": "image_picker",
+						"id": "mobile_image_1",
+						"label": "Mobile Image 1"
+					},
+					{
+						"type": "text",
+						"id": "image_alt_1",
+						"label": "Image Alt 1"
+					},
+					{
+						"type": "text",
+						"id": "video_src_1",
+						"label": "Video filename 1",
+						"info": "Upload a .mp4, .webm, .ogv into the Files folder (Settings > Files) all with this name. So if one of your assets is 'my-video.mp4', then just enter 'my-video' here."
+					},
+					{
+						"type": "checkbox",
+						"id": "video_loop_1",
+						"label": "Loop video? 1",
+						"info": "Use to video file",
+						"default": true
+					},
+					{
+						"type": "checkbox",
+						"id": "video_controls_1",
+						"label": "Controls video? 1",
+						"info": "Use to video file",
+						"default": false
+					},
+					{
+						"type": "video_url",
+						"id": "video_link_1",
+						"label": "Video Link 1",
+						"accept": ["youtube"]
+					},
+					{
+						"type": "url",
+						"id": "link_1",
+						"label": "Image Link 1"
+					},
+					{
+						"type": "select",
+						"id": "content_position_1",
+						"label": "Content Position 1",
+						"options": [
+							{ "value": "", "label": "None" },
+							{ "value": "located-image", "label": "Located on the image" },
+							{ "value": "below-image", "label": "Below the image" },
+							{ "value": "above-image", "label": "Above the image" }
+						]
+					},  
+					{
+						"type": "select",
+						"id": "text_color_1",
+						"label": "Text color 1",
+						"options": [
+							{ "value": "text-light", "label": "Light" },
+							{ "value": "text-dark", "label": "Dark" }
+						],
+						"default": "text-dark"
+					},
+					{
+						"type": "select",
+						"id": "vertical_align_1",
+						"label": "Vertical align 1",
+						"options": [
+							{ "value": "top", "label": "Top" },
+							{ "value": "middle", "label": "Middle" },
+							{ "value": "bottom", "label": "Bottom" }
+						],
+						"default": "middle",
+						"info": "Use for Located on the image"
+					},
+					{
+						"type": "select",
+						"id": "horizontal_align_1",
+						"label": "Horizontal align 1",
+						"options": [
+							{ "value": "left", "label": "Left" },
+							{ "value": "center", "label": "Center" },
+							{ "value": "right", "label": "Right" }
+						],
+						"default": "center"
+					},
+					{
+						"type": "select",
+						"id": "reverse_title_content_1",
+						"label": "Reverse title and content 1?",
+						"options": [
+							{ "value": "reverse-title-content", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "text",
+						"id": "content_title_1",
+						"label": "Title",
+						"default": "Banner"
+					},
+					{
+						"type": "select",
+						"id": "content_title_tag_1",
+						"label": "Title H Tag 1",
+						"options": [
+							{ "value": "h1", "label": "H1" },
+							{ "value": "h2", "label": "H2" },
+							{ "value": "h3", "label": "H3" },
+							{ "value": "h4", "label": "H4" },
+							{ "value": "h5", "label": "H5" },
+							{ "value": "h6", "label": "H6" },
+							{ "value": "h7", "label": "H7" },
+							{ "value": "h8", "label": "H8" },
+							{ "value": "h9", "label": "H9" }
+						],
+						"default": "h2"
+					},  
+					{
+						"type": "richtext",
+						"id": "content_1",
+						"label": "Content 1",
+						"default": "<p>Lorem ipsum dolor sit amet</p>"
+					},
+					{
+						"type": "url",
+						"id": "link_1_a",
+						"label": "Button Link 1"
+					},
+					{
+						"type": "text",
+						"id": "button_text_1_a",
+						"label": "Button Text 1",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_1_a",
+						"label": "Button style 1",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "button-text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "url",
+						"id": "link_1_b",
+						"label": "Button Link 2"
+					},
+					{
+						"type": "text",
+						"id": "button_text_1_b",
+						"label": "Button Text 2",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_1_b",
+						"label": "Button style 1",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "button-text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "select",
+						"id": "button_position_1",
+						"label": "Button Position 1",
+						"options": [
+							{ "value": "button-top", "label": "Top" },
+							{ "value": "button-below-content", "label": "Below Content" },
+							{ "value": "button-bottom", "label": "Bottom" }
+						],
+						"default": "button-below-content",
+						"info": "Use for Located on the image"
+					},
+					{
+						"type": "select",
+						"id": "column_order_2",
+						"label": "Column Order 2",
+						"options": [
+							{ "value": "order-1", "label": "1" },
+							{ "value": "order-2", "label": "2" }
+						],
+						"default": "order-2"
+					},
+					{
+						"type": "image_picker",
+						"id": "image_2",
+						"label": "Image 2"
+					},
+					{
+						"type": "image_picker",
+						"id": "mobile_image_2",
+						"label": "Mobile Image 2"
+					},
+					{
+						"type": "text",
+						"id": "image_alt_2",
+						"label": "Image Alt 2"
+					},
+					{
+						"type": "text",
+						"id": "video_src_2",
+						"label": "Video filename 2",
+						"info": "Upload a .mp4, .webm, .ogv into the Files folder (Settings > Files) all with this name. So if one of your assets is 'my-video.mp4', then just enter 'my-video' here."
+					},
+					{
+						"type": "checkbox",
+						"id": "video_loop_2",
+						"label": "Loop video? 2",
+						"info": "Use to video file",
+						"default": true
+					},
+					{
+						"type": "checkbox",
+						"id": "video_controls_2",
+						"label": "Controls video? 2",
+						"info": "Use to video file",
+						"default": false
+					},
+					{
+						"type": "video_url",
+						"id": "video_link_2",
+						"label": "Video Link 2",
+						"accept": ["youtube"]
+					},
+					{
+						"type": "select",
+						"id": "column_vertical_align_2",
+						"label": "Column Vertical align 2",
+						"options": [
+							{ "value": "top", "label": "Top" },
+							{ "value": "middle", "label": "Middle" },
+							{ "value": "bottom", "label": "Bottom" }
+						],
+						"default": "middle"
+					},
+					{
+						"type": "url",
+						"id": "link_2",
+						"label": "Image Link 2"
+					},
+					{
+						"type": "select",
+						"id": "content_position_2",
+						"label": "Content Position 2",
+						"options": [
+							{ "value": "", "label": "None" },
+							{ "value": "located-image", "label": "Located on the image" },
+							{ "value": "below-image", "label": "Below the image" },
+							{ "value": "above-image", "label": "Above the image" }
+						]
+					},  
+					{
+						"type": "select",
+						"id": "text_color_2",
+						"label": "Text color 2",
+						"options": [
+							{ "value": "text-light", "label": "Light" },
+							{ "value": "text-dark", "label": "Dark" }
+						],
+						"default": "text-dark"
+					},
+					{
+						"type": "select",
+						"id": "vertical_align_2",
+						"label": "Vertical align 2",
+						"options": [
+							{ "value": "top", "label": "Top" },
+							{ "value": "middle", "label": "Middle" },
+							{ "value": "bottom", "label": "Bottom" }
+						],
+						"default": "middle",
+						"info": "Use for Located on the image"
+					},
+					{
+						"type": "select",
+						"id": "horizontal_align_2",
+						"label": "Horizontal align 2",
+						"options": [
+							{ "value": "left", "label": "Left" },
+							{ "value": "center", "label": "Center" },
+							{ "value": "right", "label": "Right" }
+						],
+						"default": "center"
+					},
+					{
+						"type": "select",
+						"id": "reverse_title_content_2",
+						"label": "Reverse title and content 2?",
+						"options": [
+							{ "value": "reverse-title-content", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "text",
+						"id": "content_title_2",
+						"label": "Title 2",
+						"default": "Banner"
+					},
+					{
+						"type": "select",
+						"id": "content_title_tag_2",
+						"label": "Title H Tag",
+						"options": [
+							{ "value": "h1", "label": "H1" },
+							{ "value": "h2", "label": "H2" },
+							{ "value": "h3", "label": "H3" },
+							{ "value": "h4", "label": "H4" },
+							{ "value": "h5", "label": "H5" },
+							{ "value": "h6", "label": "H6" },
+							{ "value": "h7", "label": "H7" },
+							{ "value": "h8", "label": "H8" },
+							{ "value": "h9", "label": "H9" }
+						],
+						"default": "h2"
+					},  
+					{
+						"type": "richtext",
+						"id": "content_2",
+						"label": "Content 2",
+						"default": "<p>Lorem ipsum dolor sit amet</p>"
+					},
+					{
+						"type": "url",
+						"id": "link_2_a",
+						"label": "Button Link 1"
+					},
+					{
+						"type": "text",
+						"id": "button_text_2_a",
+						"label": "Button Text 1",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_2_a",
+						"label": "Button style 1",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "button-text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "url",
+						"id": "link_2_b",
+						"label": "Button Link 2"
+					},
+					{
+						"type": "text",
+						"id": "button_text_2_b",
+						"label": "Button Text 2",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_2_b",
+						"label": "Button style 2",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "button-text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "select",
+						"id": "button_position_2",
+						"label": "Button Position 2",
+						"options": [
+							{ "value": "button-top", "label": "Top" },
+							{ "value": "button-below-content", "label": "Below Content" },
+							{ "value": "button-bottom", "label": "Bottom" }
+						],
+						"default": "button-below-content",
+						"info": "Use for Located on the image"
+					},
+					{
+						"type": "select",
+						"id": "column_order_3",
+						"label": "Column Order 3",
+						"options": [
+							{ "value": "order-1", "label": "1" },
+							{ "value": "order-2", "label": "2" },
+							{ "value": "order-3", "label": "3" }
+						],
+						"default": "order-3"
+					},
+					{
+						"type": "image_picker",
+						"id": "image_3",
+						"label": "Image 3"
+					},
+					{
+						"type": "image_picker",
+						"id": "mobile_image_3",
+						"label": "Mobile Image 3"
+					},
+					{
+						"type": "text",
+						"id": "image_alt_3",
+						"label": "Image Alt 3"
+					},
+					{
+						"type": "text",
+						"id": "video_src_3",
+						"label": "Video filename 3",
+						"info": "Upload a .mp4, .webm, .ogv into the Files folder (Settings > Files) all with this name. So if one of your assets is 'my-video.mp4', then just enter 'my-video' here."
+					},
+					{
+						"type": "checkbox",
+						"id": "video_loop_3",
+						"label": "Loop video? 3",
+						"info": "Use to video file",
+						"default": true
+					},
+					{
+						"type": "checkbox",
+						"id": "video_controls_3",
+						"label": "Controls video? 3",
+						"info": "Use to video file",
+						"default": false
+					},
+					{
+						"type": "video_url",
+						"id": "video_link_3",
+						"label": "Video Link 3",
+						"accept": ["youtube"]
+					},
+					{
+						"type": "select",
+						"id": "column_vertical_align_3",
+						"label": "Column Vertical align 3",
+						"options": [
+							{ "value": "top", "label": "Top" },
+							{ "value": "middle", "label": "Middle" },
+							{ "value": "bottom", "label": "Bottom" }
+						],
+						"default": "middle"
+					},
+					{
+						"type": "url",
+						"id": "link_3",
+						"label": "Image Link 3"
+					},
+					{
+						"type": "select",
+						"id": "content_position_3",
+						"label": "Content Position 3",
+						"options": [
+							{ "value": "", "label": "None" },
+							{ "value": "located-image", "label": "Located on the image" },
+							{ "value": "below-image", "label": "Below the image" },
+							{ "value": "above-image", "label": "Above the image" }
+						]
+					},  
+					{
+						"type": "select",
+						"id": "text_color_3",
+						"label": "Text color 3",
+						"options": [
+							{ "value": "text-light", "label": "Light" },
+							{ "value": "text-dark", "label": "Dark" }
+						],
+						"default": "text-dark"
+					},
+					{
+						"type": "select",
+						"id": "vertical_align_3",
+						"label": "Vertical align 3",
+						"options": [
+							{ "value": "top", "label": "Top" },
+							{ "value": "middle", "label": "Middle" },
+							{ "value": "bottom", "label": "Bottom" }
+						],
+						"default": "middle",
+						"info": "Use for Located on the image"
+					},
+					{
+						"type": "select",
+						"id": "horizontal_align_3",
+						"label": "Horizontal align 3",
+						"options": [
+							{ "value": "left", "label": "Left" },
+							{ "value": "center", "label": "Center" },
+							{ "value": "right", "label": "Right" }
+						],
+						"default": "center"
+					},
+					{
+						"type": "select",
+						"id": "reverse_title_content_3",
+						"label": "Reverse title and content 3?",
+						"options": [
+							{ "value": "reverse-title-content", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "text",
+						"id": "content_title_3",
+						"label": "Title 3",
+						"default": "Banner"
+					},
+					{
+						"type": "select",
+						"id": "content_title_tag_3",
+						"label": "Title H Tag",
+						"options": [
+							{ "value": "h1", "label": "H1" },
+							{ "value": "h2", "label": "H2" },
+							{ "value": "h3", "label": "H3" },
+							{ "value": "h4", "label": "H4" },
+							{ "value": "h5", "label": "H5" },
+							{ "value": "h6", "label": "H6" },
+							{ "value": "h7", "label": "H7" },
+							{ "value": "h8", "label": "H8" },
+							{ "value": "h9", "label": "H9" }
+						],
+						"default": "h2"
+					},  
+					{
+						"type": "richtext",
+						"id": "content_3",
+						"label": "Content 3",
+						"default": "<p>Lorem ipsum dolor sit amet</p>"
+					},
+					{
+						"type": "url",
+						"id": "link_3_a",
+						"label": "Button Link 1"
+					},
+					{
+						"type": "text",
+						"id": "button_text_3_a",
+						"label": "Button Text 1",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_3_a",
+						"label": "Button style 1",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "button-text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "url",
+						"id": "link_3_b",
+						"label": "Button Link 3"
+					},
+					{
+						"type": "text",
+						"id": "button_text_3_b",
+						"label": "Button Text 2",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_3_b",
+						"label": "Button style 2",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "button-text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "select",
+						"id": "button_position_3",
+						"label": "Button Position 3",
+						"options": [
+							{ "value": "button-top", "label": "Top" },
+							{ "value": "button-below-content", "label": "Below Content" },
+							{ "value": "button-bottom", "label": "Bottom" }
+						],
+						"default": "button-below-content",
+						"info": "Use for Located on the image"
+					}
+				]
+			},
+			{
+				"type": "banner-four",
+				"name": "Banner or Video - Four",
+				"settings": [
+					{
+						"type": "text",
+						"id": "title",
+						"label": "Section Title",
+						"default": "Headline Lorem Ipsum"
+					},
+					{
+						"type": "select",
+						"id": "max_width",
+						"label": "Max width",
+						"options": [
+							{ "value": "", "label": "Wide Width" },
+							{ "value": "full-width", "label": "Full Width" }
+						],
+						"default": "full-width"
+					},
+					{
+						"type": "color",
+						"id": "background_color",
+						"label": "Background Color"
+					},
+					{
+						"type": "image_picker",
+						"id": "background_image",
+						"label": "Background Image"
+					},
+					{
+						"type": "select",
+						"id": "add_border_top",
+						"label": "Add border top?",
+						"options": [
+							{ "value": "border-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_border_bottom",
+						"label": "Add border bottom?",
+						"options": [
+							{ "value": "border-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "border_width",
+						"label": "Border Width",
+						"options": [
+							{ "value": "", "label": "Border Ful Width" },
+							{ "value": "border-content-center", "label": "Border Wide Width" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_padding_top",
+						"label": "Add padding top?",
+						"options": [
+							{ "value": "padding-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_padding_bottom",
+						"label": "Add padding bottom?",
+						"options": [
+							{ "value": "padding-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_margin_top",
+						"label": "Add margin top?",
+						"options": [
+							{ "value": "margin-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_margin_bottom",
+						"label": "Add margin bottom?",
+						"options": [
+							{ "value": "margin-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "text",
+						"id": "custom_class",
+						"label": "Custom Class (CSS)"
+					},
+					{
+					
+						"type": "select",
+						"id": "heading_align",
+						"label": "Heading text align",
+						"options": [
+							{ "value": "text-left", "label": "Left" },
+							{ "value": "text-center", "label": "Center" },
+							{ "value": "text-right", "label": "Right" }
+						],
+						"default": "text-center"
+					},
+					{
+						"type": "select",
+						"id": "heading_text_color",
+						"label": "Heading Text color",
+						"options": [
+							{ "value": "text-light", "label": "Light" },
+							{ "value": "text-dark", "label": "Dark" }
+						],
+						"default": "text-dark"
+					},
+					{
+						"type": "text",
+						"id": "heading_title",
+						"label": "Heading Title",
+						"default": "Headline Lorem Ipsum"
+					},
+					{
+						"type": "select",
+						"id": "heading_title_tag",
+						"label": "Heading H Tag",
+						"options": [
+							{ "value": "h1", "label": "H1" },
+							{ "value": "h2", "label": "H2" },
+							{ "value": "h3", "label": "H3" },
+							{ "value": "h4", "label": "H4" },
+							{ "value": "h5", "label": "H5" },
+							{ "value": "h6", "label": "H6" },
+							{ "value": "h7", "label": "H7" },
+							{ "value": "h8", "label": "H8" },
+							{ "value": "h9", "label": "H9" }
+						],
+						"default": "h2"
+					},  
+					{
+						"type": "richtext",
+						"id": "heading_subtitle",
+						"label": "Heading Subtitle",
+						"default": "<p>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vivamus suscipit tortor eget</p>"
+					},
+					{
+						"type": "select",
+						"id": "column_order_1",
+						"label": "Column Order 1",
+						"options": [
+							{ "value": "order-1", "label": "1" },
+							{ "value": "order-2", "label": "2" }
+						],
+						"default": "order-1"
+					},
+					{
+						"type": "image_picker",
+						"id": "image_1",
+						"label": "Image 1"
+					},
+					{
+						"type": "image_picker",
+						"id": "mobile_image_1",
+						"label": "Mobile Image 1"
+					},
+					{
+						"type": "text",
+						"id": "image_alt_1",
+						"label": "Image Alt 1"
+					},
+					{
+						"type": "text",
+						"id": "video_src_1",
+						"label": "Video filename 1",
+						"info": "Upload a .mp4, .webm, .ogv into the Files folder (Settings > Files) all with this name. So if one of your assets is 'my-video.mp4', then just enter 'my-video' here."
+					},
+					{
+						"type": "checkbox",
+						"id": "video_loop_1",
+						"label": "Loop video? 1",
+						"info": "Use to video file",
+						"default": true
+					},
+					{
+						"type": "checkbox",
+						"id": "video_controls_1",
+						"label": "Controls video? 1",
+						"info": "Use to video file",
+						"default": false
+					},
+					{
+						"type": "video_url",
+						"id": "video_link_1",
+						"label": "Video Link 1",
+						"accept": ["youtube"]
+					},
+					{
+						"type": "url",
+						"id": "link_1",
+						"label": "Image Link 1"
+					},
+					{
+						"type": "select",
+						"id": "content_position_1",
+						"label": "Content Position 1",
+						"options": [
+							{ "value": "", "label": "None" },
+							{ "value": "located-image", "label": "Located on the image" },
+							{ "value": "below-image", "label": "Below the image" },
+							{ "value": "above-image", "label": "Above the image" }
+						]
+					},  
+					{
+						"type": "select",
+						"id": "text_color_1",
+						"label": "Text color 1",
+						"options": [
+							{ "value": "text-light", "label": "Light" },
+							{ "value": "text-dark", "label": "Dark" }
+						],
+						"default": "text-dark"
+					},
+					{
+						"type": "select",
+						"id": "vertical_align_1",
+						"label": "Vertical align 1",
+						"options": [
+							{ "value": "top", "label": "Top" },
+							{ "value": "middle", "label": "Middle" },
+							{ "value": "bottom", "label": "Bottom" }
+						],
+						"default": "middle",
+						"info": "Use for Located on the image"
+					},
+					{
+						"type": "select",
+						"id": "horizontal_align_1",
+						"label": "Horizontal align 1",
+						"options": [
+							{ "value": "left", "label": "Left" },
+							{ "value": "center", "label": "Center" },
+							{ "value": "right", "label": "Right" }
+						],
+						"default": "center"
+					},
+					{
+						"type": "select",
+						"id": "reverse_title_content_1",
+						"label": "Reverse title and content 1?",
+						"options": [
+							{ "value": "reverse-title-content", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "text",
+						"id": "content_title_1",
+						"label": "Title",
+						"default": "Banner"
+					},
+					{
+						"type": "select",
+						"id": "content_title_tag_1",
+						"label": "Title H Tag 1",
+						"options": [
+							{ "value": "h1", "label": "H1" },
+							{ "value": "h2", "label": "H2" },
+							{ "value": "h3", "label": "H3" },
+							{ "value": "h4", "label": "H4" },
+							{ "value": "h5", "label": "H5" },
+							{ "value": "h6", "label": "H6" },
+							{ "value": "h7", "label": "H7" },
+							{ "value": "h8", "label": "H8" },
+							{ "value": "h9", "label": "H9" }
+						],
+						"default": "h2"
+					},  
+					{
+						"type": "richtext",
+						"id": "content_1",
+						"label": "Content 1",
+						"default": "<p>Lorem ipsum dolor sit amet</p>"
+					},
+					{
+						"type": "url",
+						"id": "link_1_a",
+						"label": "Button Link 1"
+					},
+					{
+						"type": "text",
+						"id": "button_text_1_a",
+						"label": "Button Text 1",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_1_a",
+						"label": "Button style 1",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "button-text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "url",
+						"id": "link_1_b",
+						"label": "Button Link 2"
+					},
+					{
+						"type": "text",
+						"id": "button_text_1_b",
+						"label": "Button Text 2",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_1_b",
+						"label": "Button style 1",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "button-text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "select",
+						"id": "button_position_1",
+						"label": "Button Position 1",
+						"options": [
+							{ "value": "button-top", "label": "Top" },
+							{ "value": "button-below-content", "label": "Below Content" },
+							{ "value": "button-bottom", "label": "Bottom" }
+						],
+						"default": "button-below-content",
+						"info": "Use for Located on the image"
+					},
+					{
+						"type": "select",
+						"id": "column_order_2",
+						"label": "Column Order 2",
+						"options": [
+							{ "value": "order-1", "label": "1" },
+							{ "value": "order-2", "label": "2" }
+						],
+						"default": "order-2"
+					},
+					{
+						"type": "image_picker",
+						"id": "image_2",
+						"label": "Image 2"
+					},
+					{
+						"type": "image_picker",
+						"id": "mobile_image_2",
+						"label": "Mobile Image 2"
+					},
+					{
+						"type": "text",
+						"id": "image_alt_2",
+						"label": "Image Alt 2"
+					},
+					{
+						"type": "text",
+						"id": "video_src_2",
+						"label": "Video filename 2",
+						"info": "Upload a .mp4, .webm, .ogv into the Files folder (Settings > Files) all with this name. So if one of your assets is 'my-video.mp4', then just enter 'my-video' here."
+					},
+					{
+						"type": "checkbox",
+						"id": "video_loop_2",
+						"label": "Loop video? 2",
+						"info": "Use to video file",
+						"default": true
+					},
+					{
+						"type": "checkbox",
+						"id": "video_controls_2",
+						"label": "Controls video? 2",
+						"info": "Use to video file",
+						"default": false
+					},
+					{
+						"type": "video_url",
+						"id": "video_link_2",
+						"label": "Video Link 2",
+						"accept": ["youtube"]
+					},
+					{
+						"type": "select",
+						"id": "column_vertical_align_2",
+						"label": "Column Vertical align 2",
+						"options": [
+							{ "value": "top", "label": "Top" },
+							{ "value": "middle", "label": "Middle" },
+							{ "value": "bottom", "label": "Bottom" }
+						],
+						"default": "middle"
+					},
+					{
+						"type": "url",
+						"id": "link_2",
+						"label": "Image Link 2"
+					},
+					{
+						"type": "select",
+						"id": "content_position_2",
+						"label": "Content Position 2",
+						"options": [
+							{ "value": "", "label": "None" },
+							{ "value": "located-image", "label": "Located on the image" },
+							{ "value": "below-image", "label": "Below the image" },
+							{ "value": "above-image", "label": "Above the image" }
+						]
+					},  
+					{
+						"type": "select",
+						"id": "text_color_2",
+						"label": "Text color 2",
+						"options": [
+							{ "value": "text-light", "label": "Light" },
+							{ "value": "text-dark", "label": "Dark" }
+						],
+						"default": "text-dark"
+					},
+					{
+						"type": "select",
+						"id": "vertical_align_2",
+						"label": "Vertical align 2",
+						"options": [
+							{ "value": "top", "label": "Top" },
+							{ "value": "middle", "label": "Middle" },
+							{ "value": "bottom", "label": "Bottom" }
+						],
+						"default": "middle",
+						"info": "Use for Located on the image"
+					},
+					{
+						"type": "select",
+						"id": "horizontal_align_2",
+						"label": "Horizontal align 2",
+						"options": [
+							{ "value": "left", "label": "Left" },
+							{ "value": "center", "label": "Center" },
+							{ "value": "right", "label": "Right" }
+						],
+						"default": "center"
+					},
+					{
+						"type": "select",
+						"id": "reverse_title_content_2",
+						"label": "Reverse title and content 2?",
+						"options": [
+							{ "value": "reverse-title-content", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "text",
+						"id": "content_title_2",
+						"label": "Title 2",
+						"default": "Banner"
+					},
+					{
+						"type": "select",
+						"id": "content_title_tag_2",
+						"label": "Title H Tag",
+						"options": [
+							{ "value": "h1", "label": "H1" },
+							{ "value": "h2", "label": "H2" },
+							{ "value": "h3", "label": "H3" },
+							{ "value": "h4", "label": "H4" },
+							{ "value": "h5", "label": "H5" },
+							{ "value": "h6", "label": "H6" },
+							{ "value": "h7", "label": "H7" },
+							{ "value": "h8", "label": "H8" },
+							{ "value": "h9", "label": "H9" }
+						],
+						"default": "h2"
+					},  
+					{
+						"type": "richtext",
+						"id": "content_2",
+						"label": "Content 2",
+						"default": "<p>Lorem ipsum dolor sit amet</p>"
+					},
+					{
+						"type": "url",
+						"id": "link_2_a",
+						"label": "Button Link 1"
+					},
+					{
+						"type": "text",
+						"id": "button_text_2_a",
+						"label": "Button Text 1",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_2_a",
+						"label": "Button style 1",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "button-text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "url",
+						"id": "link_2_b",
+						"label": "Button Link 2"
+					},
+					{
+						"type": "text",
+						"id": "button_text_2_b",
+						"label": "Button Text 2",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_2_b",
+						"label": "Button style 2",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "button-text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "select",
+						"id": "button_position_2",
+						"label": "Button Position 2",
+						"options": [
+							{ "value": "button-top", "label": "Top" },
+							{ "value": "button-below-content", "label": "Below Content" },
+							{ "value": "button-bottom", "label": "Bottom" }
+						],
+						"default": "button-below-content",
+						"info": "Use for Located on the image"
+					},
+					{
+						"type": "select",
+						"id": "column_order_3",
+						"label": "Column Order 3",
+						"options": [
+							{ "value": "order-1", "label": "1" },
+							{ "value": "order-2", "label": "2" },
+							{ "value": "order-3", "label": "3" }
+						],
+						"default": "order-3"
+					},
+					{
+						"type": "image_picker",
+						"id": "image_3",
+						"label": "Image 3"
+					},
+					{
+						"type": "image_picker",
+						"id": "mobile_image_3",
+						"label": "Mobile Image 3"
+					},
+					{
+						"type": "text",
+						"id": "image_alt_3",
+						"label": "Image Alt 3"
+					},
+					{
+						"type": "text",
+						"id": "video_src_3",
+						"label": "Video filename 3",
+						"info": "Upload a .mp4, .webm, .ogv into the Files folder (Settings > Files) all with this name. So if one of your assets is 'my-video.mp4', then just enter 'my-video' here."
+					},
+					{
+						"type": "checkbox",
+						"id": "video_loop_3",
+						"label": "Loop video? 3",
+						"info": "Use to video file",
+						"default": true
+					},
+					{
+						"type": "checkbox",
+						"id": "video_controls_3",
+						"label": "Controls video? 3",
+						"info": "Use to video file",
+						"default": false
+					},
+					{
+						"type": "video_url",
+						"id": "video_link_3",
+						"label": "Video Link 3",
+						"accept": ["youtube"]
+					},
+					{
+						"type": "select",
+						"id": "column_vertical_align_3",
+						"label": "Column Vertical align 3",
+						"options": [
+							{ "value": "top", "label": "Top" },
+							{ "value": "middle", "label": "Middle" },
+							{ "value": "bottom", "label": "Bottom" }
+						],
+						"default": "middle"
+					},
+					{
+						"type": "url",
+						"id": "link_3",
+						"label": "Image Link 3"
+					},
+					{
+						"type": "select",
+						"id": "content_position_3",
+						"label": "Content Position 3",
+						"options": [
+							{ "value": "", "label": "None" },
+							{ "value": "located-image", "label": "Located on the image" },
+							{ "value": "below-image", "label": "Below the image" },
+							{ "value": "above-image", "label": "Above the image" }
+						]
+					},  
+					{
+						"type": "select",
+						"id": "text_color_3",
+						"label": "Text color 3",
+						"options": [
+							{ "value": "text-light", "label": "Light" },
+							{ "value": "text-dark", "label": "Dark" }
+						],
+						"default": "text-dark"
+					},
+					{
+						"type": "select",
+						"id": "vertical_align_3",
+						"label": "Vertical align 3",
+						"options": [
+							{ "value": "top", "label": "Top" },
+							{ "value": "middle", "label": "Middle" },
+							{ "value": "bottom", "label": "Bottom" }
+						],
+						"default": "middle",
+						"info": "Use for Located on the image"
+					},
+					{
+						"type": "select",
+						"id": "horizontal_align_3",
+						"label": "Horizontal align 3",
+						"options": [
+							{ "value": "left", "label": "Left" },
+							{ "value": "center", "label": "Center" },
+							{ "value": "right", "label": "Right" }
+						],
+						"default": "center"
+					},
+					{
+						"type": "select",
+						"id": "reverse_title_content_3",
+						"label": "Reverse title and content 3?",
+						"options": [
+							{ "value": "reverse-title-content", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "text",
+						"id": "content_title_3",
+						"label": "Title 3",
+						"default": "Banner"
+					},
+					{
+						"type": "select",
+						"id": "content_title_tag_3",
+						"label": "Title H Tag",
+						"options": [
+							{ "value": "h1", "label": "H1" },
+							{ "value": "h2", "label": "H2" },
+							{ "value": "h3", "label": "H3" },
+							{ "value": "h4", "label": "H4" },
+							{ "value": "h5", "label": "H5" },
+							{ "value": "h6", "label": "H6" },
+							{ "value": "h7", "label": "H7" },
+							{ "value": "h8", "label": "H8" },
+							{ "value": "h9", "label": "H9" }
+						],
+						"default": "h2"
+					},  
+					{
+						"type": "richtext",
+						"id": "content_3",
+						"label": "Content 3",
+						"default": "<p>Lorem ipsum dolor sit amet</p>"
+					},
+					{
+						"type": "url",
+						"id": "link_3_a",
+						"label": "Button Link 1"
+					},
+					{
+						"type": "text",
+						"id": "button_text_3_a",
+						"label": "Button Text 1",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_3_a",
+						"label": "Button style 1",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "button-text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "url",
+						"id": "link_3_b",
+						"label": "Button Link 3"
+					},
+					{
+						"type": "text",
+						"id": "button_text_3_b",
+						"label": "Button Text 2",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_3_b",
+						"label": "Button style 2",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "button-text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "select",
+						"id": "button_position_3",
+						"label": "Button Position 3",
+						"options": [
+							{ "value": "button-top", "label": "Top" },
+							{ "value": "button-below-content", "label": "Below Content" },
+							{ "value": "button-bottom", "label": "Bottom" }
+						],
+						"default": "button-below-content",
+						"info": "Use for Located on the image"
+					},
+					{
+						"type": "select",
+						"id": "column_order_4",
+						"label": "Column Order 4",
+						"options": [
+							{ "value": "order-1", "label": "1" },
+							{ "value": "order-2", "label": "2" },
+							{ "value": "order-3", "label": "3" },
+							{ "value": "order-4", "label": "4" }
+						],
+						"default": "order-3"
+					},
+					{
+						"type": "image_picker",
+						"id": "image_4",
+						"label": "Image 4"
+					},
+					{
+						"type": "image_picker",
+						"id": "mobile_image_4",
+						"label": "Mobile Image 4"
+					},
+					{
+						"type": "text",
+						"id": "image_alt_4",
+						"label": "Image Alt 4"
+					},
+					{
+						"type": "text",
+						"id": "video_src_4",
+						"label": "Video filename 4",
+						"info": "Upload a .mp4, .webm, .ogv into the Files folder (Settings > Files) all with this name. So if one of your assets is 'my-video.mp4', then just enter 'my-video' here."
+					},
+					{
+						"type": "checkbox",
+						"id": "video_loop_4",
+						"label": "Loop video? 4",
+						"info": "Use to video file",
+						"default": true
+					},
+					{
+						"type": "checkbox",
+						"id": "video_controls_4",
+						"label": "Controls video? 4",
+						"info": "Use to video file",
+						"default": false
+					},
+					{
+						"type": "video_url",
+						"id": "video_link_4",
+						"label": "Video Link 4",
+						"accept": ["youtube"]
+					},
+					{
+						"type": "select",
+						"id": "column_vertical_align_4",
+						"label": "Column Vertical align 4",
+						"options": [
+							{ "value": "top", "label": "Top" },
+							{ "value": "middle", "label": "Middle" },
+							{ "value": "bottom", "label": "Bottom" }
+						],
+						"default": "middle"
+					},
+					{
+						"type": "url",
+						"id": "link_4",
+						"label": "Image Link 4"
+					},
+					{
+						"type": "select",
+						"id": "content_position_4",
+						"label": "Content Position 4",
+						"options": [
+							{ "value": "", "label": "None" },
+							{ "value": "located-image", "label": "Located on the image" },
+							{ "value": "below-image", "label": "Below the image" },
+							{ "value": "above-image", "label": "Above the image" }
+						]
+					},  
+					{
+						"type": "select",
+						"id": "text_color_4",
+						"label": "Text color 4",
+						"options": [
+							{ "value": "text-light", "label": "Light" },
+							{ "value": "text-dark", "label": "Dark" }
+						],
+						"default": "text-dark"
+					},
+					{
+						"type": "select",
+						"id": "vertical_align_4",
+						"label": "Vertical align 4",
+						"options": [
+							{ "value": "top", "label": "Top" },
+							{ "value": "middle", "label": "Middle" },
+							{ "value": "bottom", "label": "Bottom" }
+						],
+						"default": "middle",
+						"info": "Use for Located on the image"
+					},
+					{
+						"type": "select",
+						"id": "horizontal_align_4",
+						"label": "Horizontal align 4",
+						"options": [
+							{ "value": "left", "label": "Left" },
+							{ "value": "center", "label": "Center" },
+							{ "value": "right", "label": "Right" }
+						],
+						"default": "center"
+					},
+					{
+						"type": "select",
+						"id": "reverse_title_content_4",
+						"label": "Reverse title and content 4?",
+						"options": [
+							{ "value": "reverse-title-content", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "text",
+						"id": "content_title_4",
+						"label": "Title 4",
+						"default": "Banner"
+					},
+					{
+						"type": "select",
+						"id": "content_title_tag_4",
+						"label": "Title H Tag",
+						"options": [
+							{ "value": "h1", "label": "H1" },
+							{ "value": "h2", "label": "H2" },
+							{ "value": "h3", "label": "H3" },
+							{ "value": "h4", "label": "H4" },
+							{ "value": "h5", "label": "H5" },
+							{ "value": "h6", "label": "H6" },
+							{ "value": "h7", "label": "H7" },
+							{ "value": "h8", "label": "H8" },
+							{ "value": "h9", "label": "H9" }
+						],
+						"default": "h2"
+					},  
+					{
+						"type": "richtext",
+						"id": "content_4",
+						"label": "Content 4",
+						"default": "<p>Lorem ipsum dolor sit amet</p>"
+					},
+					{
+						"type": "url",
+						"id": "link_4_a",
+						"label": "Button Link 1"
+					},
+					{
+						"type": "text",
+						"id": "button_text_4_a",
+						"label": "Button Text 1",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_4_a",
+						"label": "Button style 1",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "button-text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "url",
+						"id": "link_4_b",
+						"label": "Button Link 4"
+					},
+					{
+						"type": "text",
+						"id": "button_text_4_b",
+						"label": "Button Text 2",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_4_b",
+						"label": "Button style 2",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "button-text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "select",
+						"id": "button_position_4",
+						"label": "Button Position 4",
+						"options": [
+							{ "value": "button-top", "label": "Top" },
+							{ "value": "button-below-content", "label": "Below Content" },
+							{ "value": "button-bottom", "label": "Bottom" }
+						],
+						"default": "button-below-content",
+						"info": "Use for Located on the image"
+					}
+				]
+			},
+			{
+				"type": "banner-carousel",
+				"name": "Banner Carousel",
+				"settings": [
+					{
+						"type": "text",
+						"id": "title",
+						"label": "Section Title",
+						"default": "Headline Lorem Ipsum"
+					},
+					{
+						"type": "select",
+						"id": "max_width",
+						"label": "Max width",
+						"options": [
+							{ "value": "", "label": "Wide Width" },
+							{ "value": "full-width", "label": "Full Width" }
+						],
+						"default": "full-width"
+					},
+					{
+						"type": "color",
+						"id": "background_color",
+						"label": "Background Color"
+					},
+					{
+						"type": "image_picker",
+						"id": "background_image",
+						"label": "Background Image"
+					},
+					{
+						"type": "select",
+						"id": "add_border_top",
+						"label": "Add border top?",
+						"options": [
+							{ "value": "border-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_border_bottom",
+						"label": "Add border bottom?",
+						"options": [
+							{ "value": "border-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "border_width",
+						"label": "Border Width",
+						"options": [
+							{ "value": "", "label": "Border Ful Width" },
+							{ "value": "border-content-center", "label": "Border Wide Width" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_padding_top",
+						"label": "Add padding top?",
+						"options": [
+							{ "value": "padding-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_padding_bottom",
+						"label": "Add padding bottom?",
+						"options": [
+							{ "value": "padding-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_margin_top",
+						"label": "Add margin top?",
+						"options": [
+							{ "value": "margin-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_margin_bottom",
+						"label": "Add margin bottom?",
+						"options": [
+							{ "value": "margin-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "text",
+						"id": "custom_class",
+						"label": "Custom Class (CSS)"
+					},
+					{
+					
+						"type": "select",
+						"id": "grid",
+						"label": "Number of Carousel",
+						"options": [
+							{ "value": "2", "label": "2" },
+							{ "value": "3", "label": "3" },
+							{ "value": "4", "label": "4" },
+							{ "value": "5", "label": "5" },
+							{ "value": "6", "label": "6" },
+							{ "value": "7", "label": "7" },
+							{ "value": "8", "label": "8" },
+							{ "value": "9", "label": "9" },
+							{ "value": "10", "label": "10" }
+						],
+						"default": "3"
+					},
+					{
+						"type": "select",
+						"id": "text_color",
+						"label": "Text color",
+						"options": [
+							{ "value": "text-light", "label": "Light" },
+							{ "value": "text-dark", "label": "Dark" }
+						],
+						"default": "text-dark"
+					},
+					{
+						"type": "select",
+						"id": "heading_align",
+						"label": "Heading text align",
+						"options": [
+							{ "value": "text-left", "label": "Left" },
+							{ "value": "text-center", "label": "Center" },
+							{ "value": "text-right", "label": "Right" }
+						],
+						"default": "text-center"
+					},
+					{
+						"type": "select",
+						"id": "heading_text_color",
+						"label": "Heading Text color",
+						"options": [
+							{ "value": "text-light", "label": "Light" },
+							{ "value": "text-dark", "label": "Dark" }
+						],
+						"default": "text-dark"
+					},
+					{
+						"type": "text",
+						"id": "heading_title",
+						"label": "Heading Title",
+						"default": "Headline Lorem Ipsum"
+					},
+					{
+						"type": "select",
+						"id": "heading_title_tag",
+						"label": "Heading H Tag",
+						"options": [
+							{ "value": "h1", "label": "H1" },
+							{ "value": "h2", "label": "H2" },
+							{ "value": "h3", "label": "H3" },
+							{ "value": "h4", "label": "H4" },
+							{ "value": "h5", "label": "H5" },
+							{ "value": "h6", "label": "H6" },
+							{ "value": "h7", "label": "H7" },
+							{ "value": "h8", "label": "H8" },
+							{ "value": "h9", "label": "H9" }
+						],
+						"default": "h2"
+					},  
+					{
+						"type": "richtext",
+						"id": "heading_subtitle",
+						"label": "Heading Subtitle",
+						"default": "<p>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vivamus suscipit tortor eget</p>"
+					}
+				]
+			},
+			{
+				"type": "onecolumn-content",
+				"name": "One Col - Content",
+				"settings": [
+					{
+						"type": "text",
+						"id": "title",
+						"label": "Section Title",
+						"default": "Headline Lorem Ipsum"
+					},
+					{
+						"type": "select",
+						"id": "max_width",
+						"label": "Max width",
+						"options": [
+							{ "value": "medium-width", "label": "Medium Width" },
+							{ "value": "", "label": "Wide Width" },
+							{ "value": "full-width", "label": "Full Width" }
+						],
+						"default": ""
+					},
+					{
+						"type": "color",
+						"id": "background_color",
+						"label": "Background Color"
+					},
+					{
+						"type": "image_picker",
+						"id": "background_image",
+						"label": "Background Image"
+					},
+					{
+						"type": "select",
+						"id": "add_border_top",
+						"label": "Add border top?",
+						"options": [
+							{ "value": "border-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_border_bottom",
+						"label": "Add border bottom?",
+						"options": [
+							{ "value": "border-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "border_width",
+						"label": "Border Width",
+						"options": [
+							{ "value": "", "label": "Border Ful Width" },
+							{ "value": "border-content-center", "label": "Border Wide Width" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_padding_top",
+						"label": "Add padding top?",
+						"options": [
+							{ "value": "padding-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_padding_bottom",
+						"label": "Add padding bottom?",
+						"options": [
+							{ "value": "padding-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_margin_top",
+						"label": "Add margin top?",
+						"options": [
+							{ "value": "margin-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_margin_bottom",
+						"label": "Add margin bottom?",
+						"options": [
+							{ "value": "margin-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "text",
+						"id": "custom_class",
+						"label": "Custom Class (CSS)"
+					},
+					{
+					
+						"type": "select",
+						"id": "content_width",
+						"label": "Content Width",
+						"options": [
+							{ "value": "", "label": "Full" },
+							{ "value": "content-center", "label": "Center" }
+						],
+						"default": "content-center"
+					},
+					{
+						"type": "select",
+						"id": "text_color_1",
+						"label": "Text color 1",
+						"options": [
+							{ "value": "text-light", "label": "Light" },
+							{ "value": "text-dark", "label": "Dark" }
+						],
+						"default": "text-dark"
+					},
+					{
+						"type": "select",
+						"id": "column_vertical_align_1",
+						"label": "Column Vertical align 1",
+						"options": [
+							{ "value": "top", "label": "Top" },
+							{ "value": "middle", "label": "Middle" },
+							{ "value": "bottom", "label": "Bottom" }
+						],
+						"default": "middle"
+					},
+					{
+						"type": "select",
+						"id": "content_align_1",
+						"label": "Content align 1",
+						"options": [
+							{ "value": "text-left", "label": "Left" },
+							{ "value": "text-center", "label": "Center" },
+							{ "value": "text-right", "label": "Right" }
+						],
+						"default": "text-center"
+					},
+					{
+						"type": "text",
+						"id": "content_title_1",
+						"label": "Title 1",
+						"default": "Banner"
+					},
+					{
+						"type": "select",
+						"id": "content_title_tag_1",
+						"label": "Title H Tag 1",
+						"options": [
+							{ "value": "h1", "label": "H1" },
+							{ "value": "h2", "label": "H2" },
+							{ "value": "h3", "label": "H3" },
+							{ "value": "h4", "label": "H4" },
+							{ "value": "h5", "label": "H5" },
+							{ "value": "h6", "label": "H6" },
+							{ "value": "h7", "label": "H7" },
+							{ "value": "h8", "label": "H8" },
+							{ "value": "h9", "label": "H9" }
+						],
+						"default": "h2"
+					},  
+					{
+						"type": "html",
+						"id": "content_1",
+						"label": "Content 1",
+						"default": "Lorem ipsum dolor sit amet"
+					},
+					{
+						"type": "url",
+						"id": "link_1_a",
+						"label": "Button Link 1"
+					},
+					{
+						"type": "text",
+						"id": "button_text_1_a",
+						"label": "Button Text 1",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_1_a",
+						"label": "Button style 1",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "button-text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "url",
+						"id": "link_1_b",
+						"label": "Button Link 2"
+					},
+					{
+						"type": "text",
+						"id": "button_text_1_b",
+						"label": "Button Text 2",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_1_b",
+						"label": "Button style 2",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "select",
+						"id": "vertical_align_1",
+						"label": "Vertical align 1",
+						"options": [
+							{ "value": "top", "label": "Top" },
+							{ "value": "middle", "label": "Middle" },
+							{ "value": "bottom", "label": "Bottom" }
+						],
+						"default": "middle"
+					}
+				]
+			},
+			{
+				"type": "twocolumn-content",
+				"name": "Two Cols - Content",
+				"settings": [
+					{
+						"type": "text",
+						"id": "title",
+						"label": "Section Title",
+						"default": "Headline Lorem Ipsum"
+					},
+					{
+						"type": "select",
+						"id": "max_width",
+						"label": "Max width",
+						"options": [
+							{ "value": "", "label": "Wide Width" },
+							{ "value": "full-width", "label": "Full Width" }
+						],
+						"default": ""
+					},
+					{
+						"type": "color",
+						"id": "background_color",
+						"label": "Background Color"
+					},
+					{
+						"type": "image_picker",
+						"id": "background_image",
+						"label": "Background Image"
+					},
+					{
+						"type": "select",
+						"id": "add_border_top",
+						"label": "Add border top?",
+						"options": [
+							{ "value": "border-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_border_bottom",
+						"label": "Add border bottom?",
+						"options": [
+							{ "value": "border-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "border_width",
+						"label": "Border Width",
+						"options": [
+							{ "value": "", "label": "Border Ful Width" },
+							{ "value": "border-content-center", "label": "Border Wide Width" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_padding_top",
+						"label": "Add padding top?",
+						"options": [
+							{ "value": "padding-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_padding_bottom",
+						"label": "Add padding bottom?",
+						"options": [
+							{ "value": "padding-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_margin_top",
+						"label": "Add margin top?",
+						"options": [
+							{ "value": "margin-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_margin_bottom",
+						"label": "Add margin bottom?",
+						"options": [
+							{ "value": "margin-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "text",
+						"id": "custom_class",
+						"label": "Custom Class (CSS)"
+					},
+					{
+					
+						"type": "select",
+						"id": "heading_align",
+						"label": "Heading text align",
+						"options": [
+							{ "value": "text-left", "label": "Left" },
+							{ "value": "text-center", "label": "Center" },
+							{ "value": "text-right", "label": "Right" }
+						],
+						"default": "text-center"
+					},
+					{
+						"type": "select",
+						"id": "heading_text_color",
+						"label": "Heading Text color",
+						"options": [
+							{ "value": "text-light", "label": "Light" },
+							{ "value": "text-dark", "label": "Dark" }
+						],
+						"default": "text-dark"
+					},
+					{
+						"type": "text",
+						"id": "heading_title",
+						"label": "Heading Title",
+						"default": "Headline Lorem Ipsum"
+					},
+					{
+						"type": "select",
+						"id": "heading_title_tag",
+						"label": "Heading H Tag",
+						"options": [
+							{ "value": "h1", "label": "H1" },
+							{ "value": "h2", "label": "H2" },
+							{ "value": "h3", "label": "H3" },
+							{ "value": "h4", "label": "H4" },
+							{ "value": "h5", "label": "H5" },
+							{ "value": "h6", "label": "H6" },
+							{ "value": "h7", "label": "H7" },
+							{ "value": "h8", "label": "H8" },
+							{ "value": "h9", "label": "H9" }
+						],
+						"default": "h2"
+					},  
+					{
+						"type": "richtext",
+						"id": "heading_subtitle",
+						"label": "Heading Subtitle",
+						"default": "<p>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vivamus suscipit tortor eget</p>"
+					},
+					{
+						"type": "select",
+						"id": "text_color_1",
+						"label": "Text color 1",
+						"options": [
+							{ "value": "text-light", "label": "Light" },
+							{ "value": "text-dark", "label": "Dark" }
+						],
+						"default": "text-dark"
+					},
+					{
+						"type": "select",
+						"id": "column_vertical_align_1",
+						"label": "Column Vertical align 1",
+						"options": [
+							{ "value": "top", "label": "Top" },
+							{ "value": "middle", "label": "Middle" },
+							{ "value": "bottom", "label": "Bottom" }
+						],
+						"default": "middle"
+					},
+					{
+						"type": "select",
+						"id": "content_align_1",
+						"label": "Content align 1",
+						"options": [
+							{ "value": "text-left", "label": "Left" },
+							{ "value": "text-center", "label": "Center" },
+							{ "value": "text-right", "label": "Right" }
+						],
+						"default": "text-center"
+					},
+					{
+						"type": "text",
+						"id": "content_title_1",
+						"label": "Title 1",
+						"default": "Banner"
+					},
+					{
+						"type": "select",
+						"id": "content_title_tag_1",
+						"label": "Title H Tag 1",
+						"options": [
+							{ "value": "h1", "label": "H1" },
+							{ "value": "h2", "label": "H2" },
+							{ "value": "h3", "label": "H3" },
+							{ "value": "h4", "label": "H4" },
+							{ "value": "h5", "label": "H5" },
+							{ "value": "h6", "label": "H6" },
+							{ "value": "h7", "label": "H7" },
+							{ "value": "h8", "label": "H8" },
+							{ "value": "h9", "label": "H9" }
+						],
+						"default": "h2"
+					},  
+					{
+						"type": "html",
+						"id": "content_1",
+						"label": "Content 1",
+						"default": "Lorem ipsum dolor sit amet"
+					},
+					{
+						"type": "url",
+						"id": "link_1_a",
+						"label": "Button Link 1"
+					},
+					{
+						"type": "text",
+						"id": "button_text_1_a",
+						"label": "Button Text 1",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_1_a",
+						"label": "Button style 1",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "button-text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "url",
+						"id": "link_1_b",
+						"label": "Button Link 2"
+					},
+					{
+						"type": "text",
+						"id": "button_text_1_b",
+						"label": "Button Text 2",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_1_b",
+						"label": "Button style 2",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "select",
+						"id": "vertical_align_1",
+						"label": "Vertical align 1",
+						"options": [
+							{ "value": "top", "label": "Top" },
+							{ "value": "middle", "label": "Middle" },
+							{ "value": "bottom", "label": "Bottom" }
+						],
+						"default": "middle"
+					},
+					{
+						"type": "select",
+						"id": "text_color_2",
+						"label": "Text color 2",
+						"options": [
+							{ "value": "text-light", "label": "Light" },
+							{ "value": "text-dark", "label": "Dark" }
+						],
+						"default": "text-dark"
+					},
+					{
+						"type": "select",
+						"id": "column_vertical_align_2",
+						"label": "Column Vertical align 2",
+						"options": [
+							{ "value": "top", "label": "Top" },
+							{ "value": "middle", "label": "Middle" },
+							{ "value": "bottom", "label": "Bottom" }
+						],
+						"default": "middle"
+					},
+					{
+						"type": "select",
+						"id": "content_align_2",
+						"label": "Content align 2",
+						"options": [
+							{ "value": "text-left", "label": "Left" },
+							{ "value": "text-center", "label": "Center" },
+							{ "value": "text-right", "label": "Right" }
+						],
+						"default": "text-center"
+					},
+					{
+						"type": "text",
+						"id": "content_title_2",
+						"label": "Title 2",
+						"default": "Banner"
+					},
+					{
+						"type": "select",
+						"id": "content_title_tag_2",
+						"label": "Title H Tag 2",
+						"options": [
+							{ "value": "h1", "label": "H1" },
+							{ "value": "h2", "label": "H2" },
+							{ "value": "h3", "label": "H3" },
+							{ "value": "h4", "label": "H4" },
+							{ "value": "h5", "label": "H5" },
+							{ "value": "h6", "label": "H6" },
+							{ "value": "h7", "label": "H7" },
+							{ "value": "h8", "label": "H8" },
+							{ "value": "h9", "label": "H9" }
+						],
+						"default": "h2"
+					},  
+					{
+						"type": "html",
+						"id": "content_2",
+						"label": "Content 2",
+						"default": "Lorem ipsum dolor sit amet"
+					},
+					{
+						"type": "url",
+						"id": "link_2_a",
+						"label": "Button Link 1"
+					},
+					{
+						"type": "text",
+						"id": "button_text_2_a",
+						"label": "Button Text 1",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_2_a",
+						"label": "Button style 1",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "button-text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "url",
+						"id": "link_2_b",
+						"label": "Button Link 2"
+					},
+					{
+						"type": "text",
+						"id": "button_text_2_b",
+						"label": "Button Text 2",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_2_b",
+						"label": "Button style 2",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "select",
+						"id": "vertical_align_2",
+						"label": "Vertical align 2",
+						"options": [
+							{ "value": "top", "label": "Top" },
+							{ "value": "middle", "label": "Middle" },
+							{ "value": "bottom", "label": "Bottom" }
+						],
+						"default": "middle"
+					}
+				]
+			},
+			{
+				"type": "threecolumn-content",
+				"name": "Three Cols - Content",
+				"settings": [
+					{
+						"type": "text",
+						"id": "title",
+						"label": "Section Title",
+						"default": "Headline Lorem Ipsum"
+					},
+					{
+						"type": "select",
+						"id": "max_width",
+						"label": "Max width",
+						"options": [
+							{ "value": "", "label": "Wide Width" },
+							{ "value": "full-width", "label": "Full Width" }
+						],
+						"default": ""
+					},
+					{
+						"type": "color",
+						"id": "background_color",
+						"label": "Background Color"
+					},
+					{
+						"type": "image_picker",
+						"id": "background_image",
+						"label": "Background Image"
+					},
+					{
+						"type": "select",
+						"id": "add_border_top",
+						"label": "Add border top?",
+						"options": [
+							{ "value": "border-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_border_bottom",
+						"label": "Add border bottom?",
+						"options": [
+							{ "value": "border-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "border_width",
+						"label": "Border Width",
+						"options": [
+							{ "value": "", "label": "Border Ful Width" },
+							{ "value": "border-content-center", "label": "Border Wide Width" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_padding_top",
+						"label": "Add padding top?",
+						"options": [
+							{ "value": "padding-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_padding_bottom",
+						"label": "Add padding bottom?",
+						"options": [
+							{ "value": "padding-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_margin_top",
+						"label": "Add margin top?",
+						"options": [
+							{ "value": "margin-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_margin_bottom",
+						"label": "Add margin bottom?",
+						"options": [
+							{ "value": "margin-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "text",
+						"id": "custom_class",
+						"label": "Custom Class (CSS)"
+					},
+					{
+					
+						"type": "select",
+						"id": "heading_align",
+						"label": "Heading text align",
+						"options": [
+							{ "value": "text-left", "label": "Left" },
+							{ "value": "text-center", "label": "Center" },
+							{ "value": "text-right", "label": "Right" }
+						],
+						"default": "text-center"
+					},
+					{
+						"type": "select",
+						"id": "heading_text_color",
+						"label": "Heading Text color",
+						"options": [
+							{ "value": "text-light", "label": "Light" },
+							{ "value": "text-dark", "label": "Dark" }
+						],
+						"default": "text-dark"
+					},
+					{
+						"type": "text",
+						"id": "heading_title",
+						"label": "Heading Title",
+						"default": "Headline Lorem Ipsum"
+					},
+					{
+						"type": "select",
+						"id": "heading_title_tag",
+						"label": "Heading H Tag",
+						"options": [
+							{ "value": "h1", "label": "H1" },
+							{ "value": "h2", "label": "H2" },
+							{ "value": "h3", "label": "H3" },
+							{ "value": "h4", "label": "H4" },
+							{ "value": "h5", "label": "H5" },
+							{ "value": "h6", "label": "H6" },
+							{ "value": "h7", "label": "H7" },
+							{ "value": "h8", "label": "H8" },
+							{ "value": "h9", "label": "H9" }
+						],
+						"default": "h2"
+					},  
+					{
+						"type": "richtext",
+						"id": "heading_subtitle",
+						"label": "Heading Subtitle",
+						"default": "<p>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vivamus suscipit tortor eget</p>"
+					},
+					{
+						"type": "select",
+						"id": "text_color_1",
+						"label": "Text color 1",
+						"options": [
+							{ "value": "text-light", "label": "Light" },
+							{ "value": "text-dark", "label": "Dark" }
+						],
+						"default": "text-dark"
+					},
+					{
+						"type": "select",
+						"id": "column_vertical_align_1",
+						"label": "Column Vertical align 1",
+						"options": [
+							{ "value": "top", "label": "Top" },
+							{ "value": "middle", "label": "Middle" },
+							{ "value": "bottom", "label": "Bottom" }
+						],
+						"default": "middle"
+					},
+					{
+						"type": "select",
+						"id": "content_align_1",
+						"label": "Content align 1",
+						"options": [
+							{ "value": "text-left", "label": "Left" },
+							{ "value": "text-center", "label": "Center" },
+							{ "value": "text-right", "label": "Right" }
+						],
+						"default": "text-center"
+					},
+					{
+						"type": "text",
+						"id": "content_title_1",
+						"label": "Title 1",
+						"default": "Banner"
+					},
+					{
+						"type": "select",
+						"id": "content_title_tag_1",
+						"label": "Title H Tag 1",
+						"options": [
+							{ "value": "h1", "label": "H1" },
+							{ "value": "h2", "label": "H2" },
+							{ "value": "h3", "label": "H3" },
+							{ "value": "h4", "label": "H4" },
+							{ "value": "h5", "label": "H5" },
+							{ "value": "h6", "label": "H6" },
+							{ "value": "h7", "label": "H7" },
+							{ "value": "h8", "label": "H8" },
+							{ "value": "h9", "label": "H9" }
+						],
+						"default": "h2"
+					},  
+					{
+						"type": "html",
+						"id": "content_1",
+						"label": "Content 1",
+						"default": "Lorem ipsum dolor sit amet"
+					},
+					{
+						"type": "url",
+						"id": "link_1_a",
+						"label": "Button Link 1"
+					},
+					{
+						"type": "text",
+						"id": "button_text_1_a",
+						"label": "Button Text 1",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_1_a",
+						"label": "Button style 1",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "button-text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "url",
+						"id": "link_1_b",
+						"label": "Button Link 2"
+					},
+					{
+						"type": "text",
+						"id": "button_text_1_b",
+						"label": "Button Text 2",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_1_b",
+						"label": "Button style 2",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "select",
+						"id": "vertical_align_1",
+						"label": "Vertical align 1",
+						"options": [
+							{ "value": "top", "label": "Top" },
+							{ "value": "middle", "label": "Middle" },
+							{ "value": "bottom", "label": "Bottom" }
+						],
+						"default": "middle"
+					},
+					{
+						"type": "select",
+						"id": "text_color_2",
+						"label": "Text color 2",
+						"options": [
+							{ "value": "text-light", "label": "Light" },
+							{ "value": "text-dark", "label": "Dark" }
+						],
+						"default": "text-dark"
+					},
+					{
+						"type": "select",
+						"id": "column_vertical_align_2",
+						"label": "Column Vertical align 2",
+						"options": [
+							{ "value": "top", "label": "Top" },
+							{ "value": "middle", "label": "Middle" },
+							{ "value": "bottom", "label": "Bottom" }
+						],
+						"default": "middle"
+					},
+					{
+						"type": "select",
+						"id": "content_align_2",
+						"label": "Content align 2",
+						"options": [
+							{ "value": "text-left", "label": "Left" },
+							{ "value": "text-center", "label": "Center" },
+							{ "value": "text-right", "label": "Right" }
+						],
+						"default": "text-center"
+					},
+					{
+						"type": "text",
+						"id": "content_title_2",
+						"label": "Title 2",
+						"default": "Banner"
+					},
+					{
+						"type": "select",
+						"id": "content_title_tag_2",
+						"label": "Title H Tag 2",
+						"options": [
+							{ "value": "h1", "label": "H1" },
+							{ "value": "h2", "label": "H2" },
+							{ "value": "h3", "label": "H3" },
+							{ "value": "h4", "label": "H4" },
+							{ "value": "h5", "label": "H5" },
+							{ "value": "h6", "label": "H6" },
+							{ "value": "h7", "label": "H7" },
+							{ "value": "h8", "label": "H8" },
+							{ "value": "h9", "label": "H9" }
+						],
+						"default": "h2"
+					},  
+					{
+						"type": "html",
+						"id": "content_2",
+						"label": "Content 2",
+						"default": "Lorem ipsum dolor sit amet"
+					},
+					{
+						"type": "url",
+						"id": "link_2_a",
+						"label": "Button Link 1"
+					},
+					{
+						"type": "text",
+						"id": "button_text_2_a",
+						"label": "Button Text 1",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_2_a",
+						"label": "Button style 1",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "button-text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "url",
+						"id": "link_2_b",
+						"label": "Button Link 2"
+					},
+					{
+						"type": "text",
+						"id": "button_text_2_b",
+						"label": "Button Text 2",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_2_b",
+						"label": "Button style 2",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "select",
+						"id": "vertical_align_2",
+						"label": "Vertical align 2",
+						"options": [
+							{ "value": "top", "label": "Top" },
+							{ "value": "middle", "label": "Middle" },
+							{ "value": "bottom", "label": "Bottom" }
+						],
+						"default": "middle"
+					},
+					{
+						"type": "select",
+						"id": "text_color_3",
+						"label": "Text color 3",
+						"options": [
+							{ "value": "text-light", "label": "Light" },
+							{ "value": "text-dark", "label": "Dark" }
+						],
+						"default": "text-dark"
+					},
+					{
+						"type": "select",
+						"id": "column_vertical_align_3",
+						"label": "Column Vertical align 3",
+						"options": [
+							{ "value": "top", "label": "Top" },
+							{ "value": "middle", "label": "Middle" },
+							{ "value": "bottom", "label": "Bottom" }
+						],
+						"default": "middle"
+					},
+					{
+						"type": "select",
+						"id": "content_align_3",
+						"label": "Content align 3",
+						"options": [
+							{ "value": "text-left", "label": "Left" },
+							{ "value": "text-center", "label": "Center" },
+							{ "value": "text-right", "label": "Right" }
+						],
+						"default": "text-center"
+					},
+					{
+						"type": "text",
+						"id": "content_title_3",
+						"label": "Title 3",
+						"default": "Banner"
+					},
+					{
+						"type": "select",
+						"id": "content_title_tag_3",
+						"label": "Title H Tag 3",
+						"options": [
+							{ "value": "h1", "label": "H1" },
+							{ "value": "h2", "label": "H2" },
+							{ "value": "h3", "label": "H3" },
+							{ "value": "h4", "label": "H4" },
+							{ "value": "h5", "label": "H5" },
+							{ "value": "h6", "label": "H6" },
+							{ "value": "h7", "label": "H7" },
+							{ "value": "h8", "label": "H8" },
+							{ "value": "h9", "label": "H9" }
+						],
+						"default": "h2"
+					},  
+					{
+						"type": "html",
+						"id": "content_3",
+						"label": "Content 3",
+						"default": "Lorem ipsum dolor sit amet"
+					},
+					{
+						"type": "url",
+						"id": "link_3_a",
+						"label": "Button Link 1"
+					},
+					{
+						"type": "text",
+						"id": "button_text_3_a",
+						"label": "Button Text 1",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_3_a",
+						"label": "Button style 1",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "button-text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "url",
+						"id": "link_3_b",
+						"label": "Button Link 2"
+					},
+					{
+						"type": "text",
+						"id": "button_text_3_b",
+						"label": "Button Text 2",
+						"default": "Shop Now"
+					},
+					{
+						"type": "select",
+						"id": "button_style_3_b",
+						"label": "Button style 2",
+						"options": [
+							{ "value": "button", "label": "White" },
+							{ "value": "button solid", "label": "White Solid" },
+							{ "value": "button black", "label": "Black" },
+							{ "value": "button black solid", "label": "Black Solid" },
+							{ "value": "text", "label": "Button Text" }
+						],
+						"default": "button"
+					},
+					{
+						"type": "select",
+						"id": "vertical_align_3",
+						"label": "Vertical align 3",
+						"options": [
+							{ "value": "top", "label": "Top" },
+							{ "value": "middle", "label": "Middle" },
+							{ "value": "bottom", "label": "Bottom" }
+						],
+						"default": "middle"
+					}
+				]
+			},
+			{
+				"type": "featured-collection",
+				"name": "Featured Collection",
+				"settings": [
+					{
+						"type": "text",
+						"id": "title",
+						"label": "Section Title",
+						"default": "Headline Lorem Ipsum"
+					},
+					{
+						"type": "select",
+						"id": "max_width",
+						"label": "Max width",
+						"options": [
+							{ "value": "", "label": "Wide Width" },
+							{ "value": "full-width", "label": "Full Width" }
+						],
+						"default": ""
+					},
+					{
+						"type": "color",
+						"id": "background_color",
+						"label": "Background Color"
+					},
+					{
+						"type": "image_picker",
+						"id": "background_image",
+						"label": "Background Image"
+					},
+					{
+						"type": "select",
+						"id": "add_border_top",
+						"label": "Add border top?",
+						"options": [
+							{ "value": "border-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_border_bottom",
+						"label": "Add border bottom?",
+						"options": [
+							{ "value": "border-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "border_width",
+						"label": "Border Width",
+						"options": [
+							{ "value": "", "label": "Border Ful Width" },
+							{ "value": "border-content-center", "label": "Border Wide Width" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_padding_top",
+						"label": "Add padding top?",
+						"options": [
+							{ "value": "padding-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_padding_bottom",
+						"label": "Add padding bottom?",
+						"options": [
+							{ "value": "padding-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_margin_top",
+						"label": "Add margin top?",
+						"options": [
+							{ "value": "margin-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_margin_bottom",
+						"label": "Add margin bottom?",
+						"options": [
+							{ "value": "margin-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "text",
+						"id": "custom_class",
+						"label": "Custom Class (CSS)"
+					},
+					{
+					
+						"type": "select",
+						"id": "text_color",
+						"label": "Text color",
+						"options": [
+							{ "value": "text-light", "label": "Light" },
+							{ "value": "text-dark", "label": "Dark" }
+						],
+						"default": "text-dark"
+					},
+					{
+						"type": "select",
+						"id": "heading_align",
+						"label": "Heading text align",
+						"options": [
+							{ "value": "text-left", "label": "Left" },
+							{ "value": "text-center", "label": "Center" },
+							{ "value": "text-right", "label": "Right" }
+						],
+						"default": "text-center"
+					},
+					{
+						"type": "select",
+						"id": "heading_text_color",
+						"label": "Heading Text color",
+						"options": [
+							{ "value": "text-light", "label": "Light" },
+							{ "value": "text-dark", "label": "Dark" }
+						],
+						"default": "text-dark"
+					},
+					{
+						"type": "text",
+						"id": "heading_title",
+						"label": "Heading Title",
+						"default": "Headline Lorem Ipsum"
+					},
+					{
+						"type": "select",
+						"id": "heading_title_tag",
+						"label": "Heading H Tag",
+						"options": [
+							{ "value": "h1", "label": "H1" },
+							{ "value": "h2", "label": "H2" },
+							{ "value": "h3", "label": "H3" },
+							{ "value": "h4", "label": "H4" },
+							{ "value": "h5", "label": "H5" },
+							{ "value": "h6", "label": "H6" },
+							{ "value": "h7", "label": "H7" },
+							{ "value": "h8", "label": "H8" },
+							{ "value": "h9", "label": "H9" }
+						],
+						"default": "h2"
+					},  
+					{
+						"type": "richtext",
+						"id": "heading_subtitle",
+						"label": "Heading Subtitle",
+						"default": "<p>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vivamus suscipit tortor eget</p>"
+					},
+					{
+						"id": "collection",
+						"type": "collection",
+						"label": "Collection"
+					},
+					{
+						"type": "select",
+						"id": "grid",
+						"label": "Number of Products",
+						"options": [
+							{ "value": "3", "label": "3" },
+							{ "value": "4", "label": "4" },
+							{ "value": "5", "label": "5" },
+							{ "value": "6", "label": "6" },
+							{ "value": "7", "label": "7" },
+							{ "value": "8", "label": "8" },
+							{ "value": "9", "label": "9" },
+							{ "value": "10", "label": "10" },
+							{ "value": "11", "label": "11" },
+							{ "value": "12", "label": "12" },
+							{ "value": "13", "label": "13" },
+							{ "value": "14", "label": "14" },
+							{ "value": "15", "label": "15" },
+							{ "value": "16", "label": "16" },
+							{ "value": "17", "label": "17" },
+							{ "value": "18", "label": "18" },
+							{ "value": "19", "label": "19" },
+							{ "value": "20", "label": "20" }
+						],
+						"default": "3"
+					},
+					{
+						"type": "select",
+						"id": "add_carousel",
+						"label": "Add carousel?",
+						"options": [
+							{ "value": "owl-carousel", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					}
+				]
+			},
+			{
+				"type": "featured-blog",
+				"name": "Featured Blog",
+				"settings":[
+					{
+						"type": "select",
+						"id": "max_width",
+						"label": "Max width",
+						"options": [
+							{ "value": "", "label": "Wide Width" },
+							{ "value": "full-width", "label": "Full Width" }
+						],
+						"default": ""
+					},
+					{
+						"type": "color",
+						"id": "background_color",
+						"label": "Background Color"
+					},
+					{
+						"type": "image_picker",
+						"id": "background_image",
+						"label": "Background Image"
+					},
+					{
+						"type": "select",
+						"id": "add_border_top",
+						"label": "Add border top?",
+						"options": [
+							{ "value": "border-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_border_bottom",
+						"label": "Add border bottom?",
+						"options": [
+							{ "value": "border-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "border_width",
+						"label": "Border Width",
+						"options": [
+							{ "value": "", "label": "Border Ful Width" },
+							{ "value": "border-content-center", "label": "Border Wide Width" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_padding_top",
+						"label": "Add padding top?",
+						"options": [
+							{ "value": "padding-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_padding_bottom",
+						"label": "Add padding bottom?",
+						"options": [
+							{ "value": "padding-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_margin_top",
+						"label": "Add margin top?",
+						"options": [
+							{ "value": "margin-top", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "select",
+						"id": "add_margin_bottom",
+						"label": "Add margin bottom?",
+						"options": [
+							{ "value": "margin-bottom", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "text",
+						"id": "custom_class",
+						"label": "Custom class"
+					},
+					{
+						"type": "select",
+						"id": "heading_align",
+						"label": "Heading text align",
+						"options": [
+							{ "value": "text-left", "label": "Left" },
+							{ "value": "text-center", "label": "Center" },
+							{ "value": "text-right", "label": "Right" }
+						],
+						"default": "text-center"
+					},
+					{
+						"type": "select",
+						"id": "heading_text_color",
+						"label": "Heading Text color",
+						"options": [
+							{ "value": "text-light", "label": "Light" },
+							{ "value": "text-dark", "label": "Dark" }
+						],
+						"default": "text-dark"
+					},
+					{
+						"type": "text",
+						"id": "title",
+						"label": "Heading Title",
+						"default": "Featured Blog"
+					},
+					{
+						"type": "select",
+						"id": "heading_title_tag",
+						"label": "Heading H Tag",
+						"options": [
+							{ "value": "h1", "label": "H1" },
+							{ "value": "h2", "label": "H2" },
+							{ "value": "h3", "label": "H3" },
+							{ "value": "h4", "label": "H4" },
+							{ "value": "h5", "label": "H5" },
+							{ "value": "h6", "label": "H6" },
+							{ "value": "h7", "label": "H7" },
+							{ "value": "h8", "label": "H8" },
+							{ "value": "h9", "label": "H9" }
+						],
+						"default": "h2"
+					},
+					{
+						"type": "richtext",
+						"id": "heading_subtitle",
+						"label": "Heading Subtitle",
+						"default": "<p>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vivamus suscipit tortor eget</p>"
+					},
+					{
+						"id": "blog",
+						"type": "blog",
+						"label": "Blog"
+					},
+					{
+						"type": "select",
+						"id": "post_limit",
+						"label": "Posts",
+						"options": [
+							{ "value": "2", "label": "2" },
+							{ "value": "3", "label": "3" },
+							{ "value": "4", "label": "4" },
+							{ "value": "5", "label": "5" },
+							{ "value": "6", "label": "6" },
+							{ "value": "7", "label": "7" },
+							{ "value": "8", "label": "8" },
+							{ "value": "9", "label": "9" },
+							{ "value": "10", "label": "10" }
+						],
+						"default": "2"
+					},
+					{
+						"type": "select",
+						"id": "add_carousel",
+						"label": "Add carousel?",
+						"options": [
+							{ "value": "owl-carousel", "label": "Yes" },
+							{ "value": "", "label": "No" }
+						],
+						"default": ""
+					},
+					{
+						"type": "checkbox",
+						"id": "blog_show_author",
+						"label": "Show author",
+						"default": false
+					},
+					{
+						"type": "checkbox",
+						"id": "blog_show_date",
+						"label": "Show date",
+						"default": false
+					},
+					{
+						"type": "checkbox",
+						"id": "blog_show_excerpt",
+						"label": "Show Excerpt",
+						"default": false
+					},
+					{
+						"type": "checkbox",
+						"id": "show_view_all",
+						"label": "Show 'View all' button",
+						"default": false
+					}
+				]
+			}
+		]
+	}
+{% endschema %}

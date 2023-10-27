@@ -1,0 +1,307 @@
+<div class="blog-featured cms-section {{ section.settings.custom_class }} {{ section.settings.add_padding_top }} {{ section.settings.add_padding_bottom }} {{ section.settings.add_margin_top }} {{ section.settings.add_margin_bottom }} {{ section.settings.add_border_top }} {{ section.settings.add_border_bottom }} {{ section.settings.border_width }}"{% if section.settings.background_color != '' or section.settings.background_image %} style="{% if section.settings.background_color != '' %}background-color: {{ section.settings.background_color }};{% endif %}{% if section.settings.background_image %}background-image: url({{ section.settings.background_image | img_url: 'master' }});{% endif %}"{% endif %}>
+    {% if section.settings.title != blank or section.settings.heading_subtitle != blank %}
+    <div class="section-header {{ section.settings.heading_align }} {{ section.settings.heading_text_color }}">
+        <div class="wrapper">
+        {% if section.settings.title != blank %}
+            <{{ section.settings.heading_title_tag }} class="title">{{ section.settings.title }}</{{ section.settings.heading_title_tag }}>
+        {% endif %}
+        {% if section.settings.heading_subtitle != blank %}
+            <div class="sub-title">
+                {{ section.settings.heading_subtitle }}
+            </div>
+        {% endif %}
+        </div>
+    </div>
+    {% endif %}
+    <div class="wrapper {{ section.settings.max_width }}">
+		<div class="row"> 
+            {% assign blog = blogs[section.settings.blog] %}
+            <div class="articles {{ section.settings.add_carousel }}">
+            {% unless blog.articles_count == 0 %}
+                {% for article in blog.articles limit: section.settings.post_limit %}
+                    <div class="article">    
+                        <div class="article-image-wrap">
+                            <a href="{{ article.url }}" class="image">
+                                <picture>
+                                {% if article.image %}
+                                    <img loading="lazy" importance="low" width="455" height="585" src="{{ article.image | img_url: '455x585', crop: 'center' }}"  alt="{{ article.title }}"/>
+                                {% else %}
+                                    <img loading="lazy" importance="low" width="455" height="585" src="{{ 'article-image.jpg' | asset_url }}"  alt="{{ article.title }}"/>
+                                {% endif %}
+                                </picture>
+                            </a>
+                        </div>
+                        <div class="article-caption">
+                            <h6 class="article-name" {% if disabled_by_yoast_seo %}itemprop="name"{% endif %}><a href="{{ blog.url }}">{{ article.title }}</a></h6>
+                            {% if section.settings.blog_show_author %}
+                                <span class="article-author">{{ 'blogs.article.by_author' | t: author: article.author }}</span>
+                            {% endif %}
+                            {% if section.settings.blog_show_excerpt %}
+                                <div class="article-excerpt">
+                                    {% if article.excerpt.size > 0 %}
+                                        {{ article.excerpt | strip_html | truncate: 150 }}
+                                    {% else %}
+                                        {{ article.content | strip_html | truncate: 150 }}
+                                    {% endif %}
+                                    <div class="article-more">
+                                        <a class="button-text" href="{{ article.url }}">Read more</a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% if section.settings.blog_show_date %}
+                                <span class="article-date">{{ article.published_at | time_tag: format: 'month_day_year' }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                {% for i in (1..section.settings.post_limit) %}
+                    <div class="article">
+                        <div class="article-image-wrap">
+                            <a href="#" class="image">
+                                <picture>
+                                    <img loading="lazy" importance="low" src="{{ 'article-image.jpg' | asset_url }}"  alt="Blog Title"/>
+                                </picture>
+                            </a>
+                        </div>
+                        <div class="article-caption">
+                            <h6 class="article-name" {% if disabled_by_yoast_seo %}itemprop="name"{% endif %}><a href="#">Blog Title</a></h6>
+                            {% if section.settings.blog_show_author %}
+                                <span class="article-author">Author</span>
+                            {% endif %}
+                            {% if section.settings.blog_show_date %}
+                                <span class="article-date">{{ 'now' | data | time_tag: format: 'month_day_year' }}</span>
+                            {% endif %}
+                            {% if section.settings.blog_show_excerpt %}
+                                <div class="article-excerpt">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                                    <div class="article-more">
+                                        <a class="button-text" href="#">Read more</a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endunless %}
+            </div>
+            {% if section.settings.show_view_all %}
+                <div class="view-all">
+                    <a href="{{ blog.url }}">{{ 'blogs.article.view_all' | t }}</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "Featured Blog",
+        "settings":[
+            {
+                "type": "select",
+                "id": "max_width",
+                "label": "Max width",
+                "options": [
+                    { "value": "", "label": "Wide Width" },
+                    { "value": "full-width", "label": "Full Width" }
+                ],
+                "default": ""
+            },
+            {
+                "type": "color",
+                "id": "background_color",
+                "label": "Background Color"
+            },
+            {
+                "type": "image_picker",
+                "id": "background_image",
+                "label": "Background Image"
+            },
+            {
+                "type": "select",
+                "id": "add_border_top",
+                "label": "Add border top?",
+                "options": [
+                    { "value": "border-top", "label": "Yes" },
+                    { "value": "", "label": "No" }
+                ],
+                "default": ""
+            },
+            {
+                "type": "select",
+                "id": "add_border_bottom",
+                "label": "Add border bottom?",
+                "options": [
+                    { "value": "border-bottom", "label": "Yes" },
+                    { "value": "", "label": "No" }
+                ],
+                "default": ""
+            },
+            {
+                "type": "select",
+                "id": "border_width",
+                "label": "Border Width",
+                "options": [
+                    { "value": "", "label": "Border Ful Width" },
+                    { "value": "border-content-center", "label": "Border Wide Width" }
+                ],
+                "default": ""
+            },
+            {
+                "type": "select",
+                "id": "add_padding_top",
+                "label": "Add padding top?",
+                "options": [
+                    { "value": "padding-top", "label": "Yes" },
+                    { "value": "", "label": "No" }
+                ],
+                "default": ""
+            },
+            {
+                "type": "select",
+                "id": "add_padding_bottom",
+                "label": "Add padding bottom?",
+                "options": [
+                    { "value": "padding-bottom", "label": "Yes" },
+                    { "value": "", "label": "No" }
+                ],
+                "default": ""
+            },
+            {
+                "type": "select",
+                "id": "add_margin_top",
+                "label": "Add margin top?",
+                "options": [
+                    { "value": "margin-top", "label": "Yes" },
+                    { "value": "", "label": "No" }
+                ],
+                "default": ""
+            },
+            {
+                "type": "select",
+                "id": "add_margin_bottom",
+                "label": "Add margin bottom?",
+                "options": [
+                    { "value": "margin-bottom", "label": "Yes" },
+                    { "value": "", "label": "No" }
+                ],
+                "default": ""
+            },
+            {
+                "type": "text",
+                "id": "custom_class",
+                "label": "Custom class"
+            },
+            {
+                "type": "select",
+                "id": "heading_align",
+                "label": "Heading text align",
+                "options": [
+                    { "value": "text-left", "label": "Left" },
+                    { "value": "text-center", "label": "Center" },
+                    { "value": "text-right", "label": "Right" }
+                ],
+                "default": "text-center"
+            },
+            {
+                "type": "select",
+                "id": "heading_text_color",
+                "label": "Heading Text color",
+                "options": [
+                    { "value": "text-light", "label": "Light" },
+                    { "value": "text-dark", "label": "Dark" }
+                ],
+                "default": "text-dark"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Heading Title",
+                "default": "Featured Blog"
+            },
+            {
+                "type": "select",
+                "id": "heading_title_tag",
+                "label": "Heading H Tag",
+                "options": [
+                    { "value": "h1", "label": "H1" },
+                    { "value": "h2", "label": "H2" },
+                    { "value": "h3", "label": "H3" },
+                    { "value": "h4", "label": "H4" },
+                    { "value": "h5", "label": "H5" },
+                    { "value": "h6", "label": "H6" }
+                ],
+                "default": "h2"
+            },
+            {
+                "type": "richtext",
+                "id": "heading_subtitle",
+                "label": "Heading Subtitle",
+                "default": "<p>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vivamus suscipit tortor eget</p>"
+            },
+            {
+                "id": "blog",
+                "type": "blog",
+                "label": "Blog"
+            },
+            {
+                "type": "select",
+                "id": "post_limit",
+                "label": "Posts",
+                "options": [
+                    { "value": "2", "label": "2" },
+                    { "value": "3", "label": "3" },
+                    { "value": "4", "label": "4" },
+                    { "value": "5", "label": "5" },
+                    { "value": "6", "label": "6" },
+                    { "value": "7", "label": "7" },
+                    { "value": "8", "label": "8" },
+                    { "value": "9", "label": "9" },
+                    { "value": "10", "label": "10" }
+                ],
+                "default": "2"
+            },
+            {
+                "type": "select",
+                "id": "add_carousel",
+                "label": "Add carousel?",
+                "options": [
+                    { "value": "owl-carousel", "label": "Yes" },
+                    { "value": "", "label": "No" }
+                ],
+                "default": ""
+            },
+            {
+                "type": "checkbox",
+                "id": "blog_show_author",
+                "label": "Show author",
+                "default": false
+            },
+            {
+                "type": "checkbox",
+                "id": "blog_show_date",
+                "label": "Show date",
+                "default": false
+            },
+            {
+                "type": "checkbox",
+                "id": "blog_show_excerpt",
+                "label": "Show Excerpt",
+                "default": false
+            },
+            {
+                "type": "checkbox",
+                "id": "show_view_all",
+                "label": "Show 'View all' button",
+                "default": false
+            }
+        ],
+        "presets": [
+            {
+                "name": "Featured Blog",
+                "category": "Featured"
+            }
+        ]
+    }
+{% endschema %}

@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-static-block",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

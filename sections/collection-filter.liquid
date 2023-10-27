@@ -1,0 +1,257 @@
+<script type="text/javascript" defer>
+    var filterBlocks = [];
+    {% for block in section.blocks %}
+        filterBlocks.push({{ block.settings | json }});
+    {% endfor %}
+    function renderFilters(){ 
+        var collectionTags= [],
+            filterHtml = '',
+            $filterContainer = jQuery('#filterContainer');
+
+        var shopUrl = {{ shop.url | json }},
+            collectionUrl = {{ collection.url | append: '/' | json }},
+            url = shopUrl + collectionUrl;
+            currentUrl = location.pathname,
+			currentFilters = currentUrl.replace(collectionUrl, ''),
+            filters = [],
+            ajaxUrl = {{ shop.url | append: collection.url | json }}  + '?view=ajax';
+
+        console.log(ajaxUrl);
+      	filters = currentFilters.split('+');
+        jQuery.ajax({
+            type: 'GET',
+            url: ajaxUrl,
+            processData: false,
+            contentType: false,
+            success: function(data) {
+                collectionTags = JSON.parse(jQuery(data).filter('.collection-tags').html());
+                collectionSwathces = JSON.parse(jQuery(data).filter('.collection-swatches').html());
+                collectionStylesCount = JSON.parse(jQuery(data).filter('.collection-styles-count').html());
+                filterHtml += '<div class="filters">';
+                    jQuery.each(filterBlocks, function(index, block) {
+                      if(block.title !== undefined){
+                        filter = block.title.toLowerCase().replaceAll(' ', '-') + '-';
+                        filterName = block.title;
+                        var collectionTagsLength = collectionTags.length - 1;
+                        var count = 1;
+                        jQuery.each(collectionTags, function(index, tag) {
+                            if(tag.indexOf(filter) != -1){
+                                if(count == 1){
+                                    filterHtml += '<div class="filter">';
+                                    filterHtml += '<div class="title-wrapper"><h6 class="title">'+ filterName +'</h6><span class="icon"><i class="bx bx-plus-toggle"></i></span></div>';
+                                    filterHtml += '<ul>';
+                                }
+                                if(filter.replace('-', '') == 'colour') {
+                                    filterHtml += '<li class="filter-button filter-button-colour" data-value="'+ tag.toLowerCase() +'"><img src="' + collectionSwathces[count - 1] + '" alt="'+ tag.replace(filter, '') + '" width="41" height="41"/></li>';
+                                } else if(filter.replace('-', '') == 'style') {
+                                    filterHtml += '<li class="filter-button filter-button-style" data-value="'+ tag.toLowerCase().replaceAll(' ', '-') +'"><span>'+ tag.replace(filter, '') + '</span><span class="filter-count">(' + collectionStylesCount[count - 1] + ')</span></li>';
+                                } else {
+                                    filterHtml += '<li class="filter-button" data-value="'+ tag.toLowerCase().replaceAll(' ', '-') +'">'+ tag.replace(filter, '') + '</li>';
+                                }
+                                count += 1;
+                            }
+                            if(collectionTagsLength == index && count > 1){
+                                filterHtml += '</ul>';
+                                filterHtml += '</div>';
+                            }
+                        });
+                      };
+                });
+                filterHtml += '</div>';
+                filterHtml += '<div class="buttons"><a class="button-text" href="'+ url +'">Clear All Filters</a></div>';
+                $filterContainer.empty().html(filterHtml);
+              	jQuery.each(filters, function(index, filter) {
+              		jQuery('.filter-button[data-value="'+ filter +'"]').addClass('selected').parents('.filter').eq(0).addClass('active');
+                });
+            }
+        });
+    }
+    function renderProducts(filter){
+      console.log('renderProducts');
+        var shopUrl = {{ shop.url | json }},
+            collectionUrl = {{ collection.url | append: '/' | json }},
+            url = shopUrl + collectionUrl;
+            currentUrl = location.pathname,
+			currentFilters = currentUrl.replace(collectionUrl, ''),
+            filters = [], filtersSort = [],
+            sort_by = '', ajaxUrl = url,
+            $products = jQuery('.product-grid');
+            $pagination = jQuery('.collection-pagination .pagination');
+      	
+      	if(filter == null){
+        	filter = '';
+        } 
+      
+        if(filter.split('?page=').length > 1 ){
+            url = shopUrl + filter;
+        }else{
+            //Check filter is sort_by        
+            if(filter.split('?').length > 1){
+                sort_by = filter;
+            }
+
+            //Check has filters
+            if(currentUrl.length > collectionUrl.length){
+                if(currentFilters.length > 0){
+                    filters = currentFilters.split('+');
+                    if(filters.indexOf(filter) > -1){
+                        filters.splice(filters.indexOf(filter), 1);
+                    }else{
+                        if(filter.split('?').length <= 1){
+                            filters.push(filter);
+                        }
+                    }
+                }
+            }else{
+                if(filter.split('?').length <= 1){
+                    filters.push(filter);
+                }   
+            }
+
+            //Sort the filters
+            if(filterBlocks.length > 0){ 
+                jQuery.each(filterBlocks, function(index, block) {  
+                 if(block.title ){ 
+                  console.log(block.title);
+                    blockFilter = block.title.toLowerCase().replaceAll(' ', '-') + '-';
+                    jQuery.each(filters, function(index, thisFilter) {
+                        if(thisFilter.indexOf(blockFilter) != -1){
+                            if(filter.indexOf(blockFilter) != -1){
+                              console.log(filter);
+                              console.log(thisFilter);
+                                if(filter == thisFilter){
+                                    filtersSort.push(thisFilter.replaceAll(' ', '-'));
+                                  console.log(thisFilter.replaceAll(' ', '-'));
+                                }
+                            }else{
+                                filtersSort.push(thisFilter.replaceAll(' ', '-'));
+                            }
+                        }
+                    });
+                };
+                });
+            }
+
+            filtersSort = filtersSort.join('+');
+            url += filtersSort;
+        
+            if(sort_by != ''){
+                url += sort_by;
+            }else{
+                if (location.search.length) {
+                    url += location.search;
+                }
+            }
+        }
+
+        ajaxUrl = url;
+        if(url.split('?').length > 1){
+            ajaxUrl += '&view=ajax';
+        }else{
+            ajaxUrl += '?view=ajax';
+        }
+        window.history.pushState('', '', url);
+
+        jQuery.ajax({
+            type: 'GET',
+            url: ajaxUrl,
+            processData: false,
+            contentType: false,
+            success: function(data) {
+                $products_html = jQuery(data).filter('.product-grid').html();
+              	$pagination_html = jQuery(data).filter('.collection-pagination').html().replace(/&amp;view=ajax/g, '');
+                $pagination.empty().html($pagination_html);
+                $products.empty().html($products_html).removeClass('loading');
+                JunoQuickAdd.init();
+                {% if settings.wishlist_enabled %}
+                highlightActiveWishListItems();
+                {% endif %}
+            }
+        });
+
+    }
+    jQuery(document).ready(function() {
+        renderFilters();
+        renderProducts();
+
+        jQuery('#sorter .label').click(function(e) {
+            e.preventDefault();
+
+            if(jQuery(this).hasClass('active')) {
+                jQuery(this).next().slideUp(300, function() {
+                    jQuery('#sorter .label').removeClass('active');
+                });
+            } else {
+                jQuery(this).addClass('active');
+                jQuery(this).next().slideDown(300);
+            }
+        });
+
+        jQuery(document).click(function() {
+            if (!jQuery('#sorter .label').is(event.target) && !jQuery('#sorter .label').has(event.target).length &&
+                !jQuery('#sorter .sort-by').is(event.target) && !jQuery('#sorter .sort-by').has(event.target).length
+            ) {
+                jQuery('#sorter .label').next().slideUp(300, function() {
+                    jQuery('#sorter .label').removeClass('active');
+                });
+            }
+        });
+
+        jQuery('#filterDropDown').on('click', '.title-wrapper', function(e) {
+          let body = $(this).parent();
+          if (body.hasClass("active")) {
+            body.removeClass("active")
+          } else {
+            body.addClass("active")
+          }
+        });
+  });
+    jQuery(document).on('click', '#filterContainer .filter-button', function(e) {
+        var value = jQuery(this).data('value');
+        jQuery('#product-grid').addClass('loading');
+      
+        if(jQuery(this).hasClass('selected')) {
+            jQuery(this).removeClass('selected');
+        } else {
+          // remove next line to multi-select
+            jQuery(this).closest('.filter').find('.filter-button').removeClass('selected');
+            jQuery(this).addClass('selected');
+        }
+
+        renderProducts(value);
+        e.preventDefault();
+    });
+    jQuery('#sorter .filter-button').on('click', function(e) {
+        var value = jQuery(this).data('value');
+        jQuery('#product-grid').addClass('loading');
+      
+        if(jQuery(this).hasClass('selected')) {
+            jQuery(this).removeClass('selected');
+        } else {
+          // remove next line to multi-select
+            jQuery(this).closest('#sorter').find('.filter-button').removeClass('selected');
+            jQuery(this).addClass('selected');
+        }
+
+        renderProducts(value);
+        e.preventDefault();
+    });
+</script>
+{% schema %}
+{
+	"name": "Collection Filter",
+    "blocks": [
+        {
+            "type": "tags",
+            "name": "Tag Filter",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Tag"
+                } 
+            ]
+        } 
+    ]
+}
+{% endschema %}

@@ -1,0 +1,43 @@
+<div id="searchDropDown" class="dropdown">
+  <div id="searchContainer">
+    <div class="searchDropDown__wrapper">
+      <div class="row">
+        {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+        {%- if disabled_by_yoast_seo -%}
+          <meta {% if disabled_by_yoast_seo %}itemprop="url"{% endif %} content="{{ shop.url }}" />
+        {%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+        {%- endif -%}
+        <form action="/search"
+          method="get"
+          class="search-form"
+          role="search"
+          {% if disabled_by_yoast_seo %}itemprop="potentialAction"{% endif %}
+          {% if disabled_by_yoast_seo %}itemscope{% endif %}
+          {% if disabled_by_yoast_seo %}itemtype="https://schema.org/SearchAction"{% endif %}>
+          {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+          {%- if disabled_by_yoast_seo -%}
+            <meta {% if disabled_by_yoast_seo %}itemprop="target"{% endif %} content="{{ shop.url }}/search?q={q}" />
+          {%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+          {%- endif -%}
+          <input
+            name="q"
+            {% if disabled_by_yoast_seo %}itemprop="query-input"{% endif %}
+            type="search"
+            id="search-input"
+            placeholder="Start typing what you’re looking for"
+            value="{{ search.terms | escape }}" />
+          <input
+            type="hidden"
+            name="type"
+            value="product" />
+          <button type="submit" class="button-icon">
+            <span class="icon">
+              <i class='bx bx-search'></i>
+            </span>
+          </button>
+        </form>
+      </div>
+      <button id="aa-search-close" role="button" type="button" aria-label="Close" class=" boost-sd__button-text-x boost-sd__button-text-x--close-style3">Close</button>
+    </div>
+  </div>
+</div>

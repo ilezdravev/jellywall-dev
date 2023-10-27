@@ -1,0 +1,35 @@
+{% unless settings.gtm_code == blank %}
+
+<script type="text/javascript">
+
+// calculate totalDiscount for Completed Order Event
+var discounts = "{{ order.discounts | json }}"
+var totalDiscount = 0;
+
+for (var i = 0; i< discounts.length; i++ ) {
+totalDiscount += discounts[i].savings;
+}
+
+window.analytics.track('Completed Order', {
+orderId: "{{ order_number }}",
+total: "{{ total_price | money_without_currency }}",
+revenue: "{{subtotal_price | money_without_currency }}",
+shipping: "{{shipping_price | money_without_currency }}",
+tax: "{{tax_price | money_without_currency }}",
+discount: totalDiscount,
+products: [
+{% for line_item in line_items %}
+{
+  id: "{{ line_item.product_id }}",
+  sku: "{{ line_item.sku }}",
+  name: "{{ line_item.title }}",
+  price: "{{ line_item.price }}",
+  quantity: "{{ line_item.quantity }}"
+},
+{% endfor %} ]
+});
+
+</script>
+
+
+{% endunless %}

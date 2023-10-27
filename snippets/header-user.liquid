@@ -1,0 +1,22 @@
+<div id="userDropDown" class="dropdown">
+    <div id="userContainer">
+        <div class="wrapper">
+            <div class="row">
+                {% if customer %}
+                    <ul>
+                        <li><a href="/pages/my-orders">My Account</a></li>
+                        <li><a href="/account">Order History</a></li>
+                        <li><a href="/account">Address Book</a></li>
+                        <li>{{ 'Log Out' | customer_logout_link }}  </li>
+                    </ul>
+                {% else %}
+                    <p>Login or create an account to view your order history and manage your account preferences.</p>
+                    <ul class="buttons">
+                        <li><a class="button" href="/account/login">Login</a></li>
+                        <li><a class="button button-second" href="/account/register">Register</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

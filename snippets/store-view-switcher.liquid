@@ -1,0 +1,54 @@
+{% assign store = 'uk' %}
+{% assign store_currency = '&euro;' %}
+{% assign store_currency_name = 'Pound' %}
+{% assign store_full_name = 'United Kingdom' %}
+
+
+{% if shop.url contains 'fr.' %}
+{% assign store = 'fr' %}
+{% assign store_currency = '&euro;' %}
+{% assign store_currency_name = 'Euros' %}
+{% assign store_full_name = 'France' %}
+{%endif%}
+
+
+{% if shop.url contains 'de.' %}
+{% assign store = 'de' %}
+{% assign store_currency = '&euro;' %}
+{% assign store_currency_name = 'Euros' %}
+{% assign store_full_name = 'Germany' %}
+{%endif%}
+
+{% if shop.url contains 'it.' %}
+{% assign store = 'it' %}
+{% assign store_currency = '&euro;' %}
+{% assign store_currency_name = 'Euros' %}
+{% assign store_full_name = 'Italia' %}
+{%endif%}
+
+{% if shop.url contains 'es.' %}
+{% assign store = 'es' %}
+{% assign store_currency = '&euro;' %}
+{% assign store_currency_name = 'Euros' %}
+{% assign store_full_name = 'España' %}
+{%endif%}
+
+{% if shop.url contains 'uk.' %}
+{% assign store = 'uk' %}
+{% assign store_currency = '&euro;' %}
+{% assign store_currency_name = 'Pound' %}
+{% assign store_full_name = 'UK' %}
+{%endif%}
+
+{% if shop.url contains 'us.' %}
+{% assign store = 'us' %}
+{% assign store_currency = '$' %}
+{% assign store_currency_name = 'US Dollars' %}
+{% assign store_full_name = 'United States' %}
+{%endif%}
+
+<div class="switcher-store">
+    <div class="select">
+        <a href="#" id="storeToggle" class="current-store" data-value="{{ store }} ({{store_currency}})"><span class="flag icon">{% include 'icon-gb' %}</span><span class="name">{{ store_full_name }}</span></a>
+    </div>
+</div>

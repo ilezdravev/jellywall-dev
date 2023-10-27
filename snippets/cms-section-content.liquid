@@ -1,0 +1,65 @@
+{%- assign content_location = block.settings.content_location -%}
+{%- assign content_alignment = block.settings.content_alignment -%}
+{%- assign content_order = block.settings.content_order -%}
+{%- assign content_colour = block.settings.content_colour -%}
+
+{%- assign highlight = block.settings.highlight -%}
+{%- assign title = block.settings.title -%}
+{%- assign title_tag = block.settings.title_tag -%}
+{%- assign subtitle = block.settings.subtitle -%}
+{%- assign subtitle_tag = block.settings.subtitle_tag -%}
+{%- assign description = block.settings.description -%}
+{%- assign description_tag = block.settings.description_tag -%}
+
+{%- assign button_link_1 = block.settings.button_link_1 -%}
+{%- assign button_style_1 = block.settings.button_style_1 -%}
+{%- assign button_text_1 = block.settings.button_text_1 -%}
+{%- assign button_link_2 = block.settings.button_link_2 -%}
+{%- assign button_style_2 = block.settings.button_style_2 -%}
+{%- assign button_text_2 = block.settings.button_text_2 -%}
+{%- assign button_position = block.settings.button_position -%}
+{%- assign button_links = button_link_1 | append: button_link_2 | strip -%}
+
+{%- assign content_colour = block.settings.content_colour -%}
+{%- assign content_class = class | append: '__caption' -%}
+
+{%- unless content_location contains 'content-over' -%}
+    {%- assign button_position = blank -%}
+{%- endunless -%}
+
+{%- if title == blank and subtitle == blank and description == blank and highlight == blank and button_links == blank -%}
+    {%- assign content_show = true -%}
+{%- endif -%}
+
+{%- unless content_show == true -%}
+    <div class="{{- content_class -}}">
+        <div class="{{- content_class | append: '--inner ' | append: content_alignment -}}">
+            <div class="{{- content_class | append: '--content' -}}" style="color: {{- content_colour -}}">
+                {%- if content_order == 'one' -%}
+                    <!-- Highlight, Title, Sub-Title, Desc, CTA -->
+                  <div class="description-block">
+                    {%- if highlight != blank -%}<span class="{{- content_class | append: '--highlight' -}}">{{- highlight -}}</span>{%- endif -%}
+                    {%- if title != blank -%}<{{ title_tag }} class="{{- content_class | append: '--title ' | append: title_tag  -}}">{{ title }}</{{ title_tag }}>{%- endif -%}
+                    {%- if subtitle != blank -%}<h6 class="{{- content_class | append: '--subtitle ' | append: subtitle_tag  -}}">{{ subtitle }}</h6>{%- endif -%}
+                    {%- if description != blank -%}<div class="{{- content_class | append: '--desc ' | append: description_tag  -}}">{{ description }}</div>{%- endif -%}    
+                  </div>
+                  {%- if button_position == blank -%}
+                        {%- include 'cms-section-buttons' -%}
+                    {%- endif -%}
+                {%- else -%}
+                    <!-- Desc, Highlight, Title, Sub-Title, CTA -->
+                    {%- if description != blank -%}<div class="{{- content_class | append: '--desc ' | append: description_tag  -}}">{{ description }}</div>{%- endif -%}    
+                    {%- if highlight != blank -%}<span class="{{- content_class | append: '--highlight' -}}">{{- highlight -}}</span>{%- endif -%}
+                    {%- if title != blank -%}<{{ title_tag }} class="{{- content_class | append: '--title ' | append: title_tag  -}}">{{ title }}</{{ title_tag }}>{%- endif -%}
+                    {%- if subtitle != blank -%}<h6 class="{{- content_class | append: '--subtitle ' | append: subtitle_tag  -}}">{{ subtitle }}</h6>{%- endif -%}
+                    {%- if button_position == blank -%}
+                        {%- include 'cms-section-buttons' -%}
+                    {%- endif -%}
+                {%- endif -%}
+            </div>
+            {%- if button_position != blank -%}
+                {%- include 'cms-section-buttons' -%}
+            {%- endif -%}
+        </div>
+    </div>
+{%- endunless -%}

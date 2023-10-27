@@ -1,0 +1,154 @@
+{% if section.blocks.size > 0 %}
+<div class="store-locator-page">
+    <div class="wrapper">
+      <div class="cms-section grid-3">
+      	<div class="row-flex store-list">
+      		{% for block in section.blocks %}
+      		<div class="col-img store-item">
+      			<div class="store-image">
+      				{% if block.settings.image %}
+      				<picture>
+      					<source media="(min-width: 992px)" srcset="{{ block.settings.image | img_url: '1920x' }}">
+      					{% if block.settings.mobile_image != blank %}
+      						<source srcset="{{ block.settings.mobile_image | img_url: 'master' }}">
+      					{% else %}
+      						<source srcset="{{ block.settings.image | img_url: 'x680', crop: 'center' }}">
+      					{% endif %}
+      					<img src="{{ block.settings.image | img_url: '1920x' }}" alt="{% if block.settings.image_alt != blank %}{{ block.settings.image_alt }}{% else %}{% if block.settings.title != blank %}{{ block.settings.title }}{% endif %}{% endif %}" />
+      				</picture>
+      				{% else %}
+      					<span class="placeholder-background">
+      						{% capture current %}{% cycle 1, 2 %}{% endcapture %}
+      						{{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+      					</span>
+      				{% endif %}
+      			</div>
+      			<div class="store-content">
+      				<p class="store-address">{{ block.settings.short_address }}</p>
+      				<h3 class="store-title">{{ block.settings.title }}</h3>
+      				<div class="store-content-full">
+      					{% if block.settings.description != blank %}
+      					<div class="store-desc">
+      						{{ block.settings.description }}
+      					</div>
+      					{% endif %}
+      					<div class="row-flex">
+      						{% if block.settings.address != blank %}
+      						<div class="col-wide-6">
+      							<h4 class="tt">Address</h4>
+      							<div class="ct">{{ block.settings.address }}</div>
+      						</div>
+      						{% endif %}
+      						{% if block.settings.opening_times != blank %}
+      						<div class="col-wide-6">
+      							<h4 class="tt">Opening Times</h4>
+      							<div class="ct">{{ block.settings.opening_times }}</div>
+      						</div>
+      						{% endif %}
+      						{% if block.settings.contact_us != blank %}
+      						<div class="col-wide-6">
+      							<h4 class="tt">Contact us</h4>
+      							<div class="ct">{{ block.settings.contact_us }}</div>
+      						</div>
+      						{% endif %}
+      					</div>
+      				</div>
+      				<span class="store-close"><i class='bx bx-x'></i></span>
+      			</div>
+      		</div>
+      		{% endfor %}
+      	</div>
+      </div>
+      
+      <script>
+      	jQuery(document).ready(function() {
+      		var $item = jQuery('.store-item');
+      		var $list = jQuery('.store-list');
+      		var detailCls = '.store-detail';
+      		var scroll = function(el) {
+      			jQuery('html, body').animate({
+      				scrollTop: el.offset().top - jQuery('#header').innerHeight()
+      			});
+      		};
+      		$item.click(function() {
+      			var getPosition = Math.round($list.innerWidth() / jQuery(this).innerWidth());
+      			var index = jQuery(this).index() + 1;
+      			var positionAppend = getPosition * Math.ceil(index/getPosition);
+      			$item.removeClass('active');
+      			jQuery(this).addClass('active');
+      			$list.addClass('detail-showed');
+      			jQuery(detailCls).length && jQuery(detailCls).remove();
+      			var clone = jQuery(this).clone().addClass('store-detail');
+      			clone.insertAfter($item.eq(positionAppend - 1));
+      			scroll(jQuery(detailCls));
+      		});
+      		$list.on('click', '.store-close', function() {
+      			jQuery(this).closest(detailCls).remove();
+      			scroll(jQuery('.active', $list));
+      			$item.removeClass('active');
+      			$list.removeClass('detail-showed');
+      		});
+      	});
+      </script>
+    </div>
+</div>
+{% endif %}
+{% schema %}
+{
+  "name": "CMS Store Locator",
+    "blocks": [
+        {
+            "type": "banner",
+            "name": "Store",
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "Image"
+				},
+				{
+					"type": "image_picker",
+					"id": "mobile_image",
+					"label": "Mobile Image"
+				},
+				{
+					"type": "text",
+					"id": "image_alt",
+					"label": "Image Alt"
+				},
+				{
+                    "type": "text",
+                    "id": "short_address",
+                    "label": "Short address"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "description",
+					"label": "Description",
+					"default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+				},
+                {
+                    "type": "textarea",
+                    "id": "address",
+                    "label": "Address"
+				},
+				{
+                    "type": "textarea",
+                    "id": "opening_times",
+                    "label": "Opening times"
+                },
+				{
+                    "type": "textarea",
+                    "id": "contact_us",
+                    "label": "Contact us"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

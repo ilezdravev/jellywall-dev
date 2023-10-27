@@ -1,0 +1,77 @@
+<div class="faqs-page child">
+	<div class="wrapper">
+		<div class="row">
+            <div class="faqs">
+            	<div class="heading">
+            		{% if section.settings.title %}
+            			<h2 class="title">{{ section.settings.title }}</h2>
+            		{% endif %}
+            	</div>
+            	<div class="faq" {% if disabled_by_yoast_seo %}itemscope{% endif %} {% if disabled_by_yoast_seo %}itemtype="https://schema.org/FAQPage"{% endif %}>
+            		{% for block in section.blocks %}
+            			{% if block.settings.level1 %}
+            			{% comment %}<!-- Level 1 /-->{% endcomment %}
+            			
+            				{% if forloop.first == false %}
+            					</dl>
+            				{% endif %}
+            				<dl {% if disabled_by_yoast_seo %}itemscope{% endif %} {% if disabled_by_yoast_seo %}itemprop="mainEntity"{% endif %} {% if disabled_by_yoast_seo %}itemtype="https://schema.org/Question"{% endif %} id="{{ block.settings.title | handleize }}">
+            				<dt {% if disabled_by_yoast_seo %}itemprop="name"{% endif %} class="active">{{ block.settings.title | escape }}</dt>
+            				<dd {% if disabled_by_yoast_seo %}itemscope{% endif %} {% if disabled_by_yoast_seo %}itemprop="acceptedAnswer"{% endif %} {% if disabled_by_yoast_seo %}itemtype="https://schema.org/Answer"{% endif %}>
+            				{% if block.settings.content != blank %}
+            					<div {% if disabled_by_yoast_seo %}itemprop="text"{% endif %}>{{ block.settings.content }}</div>
+            				{% endif %}
+            			{% else  %}	
+            			{% comment %}<!--  Level 2 /-->{% endcomment %}
+            				<dl {% if disabled_by_yoast_seo %}itemscope{% endif %} {% if disabled_by_yoast_seo %}itemprop="mainEntity"{% endif %} {% if disabled_by_yoast_seo %}itemtype="https://schema.org/Question"{% endif %} id="{{ block.settings.title | handleize }}">
+            				<dt {% if disabled_by_yoast_seo %}itemprop="name"{% endif %} class="active">{{ block.settings.title | escape }}</dt>
+            				<dd {% if disabled_by_yoast_seo %}itemscope{% endif %} {% if disabled_by_yoast_seo %}itemprop="acceptedAnswer"{% endif %} {% if disabled_by_yoast_seo %}itemtype="https://schema.org/Answer"{% endif %}>
+            				{% if block.settings.content != blank %}
+            					<div {% if disabled_by_yoast_seo %}itemprop="text"{% endif %}>{{ block.settings.content }}</div>
+            				{% endif %}
+            				</dl>
+            			{% endif %}
+            		{% endfor %}
+            	</div>
+            </div>
+		</div>
+	</div>
+</div>
+{% schema %}
+	{
+		"name": "FAQs",
+		"settings": [
+			{
+				"type": "text",
+				"id": "title",
+				"label": "Heading Title"
+			}
+		],
+		"blocks": [		
+			{
+		        "type": "faq",
+		        "name": "FAQ",
+		        "settings":   [
+					{
+						"type": "text",
+						"id": "title",
+						"label": "FAQ Question",
+						"default": "How do I...?"
+					},
+					{
+						"type": "textarea",
+						"id": "content",
+						"label": "FAQ Answer",
+						"default": "We're here to help."
+					},
+					{
+						"type": "checkbox",
+						"id": "level1",
+						"label": "FAQ Level1",
+						"default": true
+					}
+		        ]
+			}
+		]
+	}
+{% endschema %}

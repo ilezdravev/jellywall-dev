@@ -1,0 +1,140 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-faqs",
+      "settings": {
+      }
+    },
+    "faqs": {
+      "type": "cms-sections-faqs",
+      "blocks": {
+        "1595515472448": {
+          "type": "faq",
+          "settings": {
+            "title": "How do I make a return?",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras accumsan quam ac leo interdum mollis. Curabitur posuere diam ac orci suscipit tempus. Sed convallis diam ut ex ornare, at mollis turpis posuere. Pellentesque sodales iaculis arcu sit amet porta. Maecenas vitae pharetra dolor, eu auctor quam. Morbi eu volutpat justo, non mattis enim. Aliquam et feugiat lectus, nec placerat nunc. Quisque lobortis odio non nibh imperdiet lacinia. Nullam et odio lobortis massa pharetra varius non et tellus. Ut gravida quam sit amet consequat tincidunt.",
+            "level1": true
+          }
+        },
+        "1595515475402": {
+          "type": "faq",
+          "settings": {
+            "title": "What countries do you ship to?",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras accumsan quam ac leo interdum mollis. Curabitur posuere diam ac orci suscipit tempus. Sed convallis diam ut ex ornare, at mollis turpis posuere. Pellentesque sodales iaculis arcu sit amet porta. Maecenas vitae pharetra dolor, eu auctor quam. Morbi eu volutpat justo, non mattis enim. Aliquam et feugiat lectus, nec placerat nunc. Quisque lobortis odio non nibh imperdiet lacinia. Nullam et odio lobortis massa pharetra varius non et tellus. Ut gravida quam sit amet consequat tincidunt.",
+            "level1": true
+          }
+        },
+        "1595515476082": {
+          "type": "faq",
+          "settings": {
+            "title": "What payment methods can I use?",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras accumsan quam ac leo interdum mollis. Curabitur posuere diam ac orci suscipit tempus. Sed convallis diam ut ex ornare, at mollis turpis posuere. Pellentesque sodales iaculis arcu sit amet porta. Maecenas vitae pharetra dolor, eu auctor quam. Morbi eu volutpat justo, non mattis enim. Aliquam et feugiat lectus, nec placerat nunc. Quisque lobortis odio non nibh imperdiet lacinia. Nullam et odio lobortis massa pharetra varius non et tellus. Ut gravida quam sit amet consequat tincidunt.",
+            "level1": true
+          }
+        },
+        "1595515476966": {
+          "type": "faq",
+          "settings": {
+            "title": "What are your returns policy",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras accumsan quam ac leo interdum mollis. Curabitur posuere diam ac orci suscipit tempus. Sed convallis diam ut ex ornare, at mollis turpis posuere. Pellentesque sodales iaculis arcu sit amet porta. Maecenas vitae pharetra dolor, eu auctor quam. Morbi eu volutpat justo, non mattis enim. Aliquam et feugiat lectus, nec placerat nunc. Quisque lobortis odio non nibh imperdiet lacinia. Nullam et odio lobortis massa pharetra varius non et tellus. Ut gravida quam sit amet consequat tincidunt.",
+            "level1": true
+          }
+        },
+        "1595515478027": {
+          "type": "faq",
+          "settings": {
+            "title": "How do I track my order?",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras accumsan quam ac leo interdum mollis. Curabitur posuere diam ac orci suscipit tempus. Sed convallis diam ut ex ornare, at mollis turpis posuere. Pellentesque sodales iaculis arcu sit amet porta. Maecenas vitae pharetra dolor, eu auctor quam. Morbi eu volutpat justo, non mattis enim. Aliquam et feugiat lectus, nec placerat nunc. Quisque lobortis odio non nibh imperdiet lacinia. Nullam et odio lobortis massa pharetra varius non et tellus. Ut gravida quam sit amet consequat tincidunt.",
+            "level1": true
+          }
+        }
+      },
+      "block_order": [
+        "1595515472448",
+        "1595515475402",
+        "1595515476082",
+        "1595515476966",
+        "1595515478027"
+      ],
+      "settings": {
+        "title": "Popular questions"
+      }
+    },
+    "faqsSubPages": {
+      "type": "cms-sections-faqs-sub-pages",
+      "blocks": {
+        "1595515362987": {
+          "type": "faqs-page",
+          "settings": {
+            "title": "Orders & Shipping",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "link": "shopify:\/\/pages\/orders-shipping"
+          }
+        },
+        "1595515377026": {
+          "type": "faqs-page",
+          "settings": {
+            "title": "Returns & Exchanges",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "link": "shopify:\/\/pages\/returns-exchanges"
+          }
+        },
+        "1595515415418": {
+          "type": "faqs-page",
+          "settings": {
+            "title": "Payment",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "link": "shopify:\/\/pages\/payment"
+          }
+        },
+        "1595515432155": {
+          "type": "faqs-page",
+          "settings": {
+            "title": "Privacy & Security",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "link": "shopify:\/\/pages\/privacy-security"
+          }
+        },
+        "1595515439474": {
+          "type": "faqs-page",
+          "settings": {
+            "title": "Promotions",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "link": "shopify:\/\/pages\/copy-of-privacy-security"
+          }
+        },
+        "1595515449487": {
+          "type": "faqs-page",
+          "settings": {
+            "title": "Stores",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "link": "shopify:\/\/pages\/stores"
+          }
+        }
+      },
+      "block_order": [
+        "1595515362987",
+        "1595515377026",
+        "1595515415418",
+        "1595515432155",
+        "1595515439474",
+        "1595515449487"
+      ],
+      "settings": {
+        "title": "Have a question?",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sem tortor, euismod id accumsan sit amet, lobortis sit amet sapien."
+      }
+    },
+    "faqsGTM": {
+      "type": "gtm-page",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main",
+    "faqsSubPages",
+    "faqs",
+    "faqsGTM"
+  ]
+}

@@ -1,0 +1,177 @@
+{% assign footer_link_1 = section.settings.footer_link_1 %}
+{% assign footer_link_2 = section.settings.footer_link_2 %}
+{% assign footer_link_3 = section.settings.footer_link_3 %}
+<div class="footer-links" itemscope="" {% if disabled_by_yoast_seo %}itemtype="http://schema.org/Organization"{% endif %}>
+	{%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<meta {% if disabled_by_yoast_seo %}itemprop="url"{% endif %} content="{{ shop.url }}" />
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+	{%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<meta {% if disabled_by_yoast_seo %}itemprop="logo"{% endif %} content="https:{{'apple-touch-icon.png' | asset_url}}"/>
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+	<div class="wrapper">
+		<div class="row footer wrapper-footer">
+			<div class="col-newsletter">
+				{% if section.settings.show_newsletter == true %}
+                    <div class="logo">
+                         <a href="{{shop.url}}" {% if disabled_by_yoast_seo %}itemprop="url"{% endif %}>
+                           <picture>
+                                <source media="(min-width: 576px)" srcset="{{ 'logo.png' | asset_img_url: '220x', scale:2}} 200w">
+                                <source media="(min-width: 300px)" srcset="{{ 'logo.png' | asset_img_url : '160x', scale:2}} 160w">
+                                <img src="{{'logo.png' | asset_img_url: '220x', scale:2}}" alt="{{ shop.name }}">
+                            </picture>
+                         </a>
+                    </div> 
+					{% form 'customer' %}
+						{% if form.posted_successfully? %}
+							<p class="form-success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+						{% else %}
+							<input type="hidden" name="contact[tags]" value="newsletter">
+							{% if section.settings.title_newsletter != blank %}
+								<label for="newsletter-email">{{ section.settings.title_newsletter }} <span>{% if section.settings.subtitle_newsletter != blank %}{{ section.settings.subtitle_newsletter }}{% endif %}</span></label>
+							{% endif %}
+							<div class="input-box">
+								<input type="email" name="contact[email]" id="newsletter-email" class="required" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}" autocorrect="off" autocapitalize="off">
+								<button type="submit" name="commit" class="button-icon">Subscribe</button>
+							</div>
+							{{ form.errors | default_errors }}
+						{% endif %}
+					{% endform %}
+				{% endif %}
+			</div>
+            <div class="accordion-footer-link">
+    			<div class="col-link">
+    				{% if linklists[footer_link_1].links.size > 0 %}
+    					<h6 class="h9">{{ linklists[footer_link_1].title }}</h6>
+    					<ul>
+    						{% for link in linklists[footer_link_1].links %}
+    						<li>
+    							<a href="{{ link.url }}"{% if linklists[footer_link_1].title == "Social" %} rel="me" {% if disabled_by_yoast_seo %}itemprop="sameAs"{% endif %}{% endif %}>{{ link.title }}</a>
+    						</li>
+    						{% endfor %}
+    					</ul>
+    				{% endif %}
+    			</div>
+    			<div class="col-link">
+    				{% if linklists[footer_link_2].links.size > 0 %}
+    					<h6 class="h9">{{ linklists[footer_link_2].title }}</h6>
+    					<ul>
+    						{% for link in linklists[footer_link_2].links %}
+    						<li>
+    							<a href="{{ link.url }}"{% if linklists[footer_link_1].title == "Social" %} rel="me" {% if disabled_by_yoast_seo %}itemprop="sameAs"{% endif %}{% endif %}>{{ link.title }}</a>
+    						</li>
+    						{% endfor %}
+    					</ul>
+    				{% endif %}
+    			</div>
+    			<div class="col-link">
+    				{% if linklists[footer_link_3].links.size > 0 %}
+    					<h6 class="h9">{{ linklists[footer_link_3].title }}</h6>
+    					<ul>
+    						{% for link in linklists[footer_link_3].links %}
+    						<li>
+    							<a href="{{ link.url }}"{% if linklists[footer_link_1].title == "Social" %} rel="me" {% if disabled_by_yoast_seo %}itemprop="sameAs"{% endif %}{% endif %}>{{ link.title }}</a>
+    						</li>
+    						{% endfor %}
+    					</ul>
+    				{% endif %}
+    			</div>
+            </div>
+		</div>
+        <div id="idcountryswitcher" style="float:right;">{%- render 'country-switcher' -%}{%- render 'country-switcher-global' -%}</div>
+	</div>
+    <div class="wrapper border-top">
+        <div class="row footer">
+           <div class="row copyright-text">
+    		<!-- {% include 'store-view-switcher' %} -->
+    			<p class="copyright">Copyright  &copy; {{ 'now' | date: "%Y" }} Base London. All rights reserved.</p>
+    			{% if section.settings.payment_logos != blank %}
+    			<p class="payment-logos">
+    				<picture>
+    					<img src="{{section.settings.payment_logos | img_url: 'master'}}" width="{{section.settings.payment_logos.width}}" height="{{section.settings.payment_logos.height}}" alt="Payment Logos">
+    				</picture>
+    			</p>
+    			{% endif %}
+    	   </div>
+          <div class="footer-social-links">
+              <ul class="social-links">
+                  <li class="social-link">
+                      <a class="youtube" href="https://www.youtube.com/@BaseLondonShoes" target="_blank"></a>
+                  </li>
+                  <li class="social-link">
+                      <a class="instagram" href="http://instagram.com/baselondonshoes" target="_blank"></a>
+                  </li>
+                  <li class="social-link">
+                      <a class="facebook" href="https://www.facebook.com/BaseLondonShoes" target="_blank"></a>
+                  </li>
+              </ul>
+            </div>
+        </div>
+    </div>
+	{% if shop.phone %}
+	  <span {% if disabled_by_yoast_seo %}itemprop="contactPoint"{% endif %} itemscope="" {% if disabled_by_yoast_seo %}itemtype="http://schema.org/ContactPoint"{% endif %}>
+	    {%- assign shopPhoneNumber = shop.phone | replace: ' ', '' -%}
+	    {%- assign splitPhone = shopPhoneNumber | split: '' -%}
+	    {%- if splitPhone[0] == '0' -%}
+	      {%- assign shopPhoneNumber = shopPhoneNumber | slice: 1,shopPhoneNumber.size -%}
+	      {%- assign shopPhoneNumber = '+44(0)' | append: shopPhoneNumber  -%}
+	    {%- endif -%}
+	    {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<meta {% if disabled_by_yoast_seo %}itemprop="telephone"{% endif %} content="{{shopPhoneNumber}}" />
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+	    {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<meta {% if disabled_by_yoast_seo %}itemprop="contactType"{% endif %} content="customer service" />
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+	  </span>
+	{% endif %}
+</div> 
+{% schema %}
+	{
+		"name": "Footer",
+		"settings": [
+			{
+				"type": "link_list",
+				"id": "footer_link_1",
+				"label": "Footer Link 1"
+			},
+			{
+				"type": "link_list",
+				"id": "footer_link_2",
+				"label": "Footer Link 2"
+			},
+			{
+				"type": "link_list",
+				"id": "footer_link_3",
+				"label": "Footer Link 3"
+			},
+			{
+				"label": "Payment Logos",
+				"id": "payment_logos",
+				"type": "image_picker"
+			},
+			{
+				"label": "Show Newsletter?",
+				"type": "checkbox",
+      			"id": "show_newsletter",
+				"default": false
+			},
+			{
+				"label": "Title Newsletter",
+				"type": "text",
+          		"id": "title_newsletter"
+			},
+			{
+				"label": "SubTitle Newsletter",
+				"type": "text",
+          		"id": "subtitle_newsletter"
+			}
+		]
+	}
+{% endschema %}

@@ -1,0 +1,15 @@
+{% if second_option != '' and second_option_position > 0 %}
+	{% if product.options_by_name[second_option].values.size > 1 %}
+		{% assign second_select_option = second_option_position | times: 1 | minus: 1 | prepend: '#product-select-option-'%}
+		{% assign second_option_position = second_option_position | prepend: 'option'%}
+		<div class="select-option second-option" data-position="second-option" data-option="{{ second_option_position }}" data-select-option="{{ second_select_option }}" data-index="2">
+			<span class="label">{{ second_option | prepend: 'Select ' }} <a id="size-guide-button">Size Guide</a></span>
+			<ul>
+				{% for option_value in product.options_by_name[second_option].values %}
+					{% assign option_value = option_value | strip_html | strip %}
+					<li data-value="{{ option_value }}">UK {{ option_value }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+	{% endif %}
+{% endif %}	

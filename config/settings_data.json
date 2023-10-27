@@ -1,0 +1,1971 @@
+{
+  "current": {
+    "gtm_code": "",
+    "number_of_products": 40,
+    "dashboard_banner": "shopify:\/\/shop_images\/login-banner.jpg",
+    "login_banner": "shopify:\/\/shop_images\/banner-full-bottom_9c890de8-5c06-44f9-897a-09d2a186c481.jpg",
+    "register_banner": "shopify:\/\/shop_images\/login-banner.jpg",
+    "checkout_header_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/logo.webp",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "small",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "Open Sans",
+    "checkout_body_font": "Open Sans",
+    "checkout_accent_color": "#111111",
+    "checkout_button_color": "#be0005",
+    "checkout_error_color": "#fa1d1d",
+    "use_logo": false,
+    "facebook_url": "",
+    "twitter_url": "",
+    "pinterest_url": "",
+    "googleplus_url": "",
+    "flickr_url": "",
+    "instagram_url": "",
+    "linkedin_url": "",
+    "vimeo_url": "",
+    "youtube_url": "",
+    "tumblr_url": "",
+    "wordpress_url": "",
+    "yelp_url": "",
+    "contact_email": "",
+    "featured_blog": "",
+    "homepage_page": "",
+    "homepage_collection": "",
+    "products_per_row": "4",
+    "number_of_rows": "5",
+    "wishlist_enabled": true,
+    "checkout_use_storefront_logo": false,
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "background_color": "#ffffff",
+    "text_color": "#898989",
+    "link_color": "#898989",
+    "base_font_family": "'Source Sans Pro', sans-serif",
+    "base_font_size": "16px",
+    "social_icons_style": "",
+    "collection_sidebar_filters": "groups",
+    "ajax_cart_method": "drawer",
+    "cart_notes_enable": false,
+    "sections": {
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "footer_link_1": "footer",
+          "footer_link_2": "footer-1",
+          "footer_link_3": "footer-2",
+          "show_newsletter": true,
+          "title_newsletter": "Enjoy 10% off your next purchase when you sign up.",
+          "subtitle_newsletter": ""
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+        }
+      },
+      "navigation": {
+        "type": "navigation",
+        "blocks": {
+          "85a3cc6d-3ae3-4b8c-891b-d9592ee2621b": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/All-Shoes-Navy-1.jpg",
+              "title": "",
+              "subtitle": "All Shoes",
+              "text_color": "text-dark",
+              "link": "shopify:\/\/collections\/shoes",
+              "parent": "Shoes"
+            }
+          },
+          "857825bc-3af9-41e8-979b-fe53f5be656a": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Work-Shoes-2.jpg",
+              "title": "",
+              "subtitle": "Work Shoes",
+              "text_color": "text-dark",
+              "link": "shopify:\/\/collections\/work-shoes",
+              "parent": "Shoes"
+            }
+          },
+          "b0597665-af8a-4894-ae52-dabed6a03961": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/All-Boots-2.jpg",
+              "title": "",
+              "subtitle": "All Boots",
+              "text_color": "text-dark",
+              "link": "shopify:\/\/collections\/boots",
+              "parent": "Boots"
+            }
+          },
+          "d982c59a-131a-446e-bbc7-68de4e01886a": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Seymour-bannerArtboard-1_1920x804_crop_center_618eb136-b2b6-4f03-b08f-870951d53925.png",
+              "title": "",
+              "subtitle": "Chelsea Boots",
+              "text_color": "text-dark",
+              "link": "shopify:\/\/collections\/chelsea-boots",
+              "parent": "Boots"
+            }
+          },
+          "7d83f3b9-88ad-46ac-86ab-004b2bc70e7d": {
+            "type": "image",
+            "settings": {
+              "title": "",
+              "subtitle": "Summer Styles",
+              "text_color": "text-dark",
+              "link": "shopify:\/\/collections\/summer-styles",
+              "parent": "Collections"
+            }
+          },
+          "6a97b9e0-34d2-49b0-9eec-750352101311": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/date-night-2.jpg",
+              "title": "",
+              "subtitle": "Sale",
+              "text_color": "text-dark",
+              "link": "shopify:\/\/collections\/summer-sale",
+              "parent": "Collections"
+            }
+          },
+          "ac034ac6-73b7-47cc-98fc-669918a9e816": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Pub-classics-2.jpg",
+              "title": "",
+              "subtitle": "Pub Classics",
+              "text_color": "text-dark",
+              "link": "shopify:\/\/collections\/pub-classics",
+              "parent": "Collections"
+            }
+          },
+          "7bd47aa2-6a98-4eef-8461-599b6cde96d7": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Suede-2.jpg",
+              "title": "",
+              "subtitle": "Suede Footwear",
+              "text_color": "text-dark",
+              "link": "shopify:\/\/collections\/suede-footwear",
+              "parent": "Collections"
+            }
+          },
+          "b1898714-ec10-4d37-b2ec-3a3c1b7abd1d": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/All-footwear-NAV-1.jpg",
+              "title": "",
+              "subtitle": "All Footwear",
+              "text_color": "text-light",
+              "link": "shopify:\/\/collections\/all",
+              "parent": "Collections"
+            }
+          },
+          "22d01471-4622-4ae5-8c7c-d4faecf90bb6": {
+            "type": "image",
+            "settings": {
+              "title": "",
+              "subtitle": "Wedding Shoes",
+              "text_color": "text-dark",
+              "link": "shopify:\/\/collections\/wedding-shoes",
+              "parent": "Collections"
+            }
+          }
+        },
+        "block_order": [
+          "85a3cc6d-3ae3-4b8c-891b-d9592ee2621b",
+          "857825bc-3af9-41e8-979b-fe53f5be656a",
+          "b0597665-af8a-4894-ae52-dabed6a03961",
+          "d982c59a-131a-446e-bbc7-68de4e01886a",
+          "7d83f3b9-88ad-46ac-86ab-004b2bc70e7d",
+          "6a97b9e0-34d2-49b0-9eec-750352101311",
+          "ac034ac6-73b7-47cc-98fc-669918a9e816",
+          "7bd47aa2-6a98-4eef-8461-599b6cde96d7",
+          "b1898714-ec10-4d37-b2ec-3a3c1b7abd1d",
+          "22d01471-4622-4ae5-8c7c-d4faecf90bb6"
+        ],
+        "settings": {
+          "nav_primary": "main-menu",
+          "nav_additional_1": "",
+          "nav_additional_2": ""
+        }
+      },
+      "header-top-bar": {
+        "type": "header-top-bar",
+        "blocks": {
+          "1590139720339": {
+            "type": "promo",
+            "settings": {
+              "promo_text": "Free UK Next Day Delivery*",
+              "promo_text_2": "bx-delivery",
+              "link": "https:\/\/help.baselondon.com\/hc\/en-us\/articles\/360025246573-When-Will-I-Receive-My-Delivery-"
+            }
+          },
+          "84e5dfa2-a778-4c43-9e15-f747ca4893e9": {
+            "type": "promo",
+            "settings": {
+              "promo_text": "Easy & Free UK Returns",
+              "promo_text_2": "bx-return",
+              "link": ""
+            }
+          },
+          "52a5d4da-3770-46cb-bacd-9ed94ae24461": {
+            "type": "promo",
+            "settings": {
+              "promo_text": "Pay later with Klarna",
+              "promo_text_2": "bx-pay-later",
+              "link": ""
+            }
+          },
+          "3e4d8da7-d95f-43d2-82dd-899203d728ab": {
+            "type": "promo",
+            "disabled": true,
+            "settings": {
+              "promo_text": "Up to 50% Off Easter Sale",
+              "promo_text_2": "bx-easter-delivery",
+              "link": "shopify:\/\/collections\/easter-sale"
+            }
+          }
+        },
+        "block_order": [
+          "1590139720339",
+          "84e5dfa2-a778-4c43-9e15-f747ca4893e9",
+          "52a5d4da-3770-46cb-bacd-9ed94ae24461",
+          "3e4d8da7-d95f-43d2-82dd-899203d728ab"
+        ],
+        "settings": {
+          "show_promo": true,
+          "hide_promo_mobile": false,
+          "add_carousel": "owl-carousel"
+        }
+      },
+      "collection-filter": {
+        "type": "collection-filter",
+        "blocks": {
+          "7b6b6f41-3517-4630-91f7-d57fed1fcd3f": {
+            "type": "tags",
+            "settings": {
+              "title": "Product Type"
+            }
+          },
+          "cf2fbee5-d405-4f82-8cb7-c58403d91073": {
+            "type": "tags",
+            "settings": {
+              "title": "Colour"
+            }
+          },
+          "5a174e90-6228-47cc-9976-a350f33400b8": {
+            "type": "tags",
+            "settings": {
+              "title": "Size"
+            }
+          },
+          "93e7e0d2-f18d-455a-a0b1-f654b05c601e": {
+            "type": "tags",
+            "settings": {
+              "title": "Style"
+            }
+          },
+          "be999c6f-9d62-42a6-9bd5-c091a4aea1d1": {
+            "type": "tags",
+            "settings": {
+              "title": "Occasion"
+            }
+          },
+          "24fd5e27-2233-4860-8703-8f8ca73d7ab2": {
+            "type": "tags",
+            "settings": {
+              "title": "Fastening"
+            }
+          },
+          "d94438e8-fbdd-4259-81da-5b9f81184d39": {
+            "type": "tags",
+            "settings": {
+              "title": "Material"
+            }
+          },
+          "c6baf76c-1239-4ce2-b18e-78a82a53828c": {
+            "type": "tags",
+            "settings": {
+              "title": "Season"
+            }
+          }
+        },
+        "block_order": [
+          "7b6b6f41-3517-4630-91f7-d57fed1fcd3f",
+          "cf2fbee5-d405-4f82-8cb7-c58403d91073",
+          "5a174e90-6228-47cc-9976-a350f33400b8",
+          "93e7e0d2-f18d-455a-a0b1-f654b05c601e",
+          "be999c6f-9d62-42a6-9bd5-c091a4aea1d1",
+          "24fd5e27-2233-4860-8703-8f8ca73d7ab2",
+          "d94438e8-fbdd-4259-81da-5b9f81184d39",
+          "c6baf76c-1239-4ce2-b18e-78a82a53828c"
+        ],
+        "settings": {
+        }
+      },
+      "1591860427965": {
+        "type": "grid-banner",
+        "blocks": {
+          "1591860427965-0": {
+            "type": "image",
+            "settings": {
+              "column_order": "order-1",
+              "column_vertical_align": "top",
+              "image_size": "",
+              "mobile_image_size": "",
+              "image_lazy_load": true,
+              "image_alt": "Base London Outlet",
+              "video_src": "",
+              "video_loop": false,
+              "video_controls": false,
+              "video_link": "",
+              "link": "shopify:\/\/collections\/mens-designer-shoe-outlet",
+              "content_position": "located-image",
+              "text_color": "text-light",
+              "vertical_align": "bottom",
+              "horizontal_align": "left",
+              "reverse_title_content": "",
+              "title": "",
+              "title_tag": "h4",
+              "content": "",
+              "link_1": "shopify:\/\/collections\/mens-designer-shoe-outlet",
+              "button_text_1": "Shop Now",
+              "button_style_1": "button white",
+              "link_2": "",
+              "button_text_2": "",
+              "button_style_2": "button",
+              "button_position": "button-below-content",
+              "quick_view_products": "",
+              "button_quick_view_products": "",
+              "number_view_product": "3",
+              "position_quick_view_products": "bottom-left"
+            }
+          }
+        },
+        "block_order": [
+          "1591860427965-0"
+        ],
+        "settings": {
+          "max_width": "",
+          "background_color": "",
+          "add_border_top": "",
+          "add_border_bottom": "",
+          "border_width": "border-content-center",
+          "add_padding_top": "padding-top",
+          "add_padding_bottom": "",
+          "add_margin_top": "",
+          "add_margin_bottom": "",
+          "custom_class": "",
+          "heading_align": "text-center",
+          "heading_text_color": "text-light",
+          "title": "",
+          "heading_title_tag": "h2",
+          "heading_subtitle": "",
+          "heading_show": false,
+          "add_carousel": ""
+        }
+      },
+      "cms-sections": {
+        "type": "cms-sections",
+        "blocks": {
+          "1594571465721": {
+            "type": "banner-one",
+            "settings": {
+              "title": "",
+              "max_width": "full-width",
+              "background_color": "",
+              "add_border_top": "",
+              "add_border_bottom": "",
+              "border_width": "",
+              "add_padding_top": "",
+              "add_padding_bottom": "",
+              "add_margin_top": "",
+              "add_margin_bottom": "",
+              "custom_class": "",
+              "heading_align": "text-center",
+              "heading_text_color": "text-light",
+              "heading_title": "",
+              "heading_title_tag": "h2",
+              "heading_subtitle": "",
+              "column_order_1": "order-1",
+              "image_alt_1": "",
+              "video_src_1": "",
+              "video_loop_1": true,
+              "video_controls_1": false,
+              "video_link_1": "",
+              "link_1": "",
+              "content_position_1": "located-image",
+              "text_color_1": "text-light",
+              "vertical_align_1": "middle",
+              "horizontal_align_1": "center",
+              "reverse_title_content_1": "",
+              "content_title_1": "Banner title",
+              "content_title_tag_1": "h2",
+              "content_1": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<\/p>",
+              "link_1_a": "#",
+              "button_text_1_a": "Call to action",
+              "button_style_1_a": "button",
+              "link_1_b": "",
+              "button_text_1_b": "Shop Now",
+              "button_style_1_b": "button",
+              "button_position_1": "button-bottom"
+            }
+          },
+          "1598626174651": {
+            "type": "banner-three",
+            "settings": {
+              "title": "",
+              "max_width": "",
+              "background_color": "",
+              "add_border_top": "",
+              "add_border_bottom": "",
+              "border_width": "",
+              "add_padding_top": "",
+              "add_padding_bottom": "padding-bottom",
+              "add_margin_top": "margin-top",
+              "add_margin_bottom": "",
+              "custom_class": "",
+              "heading_align": "text-center",
+              "heading_text_color": "text-dark",
+              "heading_title": "",
+              "heading_title_tag": "h2",
+              "heading_subtitle": "",
+              "column_order_1": "order-1",
+              "image_alt_1": "",
+              "video_src_1": "",
+              "video_loop_1": true,
+              "video_controls_1": false,
+              "video_link_1": "",
+              "link_1": "",
+              "content_position_1": "located-image",
+              "text_color_1": "text-light",
+              "vertical_align_1": "middle",
+              "horizontal_align_1": "center",
+              "reverse_title_content_1": "",
+              "content_title_1": "Banner title",
+              "content_title_tag_1": "h2",
+              "content_1": "<p>Lorem ipsum dolor sit amet<\/p>",
+              "link_1_a": "#",
+              "button_text_1_a": "Call to action",
+              "button_style_1_a": "button",
+              "link_1_b": "",
+              "button_text_1_b": "Shop Now",
+              "button_style_1_b": "button",
+              "button_position_1": "button-bottom",
+              "column_order_2": "order-2",
+              "image_alt_2": "",
+              "video_src_2": "",
+              "video_loop_2": true,
+              "video_controls_2": false,
+              "video_link_2": "",
+              "column_vertical_align_2": "middle",
+              "link_2": "",
+              "content_position_2": "located-image",
+              "text_color_2": "text-light",
+              "vertical_align_2": "middle",
+              "horizontal_align_2": "center",
+              "reverse_title_content_2": "",
+              "content_title_2": "Banner title",
+              "content_title_tag_2": "h2",
+              "content_2": "<p>Lorem ipsum dolor sit amet<\/p>",
+              "link_2_a": "#",
+              "button_text_2_a": "Call to action",
+              "button_style_2_a": "button",
+              "link_2_b": "",
+              "button_text_2_b": "Shop Now",
+              "button_style_2_b": "button",
+              "button_position_2": "button-bottom",
+              "column_order_3": "order-3",
+              "image_alt_3": "",
+              "video_src_3": "",
+              "video_loop_3": true,
+              "video_controls_3": false,
+              "video_link_3": "",
+              "column_vertical_align_3": "middle",
+              "link_3": "",
+              "content_position_3": "located-image",
+              "text_color_3": "text-light",
+              "vertical_align_3": "middle",
+              "horizontal_align_3": "center",
+              "reverse_title_content_3": "",
+              "content_title_3": "Banner title",
+              "content_title_tag_3": "h2",
+              "content_3": "<p>Lorem ipsum dolor sit amet<\/p>",
+              "link_3_a": "#",
+              "button_text_3_a": "Call to action",
+              "button_style_3_a": "button",
+              "link_3_b": "",
+              "button_text_3_b": "Shop Now",
+              "button_style_3_b": "button",
+              "button_position_3": "button-bottom"
+            }
+          },
+          "1598627165308": {
+            "type": "banner-four",
+            "settings": {
+              "title": "",
+              "max_width": "",
+              "background_color": "",
+              "add_border_top": "",
+              "add_border_bottom": "",
+              "border_width": "",
+              "add_padding_top": "",
+              "add_padding_bottom": "",
+              "add_margin_top": "",
+              "add_margin_bottom": "margin-bottom",
+              "custom_class": "",
+              "heading_align": "text-center",
+              "heading_text_color": "text-dark",
+              "heading_title": "",
+              "heading_title_tag": "h2",
+              "heading_subtitle": "",
+              "column_order_1": "order-1",
+              "image_alt_1": "",
+              "video_src_1": "",
+              "video_loop_1": true,
+              "video_controls_1": false,
+              "video_link_1": "",
+              "link_1": "",
+              "content_position_1": "located-image",
+              "text_color_1": "text-light",
+              "vertical_align_1": "middle",
+              "horizontal_align_1": "center",
+              "reverse_title_content_1": "",
+              "content_title_1": "Banner title",
+              "content_title_tag_1": "h3",
+              "content_1": "<p>Lorem ipsum dolor sit amet<\/p>",
+              "link_1_a": "#",
+              "button_text_1_a": "Call to action",
+              "button_style_1_a": "button",
+              "link_1_b": "",
+              "button_text_1_b": "Shop Now",
+              "button_style_1_b": "button",
+              "button_position_1": "button-bottom",
+              "column_order_2": "order-2",
+              "image_alt_2": "",
+              "video_src_2": "",
+              "video_loop_2": true,
+              "video_controls_2": false,
+              "video_link_2": "",
+              "column_vertical_align_2": "middle",
+              "link_2": "",
+              "content_position_2": "located-image",
+              "text_color_2": "text-light",
+              "vertical_align_2": "middle",
+              "horizontal_align_2": "center",
+              "reverse_title_content_2": "",
+              "content_title_2": "Banner title",
+              "content_title_tag_2": "h3",
+              "content_2": "<p>Lorem ipsum dolor sit amet<\/p>",
+              "link_2_a": "#",
+              "button_text_2_a": "Call to action",
+              "button_style_2_a": "button",
+              "link_2_b": "",
+              "button_text_2_b": "Shop Now",
+              "button_style_2_b": "button",
+              "button_position_2": "button-bottom",
+              "column_order_3": "order-3",
+              "image_alt_3": "",
+              "video_src_3": "",
+              "video_loop_3": true,
+              "video_controls_3": false,
+              "video_link_3": "",
+              "column_vertical_align_3": "middle",
+              "link_3": "",
+              "content_position_3": "located-image",
+              "text_color_3": "text-light",
+              "vertical_align_3": "middle",
+              "horizontal_align_3": "center",
+              "reverse_title_content_3": "",
+              "content_title_3": "Banner title",
+              "content_title_tag_3": "h3",
+              "content_3": "<p>Lorem ipsum dolor sit amet<\/p>",
+              "link_3_a": "#",
+              "button_text_3_a": "Call to action",
+              "button_style_3_a": "button",
+              "link_3_b": "",
+              "button_text_3_b": "Shop Now",
+              "button_style_3_b": "button",
+              "button_position_3": "button-bottom",
+              "column_order_4": "order-3",
+              "image_alt_4": "",
+              "video_src_4": "",
+              "video_loop_4": true,
+              "video_controls_4": false,
+              "video_link_4": "",
+              "column_vertical_align_4": "middle",
+              "link_4": "",
+              "content_position_4": "located-image",
+              "text_color_4": "text-light",
+              "vertical_align_4": "middle",
+              "horizontal_align_4": "center",
+              "reverse_title_content_4": "",
+              "content_title_4": "Banner title",
+              "content_title_tag_4": "h3",
+              "content_4": "<p>Lorem ipsum dolor sit amet<\/p>",
+              "link_4_a": "#",
+              "button_text_4_a": "Call to action",
+              "button_style_4_a": "button",
+              "link_4_b": "",
+              "button_text_4_b": "Shop Now",
+              "button_style_4_b": "button",
+              "button_position_4": "button-bottom"
+            }
+          },
+          "1591876992726": {
+            "type": "banner-two",
+            "settings": {
+              "title": "Headline Lorem Ipsum",
+              "max_width": "",
+              "background_color": "",
+              "add_border_top": "",
+              "add_border_bottom": "",
+              "border_width": "",
+              "add_padding_top": "",
+              "add_padding_bottom": "",
+              "add_margin_top": "",
+              "add_margin_bottom": "margin-bottom",
+              "custom_class": "",
+              "heading_align": "text-center",
+              "heading_text_color": "text-light",
+              "heading_title": "",
+              "heading_title_tag": "h2",
+              "heading_subtitle": "",
+              "column_order_1": "order-1",
+              "image_alt_1": "",
+              "video_src_1": "",
+              "video_loop_1": true,
+              "video_controls_1": false,
+              "video_link_1": "",
+              "link_1": "",
+              "content_position_1": "located-image",
+              "text_color_1": "text-light",
+              "vertical_align_1": "middle",
+              "horizontal_align_1": "center",
+              "reverse_title_content_1": "",
+              "content_title_1": "Banner title",
+              "content_title_tag_1": "h2",
+              "content_1": "<p>Lorem ipsum dolor sit amet<\/p>",
+              "link_1_a": "#",
+              "button_text_1_a": "Call to action",
+              "button_style_1_a": "button",
+              "link_1_b": "",
+              "button_text_1_b": "Shop Now",
+              "button_style_1_b": "button",
+              "button_position_1": "button-bottom",
+              "column_order_2": "order-2",
+              "image_alt_2": "",
+              "video_src_2": "",
+              "video_loop_2": true,
+              "video_controls_2": false,
+              "video_link_2": "",
+              "column_vertical_align_2": "middle",
+              "link_2": "",
+              "content_position_2": "located-image",
+              "text_color_2": "text-light",
+              "vertical_align_2": "middle",
+              "horizontal_align_2": "center",
+              "reverse_title_content_2": "",
+              "content_title_2": "Banner title",
+              "content_title_tag_2": "h2",
+              "content_2": "<p>Lorem ipsum dolor sit amet<\/p>",
+              "link_2_a": "#",
+              "button_text_2_a": "Call to action",
+              "button_style_2_a": "button",
+              "link_2_b": "",
+              "button_text_2_b": "Shop Now",
+              "button_style_2_b": "button",
+              "button_position_2": "button-bottom"
+            }
+          },
+          "1598628360953": {
+            "type": "onecolumn-content",
+            "settings": {
+              "title": "Headline Lorem Ipsum",
+              "max_width": "",
+              "background_color": "",
+              "add_border_top": "",
+              "add_border_bottom": "",
+              "border_width": "",
+              "add_padding_top": "",
+              "add_padding_bottom": "",
+              "add_margin_top": "",
+              "add_margin_bottom": "",
+              "custom_class": "",
+              "content_width": "content-center",
+              "text_color_1": "text-dark",
+              "column_vertical_align_1": "middle",
+              "content_align_1": "text-center",
+              "content_title_1": "Content title",
+              "content_title_tag_1": "h2",
+              "content_1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla auctor eget neque nec ultricies. Cras mattis justo et porttitor varius. Pellentesque sit amet placerat tortor. Etiam id tincidunt risus. Proin eleifend dapibus ipsum, malesuada molestie velit vestibulum nec.",
+              "link_1_a": "",
+              "button_text_1_a": "Shop Now",
+              "button_style_1_a": "button",
+              "link_1_b": "",
+              "button_text_1_b": "Shop Now",
+              "button_style_1_b": "button",
+              "vertical_align_1": "middle"
+            }
+          },
+          "1594479772547": {
+            "type": "banner-two",
+            "settings": {
+              "title": "Headline Lorem Ipsum",
+              "max_width": "",
+              "background_color": "",
+              "add_border_top": "",
+              "add_border_bottom": "",
+              "border_width": "",
+              "add_padding_top": "",
+              "add_padding_bottom": "",
+              "add_margin_top": "margin-top",
+              "add_margin_bottom": "margin-bottom",
+              "custom_class": "",
+              "heading_align": "text-center",
+              "heading_text_color": "text-light",
+              "heading_title": "",
+              "heading_title_tag": "h2",
+              "heading_subtitle": "",
+              "column_order_1": "order-2",
+              "image_alt_1": "",
+              "video_src_1": "",
+              "video_loop_1": true,
+              "video_controls_1": false,
+              "video_link_1": "https:\/\/www.youtube.com\/watch?v=Wimkqo8gDZ0",
+              "link_1": "",
+              "content_position_1": "located-image",
+              "text_color_1": "text-light",
+              "vertical_align_1": "middle",
+              "horizontal_align_1": "center",
+              "reverse_title_content_1": "",
+              "content_title_1": "",
+              "content_title_tag_1": "h6",
+              "content_1": "",
+              "link_1_a": "",
+              "button_text_1_a": "Shop Now",
+              "button_style_1_a": "button",
+              "link_1_b": "",
+              "button_text_1_b": "Shop Now",
+              "button_style_1_b": "button",
+              "button_position_1": "button-below-content",
+              "column_order_2": "order-1",
+              "image_alt_2": "",
+              "video_src_2": "",
+              "video_loop_2": true,
+              "video_controls_2": false,
+              "video_link_2": "",
+              "column_vertical_align_2": "middle",
+              "link_2": "",
+              "content_position_2": "",
+              "text_color_2": "text-dark",
+              "vertical_align_2": "middle",
+              "horizontal_align_2": "left",
+              "reverse_title_content_2": "",
+              "content_title_2": "Lorem ipsum dolor",
+              "content_title_tag_2": "h6",
+              "content_2": "<p>Nullam sodales ex nec sapien pulvinar, in cursus urna fermentum. Aenean risus velit, sagittis sit amet nisi non, iaculis ultrices nibh. Proin pharetra ullamcorper tellus ut fringilla. Fusce et est massa. Ut porttitor porta elit eu blandit.<\/p>",
+              "link_2_a": "shopify:\/\/pages\/about-us",
+              "button_text_2_a": "Shop Now",
+              "button_style_2_a": "button",
+              "link_2_b": "",
+              "button_text_2_b": "Shop Now",
+              "button_style_2_b": "button",
+              "button_position_2": "button-below-content"
+            }
+          },
+          "1591877053551": {
+            "type": "banner-two",
+            "settings": {
+              "title": "Headline Lorem Ipsum",
+              "max_width": "",
+              "background_color": "",
+              "add_border_top": "",
+              "add_border_bottom": "",
+              "border_width": "",
+              "add_padding_top": "",
+              "add_padding_bottom": "",
+              "add_margin_top": "",
+              "add_margin_bottom": "margin-bottom",
+              "custom_class": "",
+              "heading_align": "text-left",
+              "heading_text_color": "text-light",
+              "heading_title": "",
+              "heading_title_tag": "h2",
+              "heading_subtitle": "",
+              "column_order_1": "order-1",
+              "image_alt_1": "",
+              "video_src_1": "",
+              "video_loop_1": true,
+              "video_controls_1": false,
+              "video_link_1": "",
+              "link_1": "",
+              "content_position_1": "located-image",
+              "text_color_1": "text-light",
+              "vertical_align_1": "middle",
+              "horizontal_align_1": "center",
+              "reverse_title_content_1": "",
+              "content_title_1": "",
+              "content_title_tag_1": "h2",
+              "content_1": "",
+              "link_1_a": "",
+              "button_text_1_a": "Shop Now",
+              "button_style_1_a": "button",
+              "link_1_b": "",
+              "button_text_1_b": "Shop Now",
+              "button_style_1_b": "button",
+              "button_position_1": "button-below-content",
+              "column_order_2": "order-2",
+              "image_alt_2": "",
+              "video_src_2": "",
+              "video_loop_2": true,
+              "video_controls_2": false,
+              "video_link_2": "",
+              "column_vertical_align_2": "middle",
+              "link_2": "",
+              "content_position_2": "",
+              "text_color_2": "text-dark",
+              "vertical_align_2": "middle",
+              "horizontal_align_2": "left",
+              "reverse_title_content_2": "",
+              "content_title_2": "Lorem ipsum dolor",
+              "content_title_tag_2": "h6",
+              "content_2": "<p>Nullam sodales ex nec sapien pulvinar, in cursus urna fermentum. Aenean risus velit, sagittis sit amet nisi non, iaculis ultrices nibh. Proin pharetra ullamcorper tellus ut fringilla. Fusce et est massa. Ut porttitor porta elit eu blandit.<\/p>",
+              "link_2_a": "",
+              "button_text_2_a": "Shop Now",
+              "button_style_2_a": "button",
+              "link_2_b": "",
+              "button_text_2_b": "Shop Now",
+              "button_style_2_b": "button",
+              "button_position_2": "button-below-content"
+            }
+          },
+          "1591877423356": {
+            "type": "banner-three",
+            "settings": {
+              "title": "Headline Lorem Ipsum",
+              "max_width": "",
+              "background_color": "",
+              "add_border_top": "",
+              "add_border_bottom": "",
+              "border_width": "",
+              "add_padding_top": "",
+              "add_padding_bottom": "",
+              "add_margin_top": "",
+              "add_margin_bottom": "margin-bottom",
+              "custom_class": "",
+              "heading_align": "text-center",
+              "heading_text_color": "text-light",
+              "heading_title": "",
+              "heading_title_tag": "h2",
+              "heading_subtitle": "",
+              "column_order_1": "order-1",
+              "image_alt_1": "",
+              "video_src_1": "",
+              "video_loop_1": true,
+              "video_controls_1": false,
+              "video_link_1": "",
+              "link_1": "",
+              "content_position_1": "located-image",
+              "text_color_1": "text-light",
+              "vertical_align_1": "middle",
+              "horizontal_align_1": "center",
+              "reverse_title_content_1": "",
+              "content_title_1": "Banner",
+              "content_title_tag_1": "h2",
+              "content_1": "<p>Lorem ipsum dolor sit amet<\/p>",
+              "link_1_a": "",
+              "button_text_1_a": "Shop Now",
+              "button_style_1_a": "button",
+              "link_1_b": "",
+              "button_text_1_b": "Shop Now",
+              "button_style_1_b": "button",
+              "button_position_1": "button-below-content",
+              "column_order_2": "order-2",
+              "image_alt_2": "",
+              "video_src_2": "",
+              "video_loop_2": true,
+              "video_controls_2": false,
+              "video_link_2": "",
+              "column_vertical_align_2": "middle",
+              "link_2": "",
+              "content_position_2": "located-image",
+              "text_color_2": "text-light",
+              "vertical_align_2": "middle",
+              "horizontal_align_2": "center",
+              "reverse_title_content_2": "",
+              "content_title_2": "Banner",
+              "content_title_tag_2": "h2",
+              "content_2": "<p>Lorem ipsum dolor sit amet<\/p>",
+              "link_2_a": "",
+              "button_text_2_a": "Shop Now",
+              "button_style_2_a": "button",
+              "link_2_b": "",
+              "button_text_2_b": "Shop Now",
+              "button_style_2_b": "button",
+              "button_position_2": "button-below-content",
+              "column_order_3": "order-3",
+              "image_alt_3": "",
+              "video_src_3": "",
+              "video_loop_3": true,
+              "video_controls_3": false,
+              "video_link_3": "",
+              "column_vertical_align_3": "middle",
+              "link_3": "",
+              "content_position_3": "located-image",
+              "text_color_3": "text-light",
+              "vertical_align_3": "middle",
+              "horizontal_align_3": "center",
+              "reverse_title_content_3": "",
+              "content_title_3": "Banner",
+              "content_title_tag_3": "h2",
+              "content_3": "<p>Lorem ipsum dolor sit amet<\/p>",
+              "link_3_a": "",
+              "button_text_3_a": "Shop Now",
+              "button_style_3_a": "button",
+              "link_3_b": "",
+              "button_text_3_b": "Shop Now",
+              "button_style_3_b": "button",
+              "button_position_3": "button-below-content"
+            }
+          },
+          "1594570899054": {
+            "type": "onecolumn-content",
+            "settings": {
+              "title": "Headline Lorem Ipsum",
+              "max_width": "medium-width",
+              "background_color": "",
+              "add_border_top": "",
+              "add_border_bottom": "",
+              "border_width": "",
+              "add_padding_top": "",
+              "add_padding_bottom": "",
+              "add_margin_top": "",
+              "add_margin_bottom": "margin-bottom",
+              "custom_class": "",
+              "content_width": "content-center",
+              "text_color_1": "text-dark",
+              "column_vertical_align_1": "middle",
+              "content_align_1": "text-center",
+              "content_title_1": "Banner",
+              "content_title_tag_1": "h2",
+              "content_1": "Lorem ipsum dolor sit amet",
+              "link_1_a": "",
+              "button_text_1_a": "Shop Now",
+              "button_style_1_a": "button",
+              "link_1_b": "",
+              "button_text_1_b": "Shop Now",
+              "button_style_1_b": "button",
+              "vertical_align_1": "middle"
+            }
+          },
+          "1591877601649": {
+            "type": "featured-collection",
+            "settings": {
+              "title": "Headline Lorem Ipsum",
+              "max_width": "",
+              "background_color": "",
+              "add_border_top": "border-top",
+              "add_border_bottom": "",
+              "border_width": "border-content-center",
+              "add_padding_top": "",
+              "add_padding_bottom": "",
+              "add_margin_top": "",
+              "add_margin_bottom": "margin-bottom",
+              "custom_class": "",
+              "text_color": "text-light",
+              "heading_align": "text-center",
+              "heading_text_color": "text-dark",
+              "heading_title": "Headline Lorem Ipsum",
+              "heading_title_tag": "h6",
+              "heading_subtitle": "",
+              "collection": "",
+              "grid": "3",
+              "add_carousel": "owl-carousel"
+            }
+          },
+          "1594485290557": {
+            "type": "featured-blog",
+            "settings": {
+              "max_width": "",
+              "background_color": "",
+              "add_border_top": "border-top",
+              "add_border_bottom": "",
+              "border_width": "border-content-center",
+              "add_padding_top": "",
+              "add_padding_bottom": "",
+              "add_margin_top": "",
+              "add_margin_bottom": "margin-bottom",
+              "custom_class": "",
+              "heading_align": "text-center",
+              "heading_text_color": "text-dark",
+              "title": "Journal carousel",
+              "heading_title_tag": "h6",
+              "heading_subtitle": "",
+              "blog": "news",
+              "post_limit": "2",
+              "add_carousel": "owl-carousel",
+              "blog_show_author": false,
+              "blog_show_date": false,
+              "blog_show_excerpt": true,
+              "show_view_all": false
+            }
+          }
+        },
+        "block_order": [
+          "1594571465721",
+          "1598626174651",
+          "1598627165308",
+          "1591876992726",
+          "1598628360953",
+          "1594479772547",
+          "1591877053551",
+          "1591877423356",
+          "1594570899054",
+          "1591877601649",
+          "1594485290557"
+        ],
+        "settings": {
+        }
+      },
+      "product-related": {
+        "type": "product-related",
+        "settings": {
+          "show_related_products": true,
+          "max_width": "",
+          "background_color": "",
+          "add_border_top": "border-top",
+          "add_border_bottom": "",
+          "border_width": "border-content-center",
+          "add_padding_top": "",
+          "add_padding_bottom": "",
+          "add_margin_top": "",
+          "add_margin_bottom": "",
+          "custom_class": "",
+          "text_color": "text-light",
+          "title": "Featured Collection",
+          "title_tag": "h6",
+          "heading_align": "text-center",
+          "grid": "6",
+          "add_carousel": "owl-carousel"
+        }
+      },
+      "contact-section": {
+        "type": "contact-section",
+        "blocks": {
+          "1594651462886": {
+            "type": "background",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/BASE-LONDON-AW22-SULS-REUBEN1-17.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "1594651462886"
+        ],
+        "settings": {
+        }
+      },
+      "1595509887621": {
+        "type": "featured-collection",
+        "settings": {
+          "max_width": "full-width",
+          "background_color": "rgba(0,0,0,0)",
+          "add_border_top": "",
+          "add_border_bottom": "",
+          "border_width": "border-content-center",
+          "add_padding_top": "",
+          "add_padding_bottom": "padding-bottom",
+          "add_margin_top": "",
+          "add_margin_bottom": "",
+          "custom_class": "",
+          "heading_align": "text-left",
+          "heading_text_color": "text-dark",
+          "title": "Trending Now",
+          "heading_title_tag": "h6",
+          "heading_subtitle": "",
+          "collection": "best-sellers",
+          "image_lazy_load": false,
+          "grid": "10",
+          "add_carousel": "owl-carousel"
+        }
+      },
+      "cms-sections-faqs-sub-pages": {
+        "type": "cms-sections-faqs-sub-pages",
+        "blocks": {
+          "1595515362987": {
+            "type": "faqs-page",
+            "settings": {
+              "title": "Orders & Shipping",
+              "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+              "link": "shopify:\/\/pages\/orders-shipping"
+            }
+          },
+          "1595515377026": {
+            "type": "faqs-page",
+            "settings": {
+              "title": "Returns & Exchanges",
+              "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+              "link": "shopify:\/\/pages\/returns-exchanges"
+            }
+          },
+          "1595515415418": {
+            "type": "faqs-page",
+            "settings": {
+              "title": "Payment",
+              "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+              "link": "shopify:\/\/pages\/payment"
+            }
+          },
+          "1595515432155": {
+            "type": "faqs-page",
+            "settings": {
+              "title": "Privacy & Security",
+              "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+              "link": "shopify:\/\/pages\/privacy-security"
+            }
+          },
+          "1595515439474": {
+            "type": "faqs-page",
+            "settings": {
+              "title": "Promotions",
+              "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+              "link": "shopify:\/\/pages\/copy-of-privacy-security"
+            }
+          },
+          "1595515449487": {
+            "type": "faqs-page",
+            "settings": {
+              "title": "Stores",
+              "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+              "link": "shopify:\/\/pages\/stores"
+            }
+          }
+        },
+        "block_order": [
+          "1595515362987",
+          "1595515377026",
+          "1595515415418",
+          "1595515432155",
+          "1595515439474",
+          "1595515449487"
+        ],
+        "settings": {
+          "title": "Have a question?",
+          "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sem tortor, euismod id accumsan sit amet, lobortis sit amet sapien."
+        }
+      },
+      "cms-sections-faqs": {
+        "type": "cms-sections-faqs",
+        "blocks": {
+          "1595515472448": {
+            "type": "faq",
+            "settings": {
+              "title": "How do I make a return?",
+              "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras accumsan quam ac leo interdum mollis. Curabitur posuere diam ac orci suscipit tempus. Sed convallis diam ut ex ornare, at mollis turpis posuere. Pellentesque sodales iaculis arcu sit amet porta. Maecenas vitae pharetra dolor, eu auctor quam. Morbi eu volutpat justo, non mattis enim. Aliquam et feugiat lectus, nec placerat nunc. Quisque lobortis odio non nibh imperdiet lacinia. Nullam et odio lobortis massa pharetra varius non et tellus. Ut gravida quam sit amet consequat tincidunt.",
+              "level1": true
+            }
+          },
+          "1595515475402": {
+            "type": "faq",
+            "settings": {
+              "title": "What countries do you ship to?",
+              "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras accumsan quam ac leo interdum mollis. Curabitur posuere diam ac orci suscipit tempus. Sed convallis diam ut ex ornare, at mollis turpis posuere. Pellentesque sodales iaculis arcu sit amet porta. Maecenas vitae pharetra dolor, eu auctor quam. Morbi eu volutpat justo, non mattis enim. Aliquam et feugiat lectus, nec placerat nunc. Quisque lobortis odio non nibh imperdiet lacinia. Nullam et odio lobortis massa pharetra varius non et tellus. Ut gravida quam sit amet consequat tincidunt.",
+              "level1": true
+            }
+          },
+          "1595515476082": {
+            "type": "faq",
+            "settings": {
+              "title": "What payment methods can I use?",
+              "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras accumsan quam ac leo interdum mollis. Curabitur posuere diam ac orci suscipit tempus. Sed convallis diam ut ex ornare, at mollis turpis posuere. Pellentesque sodales iaculis arcu sit amet porta. Maecenas vitae pharetra dolor, eu auctor quam. Morbi eu volutpat justo, non mattis enim. Aliquam et feugiat lectus, nec placerat nunc. Quisque lobortis odio non nibh imperdiet lacinia. Nullam et odio lobortis massa pharetra varius non et tellus. Ut gravida quam sit amet consequat tincidunt.",
+              "level1": true
+            }
+          },
+          "1595515476966": {
+            "type": "faq",
+            "settings": {
+              "title": "What are your returns policy",
+              "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras accumsan quam ac leo interdum mollis. Curabitur posuere diam ac orci suscipit tempus. Sed convallis diam ut ex ornare, at mollis turpis posuere. Pellentesque sodales iaculis arcu sit amet porta. Maecenas vitae pharetra dolor, eu auctor quam. Morbi eu volutpat justo, non mattis enim. Aliquam et feugiat lectus, nec placerat nunc. Quisque lobortis odio non nibh imperdiet lacinia. Nullam et odio lobortis massa pharetra varius non et tellus. Ut gravida quam sit amet consequat tincidunt.",
+              "level1": true
+            }
+          },
+          "1595515478027": {
+            "type": "faq",
+            "settings": {
+              "title": "How do I track my order?",
+              "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras accumsan quam ac leo interdum mollis. Curabitur posuere diam ac orci suscipit tempus. Sed convallis diam ut ex ornare, at mollis turpis posuere. Pellentesque sodales iaculis arcu sit amet porta. Maecenas vitae pharetra dolor, eu auctor quam. Morbi eu volutpat justo, non mattis enim. Aliquam et feugiat lectus, nec placerat nunc. Quisque lobortis odio non nibh imperdiet lacinia. Nullam et odio lobortis massa pharetra varius non et tellus. Ut gravida quam sit amet consequat tincidunt.",
+              "level1": true
+            }
+          }
+        },
+        "block_order": [
+          "1595515472448",
+          "1595515475402",
+          "1595515476082",
+          "1595515476966",
+          "1595515478027"
+        ],
+        "settings": {
+          "title": "Popular questions"
+        }
+      },
+      "cms-sections-faqs-child": {
+        "type": "cms-sections-faqs-child",
+        "blocks": {
+          "1595575806517": {
+            "type": "faq",
+            "settings": {
+              "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+              "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras accumsan quam ac leo interdum mollis. Curabitur posuere diam ac orci suscipit tempus. Sed convallis diam ut ex ornare, at mollis turpis posuere. Pellentesque sodales iaculis arcu sit amet porta. Maecenas vitae pharetra dolor, eu auctor quam. Morbi eu volutpat justo, non mattis enim. Aliquam et feugiat lectus, nec placerat nunc. Quisque lobortis odio non nibh imperdiet lacinia. Nullam et odio lobortis massa pharetra varius non et tellus. Ut gravida quam sit amet consequat tincidunt.",
+              "level1": true
+            }
+          },
+          "1595575827511": {
+            "type": "faq",
+            "settings": {
+              "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+              "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras accumsan quam ac leo interdum mollis. Curabitur posuere diam ac orci suscipit tempus. Sed convallis diam ut ex ornare, at mollis turpis posuere. Pellentesque sodales iaculis arcu sit amet porta. Maecenas vitae pharetra dolor, eu auctor quam. Morbi eu volutpat justo, non mattis enim. Aliquam et feugiat lectus, nec placerat nunc. Quisque lobortis odio non nibh imperdiet lacinia. Nullam et odio lobortis massa pharetra varius non et tellus. Ut gravida quam sit amet consequat tincidunt.",
+              "level1": true
+            }
+          },
+          "1595575831804": {
+            "type": "faq",
+            "settings": {
+              "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+              "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras accumsan quam ac leo interdum mollis. Curabitur posuere diam ac orci suscipit tempus. Sed convallis diam ut ex ornare, at mollis turpis posuere. Pellentesque sodales iaculis arcu sit amet porta. Maecenas vitae pharetra dolor, eu auctor quam. Morbi eu volutpat justo, non mattis enim. Aliquam et feugiat lectus, nec placerat nunc. Quisque lobortis odio non nibh imperdiet lacinia. Nullam et odio lobortis massa pharetra varius non et tellus. Ut gravida quam sit amet consequat tincidunt.",
+              "level1": true
+            }
+          },
+          "1595575833936": {
+            "type": "faq",
+            "settings": {
+              "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+              "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras accumsan quam ac leo interdum mollis. Curabitur posuere diam ac orci suscipit tempus. Sed convallis diam ut ex ornare, at mollis turpis posuere. Pellentesque sodales iaculis arcu sit amet porta. Maecenas vitae pharetra dolor, eu auctor quam. Morbi eu volutpat justo, non mattis enim. Aliquam et feugiat lectus, nec placerat nunc. Quisque lobortis odio non nibh imperdiet lacinia. Nullam et odio lobortis massa pharetra varius non et tellus. Ut gravida quam sit amet consequat tincidunt.",
+              "level1": true
+            }
+          },
+          "1595575836135": {
+            "type": "faq",
+            "settings": {
+              "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+              "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras accumsan quam ac leo interdum mollis. Curabitur posuere diam ac orci suscipit tempus. Sed convallis diam ut ex ornare, at mollis turpis posuere. Pellentesque sodales iaculis arcu sit amet porta. Maecenas vitae pharetra dolor, eu auctor quam. Morbi eu volutpat justo, non mattis enim. Aliquam et feugiat lectus, nec placerat nunc. Quisque lobortis odio non nibh imperdiet lacinia. Nullam et odio lobortis massa pharetra varius non et tellus. Ut gravida quam sit amet consequat tincidunt.",
+              "level1": true
+            }
+          }
+        },
+        "block_order": [
+          "1595575806517",
+          "1595575827511",
+          "1595575831804",
+          "1595575833936",
+          "1595575836135"
+        ],
+        "settings": {
+          "title": "Orders & Shipping"
+        }
+      },
+      "cms-store-locator": {
+        "type": "cms-store-locator",
+        "blocks": {
+          "1596037771164": {
+            "type": "banner",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/image_39.jpg",
+              "mobile_image": "",
+              "image_alt": "5th Avenue",
+              "short_address": "New York",
+              "title": "5th Avenue",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sem tortor, euismod id accumsan sit amet, lobortis sit amet sapien. Praesent est velit, euismod ut mattis a, dapibus lobortis diam.",
+              "address": "New York",
+              "opening_times": "",
+              "contact_us": ""
+            }
+          },
+          "1596038538332": {
+            "type": "banner",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/image_39_657c2405-6613-4987-a433-5824fe54209f.jpg",
+              "mobile_image": "",
+              "image_alt": "",
+              "short_address": "London",
+              "title": "Soho",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+              "address": "London",
+              "opening_times": "",
+              "contact_us": ""
+            }
+          },
+          "1596038631674": {
+            "type": "banner",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/image_39_93c3e591-52cf-48c0-9861-af8de11d110b.jpg",
+              "mobile_image": "",
+              "image_alt": "",
+              "short_address": "London",
+              "title": "Brick Lane",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+              "address": "London",
+              "opening_times": "",
+              "contact_us": ""
+            }
+          },
+          "1596038680823": {
+            "type": "banner",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/image_39_8b2908f9-07a6-4de8-a55e-38094d54340e.jpg",
+              "mobile_image": "",
+              "image_alt": "",
+              "short_address": "Paris",
+              "title": "Rue Saint-Dominique",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+              "address": "Paris",
+              "opening_times": "",
+              "contact_us": ""
+            }
+          },
+          "1596038732896": {
+            "type": "banner",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/image_39_713a29d4-7471-478c-bfa4-9f8c983ac16c.jpg",
+              "mobile_image": "",
+              "image_alt": "",
+              "short_address": "Tokyo",
+              "title": "Omotesando Hills",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+              "address": "Tokyo",
+              "opening_times": "",
+              "contact_us": ""
+            }
+          },
+          "1596038750396": {
+            "type": "banner",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/image_39_bbb56ea8-1e44-4417-9090-ce9f878c0b37.jpg",
+              "mobile_image": "",
+              "image_alt": "",
+              "short_address": "London",
+              "title": "Bond street",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+              "address": "London",
+              "opening_times": "",
+              "contact_us": ""
+            }
+          }
+        },
+        "block_order": [
+          "1596037771164",
+          "1596038538332",
+          "1596038631674",
+          "1596038680823",
+          "1596038732896",
+          "1596038750396"
+        ],
+        "settings": {
+        }
+      },
+      "1630765329fd2fe56a": {
+        "type": "banner-image",
+        "blocks": {
+          "1630765329fd2fe56a-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Black-November-Wide-no-button.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/Black-November-Mobile-no-button.jpg",
+              "image_svg": "",
+              "image_lazy_load": false,
+              "image_alt": "Base London SS23",
+              "image_link": "shopify:\/\/collections\/latest-collection",
+              "video_link": "",
+              "video_file": "",
+              "video_options": "loop",
+              "content_location": "content-over-bottom",
+              "content_alignment": "text-left",
+              "content_order": "one",
+              "content_colour": "#ffffff",
+              "highlight": "",
+              "title_tag": "h1",
+              "title": "",
+              "subtitle_tag": "h7",
+              "subtitle": "",
+              "description_tag": "h9",
+              "description": "",
+              "button_link_1": "shopify:\/\/collections\/summer-styles",
+              "button_text_1": "Shop Now",
+              "button_style_1": "button",
+              "button_link_2": "",
+              "button_text_2": "",
+              "button_style_2": "button",
+              "button_position": "",
+              "shop_the_image_products": "",
+              "shop_the_image_button_text": "",
+              "shop_the_image_number": 1,
+              "shop_the_image_device": "",
+              "shop_the_image_position": "bottom-center"
+            }
+          },
+          "24a2b203-6174-410a-aa0e-cd5b37573266": {
+            "type": "image",
+            "disabled": true,
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Black-November-Wide-no-button.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/Black-November-Mobile-no-button.jpg",
+              "image_svg": "",
+              "image_lazy_load": true,
+              "image_alt": "Base London AW23",
+              "image_link": "shopify:\/\/collections\/latest-collection",
+              "video_link": "",
+              "video_file": "",
+              "video_options": "loop",
+              "content_location": "content-over-bottom",
+              "content_alignment": "text-left",
+              "content_order": "one",
+              "content_colour": "#ffffff",
+              "highlight": "AW23",
+              "title_tag": "h2",
+              "title": "",
+              "subtitle_tag": "h7",
+              "subtitle": "",
+              "description_tag": "h9",
+              "description": "",
+              "button_link_1": "shopify:\/\/collections\/latest-collection",
+              "button_text_1": "",
+              "button_style_1": "button",
+              "button_link_2": "",
+              "button_text_2": "",
+              "button_style_2": "button",
+              "button_position": "",
+              "shop_the_image_products": "latest-collection",
+              "shop_the_image_button_text": "View Products",
+              "shop_the_image_number": 1,
+              "shop_the_image_device": "",
+              "shop_the_image_position": "bottom-left"
+            }
+          }
+        },
+        "block_order": [
+          "1630765329fd2fe56a-0",
+          "24a2b203-6174-410a-aa0e-cd5b37573266"
+        ],
+        "custom_css": [
+          ".section-cms__banner-sectionBanner_01 .section-cms__buttons {padding: 0 0 4% 26%;}",
+          "@media only screen and (max-width: 61.99em) {.section-cms__banner-sectionBanner_01 .section-cms__buttons {padding: 0 0 2% 5%;} }"
+        ],
+        "settings": {
+          "add_padding_bottom": "",
+          "add_margin_bottom": "",
+          "custom_class": "Banner_01",
+          "section_background": "#ffffff",
+          "section_width": "full-width",
+          "heading_show": false,
+          "heading_align": "text-center",
+          "heading_text_color": "text-dark",
+          "title": "",
+          "heading_title_tag": "h1",
+          "heading_subtitle": "",
+          "add_carousel": ""
+        }
+      },
+      "321cb32d-1368-4808-b2c1-d68a1e1f764b": {
+        "type": "banner-image-multicolumn",
+        "blocks": {
+          "321cb32d-1368-4808-b2c1-d68a1e1f764b-1666095493b0dfd5c3-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/work-shoes-bannerArtboard-1_1920x804_crop_center_1920x804_crop_center_9d4cc983-9135-4778-ad0c-af38a7ba3f1a.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/work-shoes-bannerArtboard-1_1920x804_crop_center_1920x804_crop_center_9d4cc983-9135-4778-ad0c-af38a7ba3f1a.jpg",
+              "image_svg": "",
+              "image_lazy_load": true,
+              "image_alt": "",
+              "image_link": "shopify:\/\/collections\/work-shoes",
+              "video_link": "",
+              "video_file": "",
+              "video_options": "",
+              "content_location": "content-below",
+              "content_alignment": "text-left",
+              "content_order": "one",
+              "content_colour": "#111111",
+              "highlight": "",
+              "title_tag": "h6",
+              "title": "Men's Work Shoes",
+              "subtitle_tag": "h8",
+              "subtitle": "",
+              "description_tag": "h9",
+              "description": "Leather Formals that Mean Business",
+              "button_link_1": "shopify:\/\/collections\/work-shoes",
+              "button_text_1": "Shop Now",
+              "button_style_1": "button",
+              "button_link_2": "",
+              "button_text_2": "Shop Now 2",
+              "button_style_2": "button",
+              "button_position": "",
+              "shop_the_image_products": "",
+              "shop_the_image_button_text": "View Products",
+              "shop_the_image_number": 3,
+              "shop_the_image_device": "desktop",
+              "shop_the_image_position": "bottom-left"
+            }
+          },
+          "321cb32d-1368-4808-b2c1-d68a1e1f764b-1666095493b0dfd5c3-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/brogues-bannerArtboard-1_1920x804_crop_center_e7479ecc-a60c-4b70-8b8f-b5558914bfdc.png",
+              "mobile_image": "shopify:\/\/shop_images\/Loafers-bannerArtboard-1_2x_1afd367a-f7bb-4e65-bac5-991a584eca24.jpg",
+              "image_svg": "",
+              "image_lazy_load": true,
+              "image_alt": "",
+              "image_link": "shopify:\/\/collections\/wedding-shoes",
+              "video_link": "",
+              "video_file": "",
+              "video_options": "loop",
+              "content_location": "content-below",
+              "content_alignment": "text-left",
+              "content_order": "one",
+              "content_colour": "#111111",
+              "highlight": "",
+              "title_tag": "h6",
+              "title": "Men's Wedding Shoes",
+              "subtitle_tag": "h8",
+              "subtitle": "",
+              "description_tag": "h9",
+              "description": "Browse Classic and Contemporary Men's Formals",
+              "button_link_1": "shopify:\/\/collections\/wedding-shoes",
+              "button_text_1": "Shop Now",
+              "button_style_1": "button",
+              "button_link_2": "",
+              "button_text_2": "",
+              "button_style_2": "button",
+              "button_position": "",
+              "shop_the_image_products": "",
+              "shop_the_image_button_text": "View Products",
+              "shop_the_image_number": 3,
+              "shop_the_image_device": "desktop",
+              "shop_the_image_position": "bottom-left"
+            }
+          }
+        },
+        "block_order": [
+          "321cb32d-1368-4808-b2c1-d68a1e1f764b-1666095493b0dfd5c3-0",
+          "321cb32d-1368-4808-b2c1-d68a1e1f764b-1666095493b0dfd5c3-1"
+        ],
+        "settings": {
+          "add_padding_bottom": "",
+          "add_margin_bottom": "",
+          "custom_class": "-four-banners",
+          "section_background": "#ffffff",
+          "section_width": "standard",
+          "heading_show": false,
+          "heading_align": "text-center",
+          "heading_text_color": "text-dark",
+          "title": "Heading Title",
+          "heading_title_tag": "h2",
+          "heading_subtitle": "<p>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vivamus suscipit tortor eget<\/p>",
+          "add_carousel": ""
+        }
+      },
+      "f63785d6-0ce0-4141-b34a-140a9d1b39c3": {
+        "type": "banner-image-multicolumn",
+        "blocks": {
+          "f63785d6-0ce0-4141-b34a-140a9d1b39c3-1666095493b0dfd5c3-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Seymour-bannerArtboard-1_1920x804_crop_center_cebe1d60-ffc0-4119-a159-c405588f0e97.png",
+              "mobile_image": "shopify:\/\/shop_images\/Loafers-bannerArtboard-2_2x_0ecaaceb-df4c-4fbc-833c-4f1e55edb6f7.jpg",
+              "image_svg": "",
+              "image_lazy_load": true,
+              "image_alt": "",
+              "image_link": "shopify:\/\/collections\/boots",
+              "video_link": "",
+              "video_file": "",
+              "video_options": "loop",
+              "content_location": "content-below",
+              "content_alignment": "text-left",
+              "content_order": "one",
+              "content_colour": "#111111",
+              "highlight": "",
+              "title_tag": "h6",
+              "title": "Men's Boots",
+              "subtitle_tag": "h6",
+              "subtitle": "",
+              "description_tag": "h9",
+              "description": "Explore The Latest Men's Boot Styles",
+              "button_link_1": "shopify:\/\/collections\/boots",
+              "button_text_1": "Shop now",
+              "button_style_1": "button",
+              "button_link_2": "",
+              "button_text_2": "Shop Now 2",
+              "button_style_2": "button",
+              "button_position": "",
+              "shop_the_image_products": "",
+              "shop_the_image_button_text": "View Products",
+              "shop_the_image_number": 3,
+              "shop_the_image_device": "desktop",
+              "shop_the_image_position": "bottom-left"
+            }
+          },
+          "f63785d6-0ce0-4141-b34a-140a9d1b39c3-1666095493b0dfd5c3-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Loafers-bannerArtboard-1_1920x804_crop_center_2x_6499dcd5-37f2-4429-a8a5-3e664191b205.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/Loafers-bannerArtboard-1_1920x804_crop_center_2x_6499dcd5-37f2-4429-a8a5-3e664191b205.jpg",
+              "image_svg": "",
+              "image_lazy_load": true,
+              "image_alt": "Base London White Trainer",
+              "image_link": "shopify:\/\/collections\/loafers",
+              "video_link": "",
+              "video_file": "",
+              "video_options": "loop",
+              "content_location": "content-below",
+              "content_alignment": "text-left",
+              "content_order": "one",
+              "content_colour": "#111111",
+              "highlight": "",
+              "title_tag": "h6",
+              "title": "Men's Loafers",
+              "subtitle_tag": "h6",
+              "subtitle": "",
+              "description_tag": "h9",
+              "description": "Slip into Something a Little More Stylish",
+              "button_link_1": "shopify:\/\/collections\/loafers",
+              "button_text_1": "Shop now",
+              "button_style_1": "button",
+              "button_link_2": "",
+              "button_text_2": "Shop Now 2",
+              "button_style_2": "button",
+              "button_position": "",
+              "shop_the_image_products": "",
+              "shop_the_image_button_text": "View Products",
+              "shop_the_image_number": 3,
+              "shop_the_image_device": "desktop",
+              "shop_the_image_position": "bottom-left"
+            }
+          }
+        },
+        "block_order": [
+          "f63785d6-0ce0-4141-b34a-140a9d1b39c3-1666095493b0dfd5c3-0",
+          "f63785d6-0ce0-4141-b34a-140a9d1b39c3-1666095493b0dfd5c3-1"
+        ],
+        "settings": {
+          "add_padding_bottom": "padding-top padding-bottom",
+          "add_margin_bottom": "",
+          "custom_class": "-four-banners",
+          "section_background": "#ffffff",
+          "section_width": "standard",
+          "heading_show": false,
+          "heading_align": "text-center",
+          "heading_text_color": "text-dark",
+          "title": "Heading Title",
+          "heading_title_tag": "h2",
+          "heading_subtitle": "<p>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vivamus suscipit tortor eget<\/p>",
+          "add_carousel": ""
+        }
+      },
+      "276deb10-1687-49be-9789-398fbb88d2b4": {
+        "type": "featured-collection",
+        "settings": {
+          "max_width": "",
+          "background_color": "",
+          "add_border_top": "",
+          "add_border_bottom": "",
+          "border_width": "border-content-center",
+          "add_padding_top": "",
+          "add_padding_bottom": "padding-bottom",
+          "add_margin_top": "",
+          "add_margin_bottom": "",
+          "custom_class": "",
+          "heading_align": "text-left",
+          "heading_text_color": "text-dark",
+          "title": "Outlet Styles",
+          "heading_title_tag": "h6",
+          "heading_subtitle": "",
+          "collection": "mens-designer-shoe-outlet",
+          "image_lazy_load": true,
+          "grid": "10",
+          "add_carousel": "owl-carousel"
+        }
+      },
+      "0be9a082-f601-431c-a69a-dac92fad6c9a": {
+        "type": "grid-banner",
+        "blocks": {
+          "0be9a082-f601-431c-a69a-dac92fad6c9a-1666104418b88d8fcc-0": {
+            "type": "image",
+            "settings": {
+              "column_order": "order-1",
+              "column_vertical_align": "middle",
+              "image_size": "",
+              "mobile_image_size": "",
+              "image_lazy_load": true,
+              "image_alt": "Formal Shoes",
+              "video_src": "",
+              "video_loop": true,
+              "video_controls": false,
+              "video_link": "",
+              "link": "shopify:\/\/collections\/formal-shoes",
+              "content_position": "located-image",
+              "text_color": "text-light",
+              "vertical_align": "bottom",
+              "horizontal_align": "left",
+              "reverse_title_content": "",
+              "title": "",
+              "title_tag": "h4",
+              "content": "",
+              "link_1": "shopify:\/\/collections\/formal-shoes",
+              "button_text_1": "Shop Now",
+              "button_style_1": "button white",
+              "link_2": "",
+              "button_text_2": "Shop Now",
+              "button_style_2": "button",
+              "button_position": "button-below-content",
+              "quick_view_products": "",
+              "button_quick_view_products": "View Products",
+              "number_view_product": "3",
+              "position_quick_view_products": "bottom-left"
+            }
+          }
+        },
+        "block_order": [
+          "0be9a082-f601-431c-a69a-dac92fad6c9a-1666104418b88d8fcc-0"
+        ],
+        "settings": {
+          "max_width": "",
+          "background_color": "",
+          "add_border_top": "",
+          "add_border_bottom": "",
+          "border_width": "",
+          "add_padding_top": "",
+          "add_padding_bottom": "",
+          "add_margin_top": "",
+          "add_margin_bottom": "",
+          "custom_class": "",
+          "heading_align": "text-center",
+          "heading_text_color": "text-dark",
+          "title": "Headline Lorem Ipsum",
+          "heading_title_tag": "h2",
+          "heading_subtitle": "<p>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vivamus suscipit tortor eget<\/p>",
+          "heading_show": false,
+          "add_carousel": ""
+        }
+      },
+      "94cd31bc-b6ac-464b-bdea-2a012d00071d": {
+        "type": "featured-collection",
+        "settings": {
+          "max_width": "",
+          "background_color": "",
+          "add_border_top": "",
+          "add_border_bottom": "",
+          "border_width": "border-content-center",
+          "add_padding_top": "",
+          "add_padding_bottom": "padding-bottom",
+          "add_margin_top": "",
+          "add_margin_bottom": "",
+          "custom_class": "",
+          "heading_align": "text-left",
+          "heading_text_color": "text-dark",
+          "title": "Formal Shoes",
+          "heading_title_tag": "h6",
+          "heading_subtitle": "",
+          "collection": "formal-shoes",
+          "image_lazy_load": true,
+          "grid": "10",
+          "add_carousel": "owl-carousel"
+        }
+      },
+      "f584b1b5-4889-423e-92a4-a13504e12e6c": {
+        "type": "grid-banner",
+        "blocks": {
+          "f584b1b5-4889-423e-92a4-a13504e12e6c-1666104418b88d8fcc-0": {
+            "type": "image",
+            "settings": {
+              "column_order": "order-1",
+              "column_vertical_align": "middle",
+              "image_size": "",
+              "mobile_image_size": "",
+              "image_lazy_load": true,
+              "image_alt": "",
+              "video_src": "",
+              "video_loop": true,
+              "video_controls": false,
+              "video_link": "",
+              "link": "",
+              "content_position": "located-image",
+              "text_color": "text-dark",
+              "vertical_align": "bottom",
+              "horizontal_align": "left",
+              "reverse_title_content": "",
+              "title": "Formal Shoes",
+              "title_tag": "h4",
+              "content": "",
+              "link_1": "shopify:\/\/collections\/formal-shoes",
+              "button_text_1": "Shop Now",
+              "button_style_1": "button white",
+              "link_2": "",
+              "button_text_2": "Shop Now",
+              "button_style_2": "button",
+              "button_position": "button-below-content",
+              "quick_view_products": "",
+              "button_quick_view_products": "View Products",
+              "number_view_product": "3",
+              "position_quick_view_products": "bottom-left"
+            }
+          }
+        },
+        "block_order": [
+          "f584b1b5-4889-423e-92a4-a13504e12e6c-1666104418b88d8fcc-0"
+        ],
+        "disabled": true,
+        "settings": {
+          "max_width": "",
+          "background_color": "",
+          "add_border_top": "",
+          "add_border_bottom": "",
+          "border_width": "",
+          "add_padding_top": "",
+          "add_padding_bottom": "",
+          "add_margin_top": "",
+          "add_margin_bottom": "",
+          "custom_class": "",
+          "heading_align": "text-center",
+          "heading_text_color": "text-dark",
+          "title": "Headline Lorem Ipsum",
+          "heading_title_tag": "h2",
+          "heading_subtitle": "<p>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vivamus suscipit tortor eget<\/p>",
+          "heading_show": false,
+          "add_carousel": ""
+        }
+      },
+      "c1705af2-0322-4f46-b504-f99864501924": {
+        "type": "featured-collection",
+        "disabled": true,
+        "settings": {
+          "max_width": "",
+          "background_color": "",
+          "add_border_top": "",
+          "add_border_bottom": "",
+          "border_width": "border-content-center",
+          "add_padding_top": "",
+          "add_padding_bottom": "padding-bottom",
+          "add_margin_top": "",
+          "add_margin_bottom": "",
+          "custom_class": "",
+          "heading_align": "text-left",
+          "heading_text_color": "text-dark",
+          "title": "Formal Shoes",
+          "heading_title_tag": "h6",
+          "heading_subtitle": "<p><\/p>",
+          "collection": "formal-shoes",
+          "image_lazy_load": true,
+          "grid": "6",
+          "add_carousel": "owl-carousel"
+        }
+      },
+      "password-header": {
+        "type": "password-header",
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/Oval-logo-_CMYK_-hr-FB.jpg",
+          "logo_max_width": "300",
+          "header": "This store is coming soon"
+        }
+      },
+      "password-content": {
+        "type": "password-content",
+        "settings": {
+        }
+      },
+      "password-footer": {
+        "type": "password-footer",
+        "settings": {
+        }
+      },
+      "collection-infinite-scroll": {
+        "type": "collection-infinite-scroll",
+        "settings": {
+          "enable_infinite_scroll": true,
+          "container_selector": ".product-grid",
+          "path": ".collection-pagination .pagination .next a",
+          "append": ".product-grid .product-item",
+          "hide_nav": ".pagination",
+          "status": ".page-load-status",
+          "status_info": "Loading...",
+          "status_end": "No more product to load!"
+        }
+      }
+    },
+    "content_for_index": [
+      "1630765329fd2fe56a",
+      "1595509887621",
+      "1591860427965",
+      "276deb10-1687-49be-9789-398fbb88d2b4",
+      "0be9a082-f601-431c-a69a-dac92fad6c9a",
+      "94cd31bc-b6ac-464b-bdea-2a012d00071d",
+      "f584b1b5-4889-423e-92a4-a13504e12e6c",
+      "c1705af2-0322-4f46-b504-f99864501924",
+      "321cb32d-1368-4808-b2c1-d68a1e1f764b",
+      "f63785d6-0ce0-4141-b34a-140a9d1b39c3"
+    ],
+    "blocks": {
+      "855628211100114053": {
+        "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {
+        }
+      },
+      "yoast-seo-metatags": {
+        "type": "shopify:\/\/apps\/yoast-seo\/blocks\/metatags\/7c777011-bc88-4743-a24e-64336e1e5b46",
+        "disabled": true,
+        "settings": {
+        }
+      },
+      "8962992520437913685": {
+        "type": "shopify:\/\/apps\/yotpo-loyalty-rewards\/blocks\/loader-app-embed-block\/2f9660df-5018-4e02-9868-ee1fb88d6ccd",
+        "disabled": true,
+        "settings": {
+          "inject_modules_loader": true,
+          "inject_sdk_loader": true
+        }
+      },
+      "7570552984445421165": {
+        "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/settings\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+        "disabled": true,
+        "settings": {
+        }
+      },
+      "14339172867238703359": {
+        "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/reviews_tab\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+        "disabled": true,
+        "settings": {
+          "product": ""
+        }
+      }
+    }
+  },
+  "presets": {
+    "AL-Minimal": {
+      "ajax_cart_method": "drawer",
+      "cart_notes_enable": true,
+      "background_color": "#FFFFFF",
+      "text_color": "#898989",
+      "link_color": "#898989",
+      "use_logo": false,
+      "base_font_size": "16px",
+      "base_font_family": "'Univers LT W01_45 Light1475944', helvetica, arial, sans-serif",
+      "products_per_row": "3",
+      "number_of_rows": "4",
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "content_for_index": [
+
+      ]
+    }
+  }
+}

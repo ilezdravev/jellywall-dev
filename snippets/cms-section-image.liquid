@@ -1,0 +1,40 @@
+{%- assign image_primary = block.settings.image -%}
+{%- assign image_mobile = block.settings.mobile_image -%}
+{%- assign image_svg = block.settings.image_svg -%}
+{%- assign image_lazy_load = block.settings.image_lazy_load -%}
+{%- assign image_alt = block.settings.image_alt -%}
+{%- assign image_link = block.settings.image_link -%}
+
+{%- if image_alt == blank -%}
+    {%- assign image_alt = block.settings.title -%}
+{% endif %}
+
+{%- assign image_class = class | append: '__image' -%}
+
+<div class="{{- image_class | append: '--wrap' -}}" aria-label="{{ image_alt }}">
+    <div class="{{- image_class -}}">
+        {%- if image_link != blank -%}<a class="{{- image_class | append: '--link' -}}" href="{{ image_link }}">{%- endif -%}	
+            {%- if image_svg != blank -%}
+                <span class="{{- image_class | append: '--svg' -}}">
+                    {{- image_svg -}}
+                </span>
+            {%- elsif image_primary -%}
+                <picture>
+                    <source media="(min-width: 1025px)" srcset="{{ image_primary | img_url: 'x417', crop: 'center' }}">
+                    <source media="(min-width: 769px)"  srcset="{{ image_primary | img_url: image_size_768, crop: 'center' }}">
+                    {%- if image_mobile != blank -%}
+                        <source media="(min-width: 416px)" srcset="{{ image_mobile | img_url: image_size_416, crop: 'center' }}">
+                        <source srcset="{{ image_mobile | img_url: image_size, crop: 'center' }}">
+                    {%- else -%}
+                        <source media="(min-width: 416px)" srcset="{{ image_primary | img_url: image_size_416, crop: 'center' }}">
+                        <source srcset="{{ image_primary | img_url: image_size, crop: 'center' }}">
+                    {%- endif -%}
+                    <img src="{{ image_primary | img_url: 'x417' }}" width="741" height="417" alt="{{ image_alt }}" {% if image_lazy_load == true %}loading="lazy" importance="low"{% endif %} />
+                </picture>
+            {% else %}
+                {{ 'lifestyle-1' | placeholder_svg_tag }}
+            {%- endif -%}
+        {%- if image_link != blank -%}</a>{%- endif -%}	
+        {%- include 'shop-the-image' -%}
+    </div>
+</div>

@@ -1,0 +1,36 @@
+{
+  "sections": {
+    "main": {
+      "type": "product-content",
+      "settings": {
+      }
+    },
+    "related": {
+      "type": "product-related",
+      "settings": {
+        "show_related_products": true,
+        "max_width": "",
+        "background_color": "",
+        "add_border_top": "border-top",
+        "add_border_bottom": "",
+        "border_width": "border-content-center",
+        "add_padding_top": "",
+        "add_padding_bottom": "",
+        "add_margin_top": "",
+        "add_margin_bottom": "",
+        "custom_class": "",
+        "text_color": "text-light",
+        "title": "Featured Collection",
+        "title_tag": "h6",
+        "heading_align": "text-center",
+        "grid": "6",
+        "add_carousel": "owl-carousel",
+        "image_lazy_load": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "related"
+  ]
+}

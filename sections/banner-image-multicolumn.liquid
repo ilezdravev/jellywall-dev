@@ -1,0 +1,454 @@
+{%- assign add_padding_bottom = section.settings.add_padding_bottom | append: ' ' -%}
+{%- assign add_margin_bottom = section.settings.add_margin_bottom | append: ' ' -%}
+{%- assign custom_class = section.settings.custom_class | append: ' ' -%}
+{%- assign section_width = section.settings.section_width | prepend: 'wrapper ' | strip -%}
+{%- assign class = 'section-cms' -%}
+
+{%- assign section_class = class | append: ' section-cms__banner-section' | append: custom_class | append: add_padding_bottom | append: add_margin_bottom | strip -%}
+
+{%- assign image_size_1920 = '2560x1072' -%}
+{%- assign image_size_1680 = '1920x804' -%}
+{%- assign image_size_1024 = '1680x704' -%}
+{%- assign image_size_768 = '1024x768' -%}
+{%- assign image_size_416 = '768x960' -%}
+{%- assign image_size = '416x520' -%}
+
+
+<div class="{{- section_class -}}">
+    <div class="{{- section_width -}}">
+        <div class="row">
+            {%- include 'cms-section-heading' -%}
+            {% if section.blocks.size > 0 %}
+            <div class="{{- class | prepend: 'row-flex ' | append: '__banner' -}}">
+                {% for block in section.blocks %}
+                    {%- assign content_location = block.settings.content_location -%}
+                    {%- assign banner_column = 'banner--' | append: section.blocks.size | append: ' ' -%}
+                    {%- assign banner_class =  class | append: '__banner--wrap ' | append: banner_column | append: content_location | strip -%}
+                    <div class="{{- banner_class -}}">
+                        <div class="{{- class | append: '__banner' -}}">
+                            {%- if content_location == 'content-above' -%}
+                                {%- include 'cms-section-content' -%}
+                                {%- include 'cms-section-image' -%}
+                            {%- else -%}
+                                {%- include 'cms-section-image' -%}
+                                {%- include 'cms-section-content' -%}
+                            {%- endif -%}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% schema %}
+    {
+        "name": "Image - Multicolumn",
+        "settings": [
+            {
+                "type": "select",
+                "id": "add_padding_bottom",
+                "label": "Padding",
+                "options": [
+                    { "value": "", "label": "No" },
+                    { "value": "padding-top", "label": "Top" },
+                    { "value": "padding-bottom", "label": "Bottom" },
+                    { "value": "padding-top padding-bottom", "label": "Top and Bottom" }
+                ],
+                "default": ""
+            },
+            {
+                "type": "select",
+                "id": "add_margin_bottom",
+                "label": "Margin",
+                "options": [
+                    { "value": "", "label": "No" },
+                    { "value": "margin-top", "label": "Top" },
+                    { "value": "margin-bottom", "label": "Bottom" },
+                    { "value": "margin-top margin-bottom", "label": "Top and Bottom" }
+                    
+                ],
+                "default": ""
+            },
+            {
+                "type": "text",
+                "id": "custom_class",
+                "label": "Custom CSS Class"
+            },
+            {
+                "type": "color",
+                "id": "section_background",
+                "label": "Section - Background",
+                "default": "#ffffff"
+            },
+            {
+                "type": "select",
+                "id": "section_width",
+                "label": "Section Width",
+                "options": [
+                    { "value": "standard", "label": "Standard" },
+                    { "value": "full-width", "label": "Full Width" }
+                ],
+                "default": "standard"
+            },
+            {
+                "type": "checkbox",
+                "id": "heading_show",
+                "label": "Show Heading?",
+                "default": false
+            },
+            {
+				"type": "select",
+				"id": "heading_align",
+				"label": "Heading text align",
+				"options": [
+					{ "value": "text-left", "label": "Left" },
+					{ "value": "text-center", "label": "Center" },
+					{ "value": "text-right", "label": "Right" }
+				],
+				"default": "text-center"
+			},
+			{
+				"type": "select",
+				"id": "heading_text_color",
+				"label": "Heading Text color",
+				"options": [
+                    { "value": "text-dark", "label": "Dark" },
+					{ "value": "text-light", "label": "Light" }
+				],
+				"default": "text-dark"
+			},
+			{
+				"type": "text",
+				"id": "title",
+				"label": "Heading Title",
+				"default": "Heading Title"
+			},
+			{
+				"type": "select",
+				"id": "heading_title_tag",
+				"label": "Heading H Tag",
+				"options": [
+					{ "value": "h1", "label": "H1" },
+					{ "value": "h2", "label": "H2" },
+					{ "value": "h3", "label": "H3" },
+					{ "value": "h4", "label": "H4" },
+					{ "value": "h5", "label": "H5" },
+                    { "value": "h6", "label": "H6" },
+                    { "value": "h7", "label": "H7" },
+                    { "value": "h8", "label": "H8" },
+                    { "value": "h9", "label": "H9" }
+				],
+				"default": "h2"
+			},
+			{
+				"type": "richtext",
+				"id": "heading_subtitle",
+				"label": "Heading Subtitle",
+                "default": "<p>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vivamus suscipit tortor eget</p>"
+			},
+            {
+                "type": "select",
+                "id": "add_carousel",
+                "label": "Add carousel?",
+                "options": [
+                    { "value": "owl-carousel", "label": "Yes" },
+                    { "value": "", "label": "No" }
+                ],
+                "default": ""
+            }
+        ],
+        "blocks": [
+            {
+                "type": "image",
+                "name": "Image Banner",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "image",
+                        "label": "Image - Primary"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "mobile_image",
+                        "label": "Image - Mobile"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "image_svg",
+                        "label": "Image - SVG"
+                    },
+                    {
+                        "type": "checkbox",
+                        "id": "image_lazy_load",
+                        "label": "Image - Lazyload",
+                        "default": true
+                    },
+                    {
+                        "type": "text",
+                        "id": "image_alt",
+                        "label": "Image - Alt Text"
+                    },
+                    {
+                        "type": "url",
+                        "id": "image_link",
+                        "label": "Image - Link"
+                    },
+                    {
+                        "type": "video_url",
+                        "id": "video_link",
+                        "label": "Video - Youtube or Vimeo",
+                        "accept": ["youtube", "vimeo"]
+                    },
+                    {
+                        "type": "text",
+                        "id": "video_file",
+                        "label": "Video - File Name",
+                        "info": "Upload a .mp4 into the Files folder (Settings > Files) all with this name. So if one of your assets is 'video.mp4', then just enter 'video.mp4' here."
+                    },
+                    {
+                        "type": "select",
+                        "id": "video_options",
+                        "label": "Video - Options",
+                        "info": "Use this option for Video File Name",
+                        "options": [
+                            { "value": "", "label": "No" },
+                            { "value": "loop", "label": "Loop" },
+                            { "value": "controls", "label": "Controls" },
+                            { "value": "both", "label": "Both" }
+                        ],
+                        "default": "loop"
+                    },
+                    {
+                        "type": "select",
+                        "id": "content_location",
+                        "label": "Content - Location",
+                        "options": [
+                            { "value": "content-over-middle", "label": "Middle - Over Image" },
+                            { "value": "content-over-top", "label": "Top - Over Image" },
+                            { "value": "content-over-bottom", "label": "Bottom - Over Image" },
+                            { "value": "content-above", "label": "Above Image" },
+                            { "value": "content-below", "label": "Below Image" }
+                        ],
+                        "default": "content-over-middle"
+                    },
+                    {
+                        "type": "select",
+                        "id": "content_alignment",
+                        "label": "Content - Alignment",
+                        "options": [
+                            { "value": "text-left", "label": "Left" },
+                            { "value": "text-center", "label": "Center" },
+                            { "value": "text-right", "label": "Right" }
+                        ],
+                        "default": "text-center"
+                    },
+                    {
+                        "type": "select",
+                        "id": "content_order",
+                        "label": "Content - Order",
+                        "options": [
+                            { "value": "one", "label": "Highlight, Title, Sub-Title, Desc, CTA" },
+                            { "value": "two", "label": "Desc, Highlight, Title, Sub-Title, CTA" }
+                        ],
+                        "default": "one"
+                    },
+                    {
+                        "type": "color",
+                        "id": "content_colour",
+                        "label": "Content - Colour",
+                        "default": "#ffffff"
+                    },
+                    {
+                        "type": "text",
+                        "id": "highlight",
+                        "label": "Highlight - Text"
+                    },
+                    {
+                        "type": "select",
+                        "id": "title_tag",
+                        "label": "Title - H Tag",
+                        "options": [
+                            { "value": "h1", "label": "H1" },
+                            { "value": "h2", "label": "H2" },
+                            { "value": "h3", "label": "H3" },
+                            { "value": "h4", "label": "H4" },
+                            { "value": "h5", "label": "H5" },
+                            { "value": "h6", "label": "H6" },
+                            { "value": "h7", "label": "H7" },
+                            { "value": "h8", "label": "H8" },
+                            { "value": "h9", "label": "H9" }
+                        ],
+                        "default": "h2"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title - Text",
+                        "default": "Image Multicolumn"
+                    },
+                    {
+                        "type": "select",
+                        "id": "subtitle_tag",
+                        "label": "Sub - Title H Tag",
+                        "options": [
+                            { "value": "h1", "label": "H1" },
+                            { "value": "h2", "label": "H2" },
+                            { "value": "h3", "label": "H3" },
+                            { "value": "h4", "label": "H4" },
+                            { "value": "h5", "label": "H5" },
+                            { "value": "h6", "label": "H6" },
+                            { "value": "h7", "label": "H7" },
+                            { "value": "h8", "label": "H8" },
+                            { "value": "h9", "label": "H9" }
+                        ],
+                        "default": "h6"
+                    },
+                    {
+                        "type": "text",
+                        "id": "subtitle",
+                        "label": "Subtitle - Text"
+                    },
+                    {
+                        "type": "select",
+                        "id": "description_tag",
+                        "label": "Description H Tag",
+                        "options": [
+                            { "value": "h1", "label": "H1" },
+                            { "value": "h2", "label": "H2" },
+                            { "value": "h3", "label": "H3" },
+                            { "value": "h4", "label": "H4" },
+                            { "value": "h5", "label": "H5" },
+                            { "value": "h6", "label": "H6" },
+                            { "value": "h7", "label": "H7" },
+                            { "value": "h8", "label": "H8" },
+                            { "value": "h9", "label": "H9" }
+                        ],
+                        "default": "h8"
+                    },
+                    {
+                        "type": "html",
+                        "id": "description",
+                        "label": "Description",
+                        "default": "Lorem ipsum dolor sit amet"
+                    },
+                    {
+                        "type": "url",
+                        "id": "button_link_1",
+                        "label": "CTA 1 - Link"
+                    },
+                    {
+                        "type": "text",
+                        "id": "button_text_1",
+                        "label": "CTA 1 - Text",
+                        "default": "Shop Now 1"
+                    },
+                    {
+                        "type": "select",
+                        "id": "button_style_1",
+                        "label": "CTA 1 - Style",
+                        "options": [
+                            { "value": "button", "label": "Dark" },
+                            { "value": "button button-second", "label": "Dark Solid" },
+                            { "value": "button white", "label": "Light" },
+                            { "value": "button button-second white", "label": "Light Solid" },
+                            { "value": "button-text", "label": "Button Text" }
+                        ],
+                        "default": "button"
+                    },
+                    {
+                        "type": "url",
+                        "id": "button_link_2",
+                        "label": "CTA 2 - Link"
+                    },
+                    {
+                        "type": "text",
+                        "id": "button_text_2",
+                        "label": "CTA 2 - Text",
+                        "default": "Shop Now 2"
+                    },
+                    {
+                        "type": "select",
+                        "id": "button_style_2",
+                        "label": "CTA 2 - Style",
+                        "options": [
+                            { "value": "button", "label": "Dark" },
+                            { "value": "button button-second", "label": "Dark Solid" },
+                            { "value": "button white", "label": "Light" },
+                            { "value": "button button-second white", "label": "Light Solid" },
+                            { "value": "button-text", "label": "Button Text" }
+                        ],
+                        "default": "button"
+                    },
+                    {
+                        "type": "select",
+                        "id": "button_position",
+                        "label": "CTA Position",
+                        "options": [
+                            { "value": "", "label": "Below Content" },
+                            { "value": "top", "label": "Top" },
+                            { "value": "bottom", "label": "Bottom" }
+                        ],
+                        "default": "",
+                        "info": "Use for Position Content Over Image"
+                    },
+                    {
+                        "type": "collection",
+                        "id": "shop_the_image_products",
+                        "label": "Shop - Products"
+                    },
+                    {
+                        "type": "text",
+                        "id": "shop_the_image_button_text",
+                        "label": "Shop - Text",
+                        "default": "View Products"
+                    },
+                    {
+                        "type": "range",
+                        "id": "shop_the_image_number",
+                        "label": "Shop - Number",
+                        "min": 1,
+                        "max": 10,
+                        "step": 1,
+                        "default": 3
+                    },
+                    {
+                        "type": "select",
+                        "id": "shop_the_image_device",
+                        "label": "Shop - Device",
+                        "options": [
+                            { "value": "", "label": "None" },
+                            { "value": "desktop", "label": "Desktop" },
+                            { "value": "mobile", "label": "Mobile" },
+                            { "value": "both", "label": "Both" }
+                        ],
+                        "default": "desktop"
+                    },
+                    {
+                        "type": "select",
+                        "id": "shop_the_image_position",
+                        "label": "Shop - Position",
+                        "options": [
+                            { "value": "bottom-left", "label": "Left" },
+                            { "value": "bottom-center", "label": "Centre" },
+                            { "value": "bottom-right", "label": "Right" }
+                        ],
+                        "default": "bottom-left"
+                    }
+                ]
+            }
+        ],
+        "presets": [{
+            "name": "Image - Multicolumn",
+            "category": "Banner",
+            "blocks": [
+                {
+                    "type": "image"
+                },
+                {
+                    "type": "image"
+                }
+            ]
+        }]
+    }
+{% endschema %}

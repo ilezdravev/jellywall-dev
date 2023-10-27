@@ -1,0 +1,95 @@
+<nav class="breadcrumb" role="navigation" aria-label="breadcrumbs" {% if disabled_by_yoast_seo %}itemscope{% endif %} {% if disabled_by_yoast_seo %}itemtype="http://schema.org/BreadcrumbList"{% endif %}>
+    <div class="wrapper">
+        <div class="row">
+            <span {% if disabled_by_yoast_seo %}itemprop="itemListElement"{% endif %} {% if disabled_by_yoast_seo %}itemscope{% endif %} {% if disabled_by_yoast_seo %}itemtype="http://schema.org/ListItem"{% endif %}><span {% if disabled_by_yoast_seo %}itemprop="name"{% endif %}><a href="/" title="Home">Home</a></span></span>
+            {% if template contains 'page' %}
+            <span aria-hidden="true">&#62;</span>
+            <span>{{ page.title | downcase }}</span>
+            {% elsif template contains 'product' %}
+            {% if product.collections[0].url %}
+            <span class="collection-breadcrumb-delimiter" style="display:none;" aria-hidden="true">&#62;</span>
+            <span class="collection-breadcrumb" style="display:none;" {% if disabled_by_yoast_seo %}itemprop="itemListElement"{% endif %} {% if disabled_by_yoast_seo %}itemscope{% endif %} {% if disabled_by_yoast_seo %}itemtype="http://schema.org/ListItem"{% endif %}><span {% if disabled_by_yoast_seo %}itemprop="name"{% endif %}>{{ product.collections[0].title | link_to: product.collections[0].url | downcase }}</span></span>
+            {% endif %}
+            <span aria-hidden="true">&#62;</span>
+            <span {% if disabled_by_yoast_seo %}itemprop="itemListElement"{% endif %} {% if disabled_by_yoast_seo %}itemscope{% endif %} {% if disabled_by_yoast_seo %}itemtype="http://schema.org/ListItem"{% endif %}><span {% if disabled_by_yoast_seo %}itemprop="name"{% endif %}>{{ product.title | downcase }}</span></span>
+            {% elsif template contains 'collection' and collection.handle %}
+            <span aria-hidden="true">&#62;</span>
+            {% if current_tags %}
+            {% capture url %}/collections/{{ collection.handle | downcase }}{% endcapture %}
+            <span {% if disabled_by_yoast_seo %}itemprop="itemListElement"{% endif %} {% if disabled_by_yoast_seo %}itemscope{% endif %} {% if disabled_by_yoast_seo %}itemtype="http://schema.org/ListItem"{% endif %}><span {% if disabled_by_yoast_seo %}itemprop="name"{% endif %}>{{ collection.title | link_to: url | downcase }}</span></span>
+            <span aria-hidden="true">&#62;</span>
+            <span {% if disabled_by_yoast_seo %}itemprop="itemListElement"{% endif %} {% if disabled_by_yoast_seo %}itemscope{% endif %} {% if disabled_by_yoast_seo %}itemtype="http://schema.org/ListItem"{% endif %}>
+				<span {% if disabled_by_yoast_seo %}itemprop="name"{% endif %}>
+					{% assign theseTags = '' %}
+					{% for tag in current_tags %}
+					{% assign cat = tag | split: '_' | last %}
+					{% capture theseTags %}
+						{{theseTags| downcase }}
+							{% if forloop.first != true %} + {% endif %}
+						{{cat| downcase }}
+					{% endcapture %}
+					{% endfor %}
+				
+					{{ theseTags | downcase }}
+				</span>
+			</span>
+            {% else %}
+            <span {% if disabled_by_yoast_seo %}itemprop="itemListElement"{% endif %} {% if disabled_by_yoast_seo %}itemscope{% endif %} {% if disabled_by_yoast_seo %}itemtype="http://schema.org/ListItem"{% endif %}><span {% if disabled_by_yoast_seo %}itemprop="name"{% endif %}>{{ collection.title | downcase }}</span></span>
+            {% endif %}
+            {% elsif template == 'blog' %}
+            <span aria-hidden="true">&#62;</span>
+            {% if current_tags %}
+            <span {% if disabled_by_yoast_seo %}itemprop="itemListElement"{% endif %} {% if disabled_by_yoast_seo %}itemscope{% endif %} {% if disabled_by_yoast_seo %}itemtype="http://schema.org/ListItem"{% endif %}><span {% if disabled_by_yoast_seo %}itemprop="name"{% endif %}>{{ blog.title | link_to: blog.url | downcase }}</span></span>
+            <span aria-hidden="true">&#62;</span>
+            <span {% if disabled_by_yoast_seo %}itemprop="itemListElement"{% endif %} {% if disabled_by_yoast_seo %}itemscope{% endif %} {% if disabled_by_yoast_seo %}itemtype="http://schema.org/ListItem"{% endif %}><span {% if disabled_by_yoast_seo %}itemprop="name"{% endif %}>{{ current_tags | join: " + " | downcase }}</span></span>
+            {% else %}
+            <span {% if disabled_by_yoast_seo %}itemprop="itemListElement"{% endif %} {% if disabled_by_yoast_seo %}itemscope{% endif %} {% if disabled_by_yoast_seo %}itemtype="http://schema.org/ListItem"{% endif %}><span {% if disabled_by_yoast_seo %}itemprop="name"{% endif %}>{{ blog.title | downcase }}</span></span>
+            {% endif %}
+            {% elsif template == 'article' %}
+            <span aria-hidden="true">&#62;</span>
+            <span {% if disabled_by_yoast_seo %}itemprop="itemListElement"{% endif %} {% if disabled_by_yoast_seo %}itemscope{% endif %} {% if disabled_by_yoast_seo %}itemtype="http://schema.org/ListItem"{% endif %}><span {% if disabled_by_yoast_seo %}itemprop="name"{% endif %}>{{ blog.title | link_to: blog.url | downcase }}</span></span>
+            <span aria-hidden="true">&#62;</span>
+            <span {% if disabled_by_yoast_seo %}itemprop="itemListElement"{% endif %} {% if disabled_by_yoast_seo %}itemscope{% endif %} {% if disabled_by_yoast_seo %}itemtype="http://schema.org/ListItem"{% endif %}><span {% if disabled_by_yoast_seo %}itemprop="name"{% endif %}>{{ article.title | downcase }}</span></span>
+            {% else %}
+            <span aria-hidden="true">&#62;</span>
+            <span {% if disabled_by_yoast_seo %}itemprop="itemListElement"{% endif %} {% if disabled_by_yoast_seo %}itemscope{% endif %} {% if disabled_by_yoast_seo %}itemtype="http://schema.org/ListItem"{% endif %}><span {% if disabled_by_yoast_seo %}itemprop="name"{% endif %}>{{ page_title | downcase }}</span></span>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+{% if template contains 'product' %}
+  {% for collection in product.collections %}
+      {% assign colTitle = collection.url | split: "/"  %}
+      <span data-text="{{ collection.title }}" data-title="{{ colTitle | last }}" data-url="{{ collection.url }}"></span>
+  {% endfor %}
+  <span id="collection-breadcrumbs-json" style="display:none;">
+    {% for collection in product.collections %}
+      {% assign colTitle = collection.url | split: "/"  %}
+      <span data-text="{{ collection.title }}" data-title="{{ colTitle | last }}" data-url="{{ collection.url }}"></span>
+    {% endfor %}
+  </span>
+  <script>
+    jQuery(document).ready(function () {
+      let ref = document.referrer.split('/');
+      if(ref[ref.length - 1].length) {
+        $('#collection-breadcrumbs-json').find('span').each(function() {
+          if($(this).data('title') == ref[ref.length - 1]) {
+            $('.collection-breadcrumb-delimiter').show();
+            $('.collection-breadcrumb').find('span a').attr('href', $(this).data('url'));
+            $('.collection-breadcrumb').find('span a').text($(this).data('text'));
+            $('.collection-breadcrumb').show();
+          }
+        });
+      } else {
+        $('#collection-breadcrumbs-json').find('span').each(function() {
+          if($(this).data('title') == ref[ref.length - 2]) {
+            $('.collection-breadcrumb-delimiter').show();
+            $('.collection-breadcrumb').find('span a').attr('href', $(this).data('url'));
+            $('.collection-breadcrumb').find('span a').text($(this).data('text'));
+            $('.collection-breadcrumb').show();
+          }
+        });
+      }
+    });
+  </script>
+{% endif %}

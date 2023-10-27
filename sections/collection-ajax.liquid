@@ -1,0 +1,38 @@
+{% layout none %}
+{% if settings.wishlist_enabled %}
+    {% include 'juno-wishlist', get: 'collection-init' %}
+{% endif %}
+<div class="collection-tags">
+    {{ collection.tags | json }}
+</div>  
+<div class="collection-swatches">
+    {% assign swatchImagesArray = "" %}
+    {% assign swatchImages = "" %}
+    {% for tag in collection.tags %}
+        {% if tag contains "colour-" %}
+            {% assign newTag = tag | replace: "colour-", "" %}
+            {% assign imageItem = newTag | replace: "colour-", "" | downcase | prepend: "swatch-" | append: ".png" | asset_img_url %}
+            {% assign swatchImages =  swatchImages | append: imageItem | append: ',' %} 
+        {% endif %}
+    {% endfor %}
+    {% assign swatchImagesArray = swatchImages | split: ',' %}
+    {{ swatchImagesArray | json }}
+</div>
+<div class="collection-styles-count">
+    {% assign stylesArray = "" %}
+    {% assign productsCountList = "" %}
+    {% for tag in collection.tags %}
+        {% assign productsCount = 0 %}
+        {% if tag contains "style-" %}
+            {% for product in collections['all'].products %}
+                {% if product.tags contains tag %}
+                    {% assign productsCount = productsCount | plus: 1 %}
+                {% endif %}
+            {% endfor %}
+            {% assign productsCountList =  productsCountList | append: productsCount | append: ',' %}
+        {% endif %}
+    {% endfor %}
+    {% assign stylesArray = productsCountList | split: ',' %}
+    {{ stylesArray | json }}
+</div>
+{% include 'collection-products' %}

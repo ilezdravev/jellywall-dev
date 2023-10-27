@@ -1,0 +1,44 @@
+<div class="cms-section featured-collections {{ block.settings.text_color }} {{ block.settings.custom_class }} {{ block.settings.add_padding_top }} {{ block.settings.add_padding_bottom }} {{ block.settings.add_margin_top }} {{ block.settings.add_margin_bottom }} {{ block.settings.add_border_top }} {{ block.settings.add_border_bottom }} {{ block.settings.border_width }}" {% if block.settings.background_color != '' or block.settings.background_image %}style="{% if block.settings.background_color != '' %}background-color: {{ block.settings.background_color }};{% endif %}{% if block.settings.background_image %}background-image: url({{ block.settings.background_image }});{% endif %}"{% endif %}>
+    <div class="wrapper {{ block.settings.max_width }}">
+		<div class="row"> 
+			{% if block.settings.heading_title != blank or block.settings.heading_subtitle != blank %}
+				<div class="section-header {{ block.settings.heading_align }} {{ block.settings.heading_text_color }}">
+					{% if block.settings.heading_title != blank %}
+						<h2 class="title {{ block.settings.heading_title_tag }}">{{ block.settings.heading_title }}</h2>
+					{% endif %}
+					{% if block.settings.heading_subtitle != blank %}
+					<div class="sub-title">
+						{{ block.settings.heading_subtitle }}
+					</div>
+					{% endif %}
+				</div>
+			{% endif %}
+			{% assign collection = collections[block.settings.collection] %}
+			{% assign product_limit = block.settings.grid %}
+			<div class="product-grid {{ block.settings.add_carousel }}">
+				{% for product in collection.products limit: product_limit %}
+						{% include 'product-grid-item' %}
+					{% else %}
+					{% for i in (1..product_limit) %}
+						<div class="item">
+							<div class="product-image-wrap">
+								<a href="#" class="image">
+									<picture>
+										{% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+										{{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+									</picture>
+								</a>
+							</div>
+							<div class="product-caption">
+								<h2 class="product-name" {% if disabled_by_yoast_seo %}itemprop="name"{% endif %}><a href="#">Product Title</a></h2>
+								<span class="product-price">Product Price</span>
+							</div>
+						</div>
+					{% endfor %}
+				{% endfor %}
+			</div>
+		</div>
+	 </div>
+</div>
+
+

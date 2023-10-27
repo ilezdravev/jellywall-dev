@@ -1,0 +1,118 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-store-locator",
+      "settings": {
+      }
+    },
+    "cmsStoreLocator": {
+      "type": "cms-store-locator",
+      "blocks": {
+        "1596037771164": {
+          "type": "banner",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/image_39.jpg",
+            "mobile_image": "",
+            "image_alt": "5th Avenue",
+            "short_address": "New York",
+            "title": "5th Avenue",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sem tortor, euismod id accumsan sit amet, lobortis sit amet sapien. Praesent est velit, euismod ut mattis a, dapibus lobortis diam.",
+            "address": "New York",
+            "opening_times": "",
+            "contact_us": ""
+          }
+        },
+        "1596038538332": {
+          "type": "banner",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/image_39_657c2405-6613-4987-a433-5824fe54209f.jpg",
+            "mobile_image": "",
+            "image_alt": "",
+            "short_address": "London",
+            "title": "Soho",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "address": "London",
+            "opening_times": "",
+            "contact_us": ""
+          }
+        },
+        "1596038631674": {
+          "type": "banner",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/image_39_93c3e591-52cf-48c0-9861-af8de11d110b.jpg",
+            "mobile_image": "",
+            "image_alt": "",
+            "short_address": "London",
+            "title": "Brick Lane",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "address": "London",
+            "opening_times": "",
+            "contact_us": ""
+          }
+        },
+        "1596038680823": {
+          "type": "banner",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/image_39_8b2908f9-07a6-4de8-a55e-38094d54340e.jpg",
+            "mobile_image": "",
+            "image_alt": "",
+            "short_address": "Paris",
+            "title": "Rue Saint-Dominique",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "address": "Paris",
+            "opening_times": "",
+            "contact_us": ""
+          }
+        },
+        "1596038732896": {
+          "type": "banner",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/image_39_713a29d4-7471-478c-bfa4-9f8c983ac16c.jpg",
+            "mobile_image": "",
+            "image_alt": "",
+            "short_address": "Tokyo",
+            "title": "Omotesando Hills",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "address": "Tokyo",
+            "opening_times": "",
+            "contact_us": ""
+          }
+        },
+        "1596038750396": {
+          "type": "banner",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/image_39_bbb56ea8-1e44-4417-9090-ce9f878c0b37.jpg",
+            "mobile_image": "",
+            "image_alt": "",
+            "short_address": "London",
+            "title": "Bond street",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "address": "London",
+            "opening_times": "",
+            "contact_us": ""
+          }
+        }
+      },
+      "block_order": [
+        "1596037771164",
+        "1596038538332",
+        "1596038631674",
+        "1596038680823",
+        "1596038732896",
+        "1596038750396"
+      ],
+      "settings": {
+      }
+    },
+    "GTM": {
+      "type": "gtm-page",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main",
+    "cmsStoreLocator",
+    "GTM"
+  ]
+}

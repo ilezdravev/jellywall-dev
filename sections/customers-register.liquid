@@ -1,0 +1,73 @@
+{% if customer %}
+    <script type="text/javascript">
+        window.location.href= "/account/"
+    </script>
+{% else %}
+    <div class="account-form">
+        <div class="wrapper"> 
+                <div class="col-form">
+					<div class="box">
+						{% form 'create_customer' %}
+							<h1 class="title h5">Create an account</h1>
+							<p>We have recently updated our site. If you have an existing Base London account, please click the "forgot your password?" link below and follow the steps to activate your Base London account.</p>
+							<div id="CustomerRegisterForm">
+								{{ form.errors | default_errors }}
+								<ul class="form-list">
+									<li>
+										<label for="FirstName">{{ 'customer.register.first_name' | t }} *</label>
+										<input type="text" placeholder="First name *" name="customer[first_name]" id="FirstName" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} required>
+									</li>
+									<li>
+										<label for="LastName">{{ 'customer.register.last_name' | t }} *</label>
+										<input type="text" placeholder="Last name *" name="customer[last_name]" id="LastName" {% if form.last_name %}value="{{ form.last_name }}"{% endif %} required>
+									</li>
+									<li>
+										<label for="Email">Email Address *</label>
+										<input type="email" placeholder="Email address *" name="customer[email]" id="Email" class="{% if form.errors contains 'email' %} input--error{% endif %}" {% if form.email %} value="{{ form.email }}"{% endif %} autocorrect="off" autocapitalize="off" required>
+									</li>
+									<li>
+										<label for="CreatePassword">Password *</label>
+										<input type="password" placeholder="Password *" name="customer[password]" id="CreatePassword" class="{% if form.errors contains 'password' %} input--error{% endif %}" required>
+									</li>
+									{% comment %} <li>
+										<label for="ConfirmPassword">{{ 'customer.register.password' | t | prepend: 'Confirm' }}</label>
+										<input type="password" placeholder="" value="" name="customer[password_confirmation]" id="ConfirmPassword" class="{% if form.errors contains 'password' %} input--error{% endif %}" />
+									</li> {% endcomment %}
+									<li class="checkbox">
+										<input type="checkbox" value="" id="Subscribe"/>
+										<label for="Subscribe">Join our mailing list</label>
+										<p>By opting in to our mailing list, you are agreeing to recieve email emailing from {{shop.name}}. See our <a href="#">Privacy Policy</a> for further details.</p>
+									</li>
+									<li class="buttons">
+										<input type="submit" value="{{ 'customer.register.submit' | t }}" class="button">
+										<a href="#" class="button-text">Continue Shopping</a> 
+									</li>
+								</ul>
+							</div>
+						{% endform %}
+						<div class="form-bottom">
+							<h5 class="title">Already a customer?</h5>
+							<p>If this isn’t your first time on our site, you may already have an account with us.</p>
+							<div class="buttons">
+								<a href="/account" class="button button-second">Sign in</a>
+							</div>
+						</div>
+					</div>
+                </div>
+                <div class="col-medium-6 col-image">
+                    {% if settings.register_banner %}
+					<div class="col-medium-6 col-image">
+					<div class="image" style="background-image: url({{ settings.register_banner | img_url: 'master' }});">
+							<picture>
+								<source media="(min-width: 1024px)" srcset="{{ settings.register_banner | img_url: 'master' }}">
+								<img src="{{ settings.register_banner | img_url: 'master' }}" alt="" />
+							</picture>
+						</div>
+					</div>
+					{% endif %}
+                </div>
+            </div>
+  
+    </div>
+{% endif %}
+{% include 'gtm-register' %}

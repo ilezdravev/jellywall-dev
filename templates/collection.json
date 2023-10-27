@@ -1,0 +1,92 @@
+{
+  "sections": {
+    "main": {
+      "type": "collection",
+      "settings": {
+      }
+    },
+    "collectionInfiniteScroll": {
+      "type": "collection-infinite-scroll",
+      "settings": {
+        "enable_infinite_scroll": false,
+        "container_selector": "",
+        "path": "",
+        "append": "",
+        "hide_nav": "",
+        "status": "",
+        "status_info": "Loading...",
+        "status_end": "No more product to load!"
+      }
+    },
+    "collectionFilter": {
+      "type": "collection-filter",
+      "blocks": {
+        "7b6b6f41-3517-4630-91f7-d57fed1fcd3f": {
+          "type": "tags",
+          "settings": {
+            "title": "Product Type"
+          }
+        },
+        "cf2fbee5-d405-4f82-8cb7-c58403d91073": {
+          "type": "tags",
+          "settings": {
+            "title": "Colour"
+          }
+        },
+        "5a174e90-6228-47cc-9976-a350f33400b8": {
+          "type": "tags",
+          "settings": {
+            "title": "Size"
+          }
+        },
+        "93e7e0d2-f18d-455a-a0b1-f654b05c601e": {
+          "type": "tags",
+          "settings": {
+            "title": "Style"
+          }
+        },
+        "be999c6f-9d62-42a6-9bd5-c091a4aea1d1": {
+          "type": "tags",
+          "settings": {
+            "title": "Occasion"
+          }
+        },
+        "24fd5e27-2233-4860-8703-8f8ca73d7ab2": {
+          "type": "tags",
+          "settings": {
+            "title": "Fastening"
+          }
+        },
+        "d94438e8-fbdd-4259-81da-5b9f81184d39": {
+          "type": "tags",
+          "settings": {
+            "title": "Material"
+          }
+        },
+        "c6baf76c-1239-4ce2-b18e-78a82a53828c": {
+          "type": "tags",
+          "settings": {
+            "title": "Season"
+          }
+        }
+      },
+      "block_order": [
+        "7b6b6f41-3517-4630-91f7-d57fed1fcd3f",
+        "cf2fbee5-d405-4f82-8cb7-c58403d91073",
+        "5a174e90-6228-47cc-9976-a350f33400b8",
+        "93e7e0d2-f18d-455a-a0b1-f654b05c601e",
+        "be999c6f-9d62-42a6-9bd5-c091a4aea1d1",
+        "24fd5e27-2233-4860-8703-8f8ca73d7ab2",
+        "d94438e8-fbdd-4259-81da-5b9f81184d39",
+        "c6baf76c-1239-4ce2-b18e-78a82a53828c"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main",
+    "collectionInfiniteScroll",
+    "collectionFilter"
+  ]
+}

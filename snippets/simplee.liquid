@@ -1,0 +1,5 @@
+{% if customer %}
+  <script type="text/javascript">
+    sessionStorage.setItem("X-shopify-customer-ID",{{ customer.id }});
+  </script>
+{% endif %}

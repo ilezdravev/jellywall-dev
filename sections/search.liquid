@@ -1,0 +1,95 @@
+<div class="collection-page search-page">
+    {% include 'breadcrumbs' %}
+    <div class="page-title collection-title">
+        <div class="wrapper">
+            <div class="row">
+				<h1 class="h4">Search results for &quot;{{ search.terms | escape }}&quot;</h1>
+            </div>
+        </div>
+    </div>
+    <div class="collection-products">
+        <div class="wrapper">
+            <div id="product-grid" class="product-grid">
+				<div id="product-grid" class="product-grid loading"></div>
+			</div>
+        </div>
+    </div>
+  	<div class="collection-pagination">
+        <div class="wrapper">
+            <div class="pagination"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function renderProducts(filter){
+        var shopUrl = {{ shop.url | json }},
+            ajaxUrl = shopUrl,
+			$products = jQuery('.product-grid');
+            $pagination = jQuery('.collection-pagination .pagination');
+        
+        if(filter){
+            if(filter.split('?page=').length > 1 ){
+                url = shopUrl + filter;
+            }
+            ajaxUrl = url;
+            if(url.split('?').length > 1){
+                ajaxUrl += '&view=ajax';
+            }else{
+                ajaxUrl += '?view=ajax';
+            }
+            window.history.pushState('', '', url);
+        }else{
+            if (location.search.length) {
+                ajaxUrl += location.search;
+                ajaxUrl += '&view=ajax';
+                if(ajaxUrl.split('?q=').length > 1){
+                    ajaxUrl = ajaxUrl.replace('?q=', '/search?q=');
+                }
+                if(ajaxUrl.split('?page=').length > 1){
+                    ajaxUrl = ajaxUrl.replace('?page=', '/search?page=');
+                }
+            }
+        }
+
+        jQuery.ajax({
+            type: 'GET',
+            url: ajaxUrl,
+            processData: false,
+            contentType: false,
+            success: function(data) {
+                $products_html = jQuery(data).filter('.product-grid').html();
+               	if($products_html != undefined){
+              		$products.empty().html($products_html).removeClass('loading');
+                }
+              	
+              	$pagination_html = jQuery(data).filter('.collection-pagination').html();
+                if($pagination_html != undefined){
+                  	$pagination_html = $pagination_html.replace(/&amp;view=ajax/g, '');
+                    $pagination.empty().html($pagination_html);
+                }
+                JunoQuickAdd.init();
+            }
+        });
+    }
+    jQuery(document).ready(function() {
+        renderProducts();
+    });
+    jQuery(document).on('click', '.collection-pagination a', function(e) {
+        var value = jQuery(this).attr('href');
+        jQuery('#product-grid').addClass('loading');
+        renderProducts(value);
+        e.preventDefault();
+    });
+</script>
+{% schema %}
+  {
+    "name": "Search",
+    "settings": []
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,26 @@
+{% layout none %}
+{% assign products_per_page = settings.products_per_row | times: settings.number_of_rows  %}
+{% paginate search.results by products_per_page %}
+<div class="product-grid">
+    {% for product in search.results %}                         
+        {% include 'product-grid-item' %}
+    {% else %}
+	<p class="no-products">
+		Your search for "{{ search.terms }}" did not yield any results.
+	</p>
+    {% endfor %}
+</div>
+<div class="collection-pagination">{% if paginate.pages > 1 %}{{ paginate | default_pagination: next: '<span class="icon"><i class="bx bx-chevron-right"></i></span>', previous: '<span class="icon"><i class="bx bx-chevron-left"></i></span>' }}{% endif %}</div>
+{% endpaginate %}
+{% schema %}
+  {
+    "name": "Search Ajax",
+    "settings": []
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

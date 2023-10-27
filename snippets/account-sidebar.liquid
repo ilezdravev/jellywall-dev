@@ -1,0 +1,16 @@
+<div class="sidebar-menu">
+    <h6 class="customer-detail">
+        <span class="avt">{{ customer.first_name | slice: 0 }}{{ customer.last_name | slice: 0 }}</span>
+        <span class="name">{{ customer.name | prepend: 'Hello ' }}</span>
+        <span class="email">{{ customer.email }}</span>
+    </h6>
+    <span class="toggle-sidebar-menu">Account Menu</span>
+    <ul>
+        <li><a href="{{shop.url}}/pages/my-orders"><span class="icon"><i class="bx bx-book"></i></span>My Orders</a></li>
+        <li><a href="{{shop.url}}/pages/wishlist"><span class="icon"><i class="bx bx-heart"></i></span>My Wishlist</a></li>
+        <li><a href="{{shop.url}}/account/addresses"><span class="icon"><i class="bx bx-home"></i></span>Address Book</a></li>
+        <li><a href="https://help.baselondon.com"><span class="icon"><i class="bx bx-help-circle"></i></span>Need Help?</a></li>
+        <li><a href="https://help.baselondon.com/en-US/uk-returns-316827"><span class="icon"><i class="bx bx-arrow-to-left"></i></span>How do I make a return?</a></li>
+        <li>{{ '<i class="bx bx-log-out"></i>Log Out' | customer_logout_link }}</li>
+    </ul>
+</div>
