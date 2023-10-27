@@ -1,7 +1,10 @@
 {%- unless button_links == blank -%}
     {%- assign buttons_class = class | append: '__buttons ' | append: button_position | strip -%}
-    <div class="{{- buttons_class -}}">
-        {%- if button_link_1 != blank -%}<a class="{{- button_style_1 -}}" href="{{ button_link_1 }}">{{- button_text_1 -}}</a>{% endif %}
-        {%- if button_link_2 != blank -%}<a class="{{- button_style_2 -}}" href="{{ button_link_2 }}">{{- button_text_2 -}}</a>{% endif %}
-    </div>
+    {% unless button_text_1 == "" and button_text_2 == "" %}
+        <div class="{{- buttons_class -}}">
+            {%- if button_link_1 != blank -%}<a class="{{- button_style_1 -}}" href="{{ button_link_1 }}">{{- button_text_1 -}}</a>{% endif %}
+            {%- if button_link_2 != blank -%}<a class="{{- button_style_2 -}}" href="{{ button_link_2 }}">{{- button_text_2 -}}</a>{% endif %}
+        </div>
+    {% endunless %}
+     
 {%- endunless -%}
