@@ -2,7 +2,7 @@
   (function (algolia) {
     'use strict';
     algolia.noResultsTemplate = function noResultsTemplate({html, state}) {
-      return html`<div class="aa-PanelLayout aa-Panel--scrollable" id="aa-search-container">
+      return html`<div class="aa-PanelLayout aa-Panel--scrollable">
         <p class="aa-NoResultsHeader">
           ${algolia.translation_helpers.no_result_for(state.query)}
         </p>

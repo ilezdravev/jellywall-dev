@@ -2,7 +2,6 @@
 {% if section.settings.add_carousel != '' %}
     {% assign blocks_size = 1 %}
 {% endif %}
-1111111111
 <div class="banner-section cms-section grid-{{ blocks_size }} {{ section.settings.custom_class }} {{ section.settings.add_padding_top }} {{ section.settings.add_padding_bottom }} {{ section.settings.add_margin_top }} {{ section.settings.add_margin_bottom }} {{ section.settings.add_border_top }} {{ section.settings.add_border_bottom }} {{ section.settings.border_width }}"{% if section.settings.background_color != '' or section.settings.background_image %} style="{% if section.settings.background_color != '' %}background-color: {{ section.settings.background_color }};{% endif %}{% if section.settings.background_image %}background-image: url({{ section.settings.background_image | img_url: 'master' }});{% endif %}"{% endif %}>
     <div class="wrapper {{ section.settings.section_width }}">
         <div class="row">

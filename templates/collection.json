@@ -2,8 +2,7 @@
   "sections": {
     "main": {
       "type": "collection",
-      "settings": {
-      }
+      "settings": {}
     },
     "collectionInfiniteScroll": {
       "type": "collection-infinite-scroll",
@@ -80,13 +79,18 @@
         "d94438e8-fbdd-4259-81da-5b9f81184d39",
         "c6baf76c-1239-4ce2-b18e-78a82a53828c"
       ],
-      "settings": {
-      }
+      "settings": {}
+    },
+    "1689065384abcf84f2": {
+      "type": "apps",
+      "settings": {}
     }
   },
   "order": [
     "main",
     "collectionInfiniteScroll",
-    "collectionFilter"
-  ]
+    "collectionFilter",
+    "1689065384abcf84f2"
+  ],
+  "wrapper": ".boost-sd__product-filter-fallback"
 }

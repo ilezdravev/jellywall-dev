@@ -349,14 +349,7 @@ if (cutsTheMustard) {
     }
 
     var searchToggle = document.getElementById('searchToggle');
-    const searchContainer = document.querySelector('#searchContainer')
-    const searchInput = searchContainer.querySelector('#autocomplete-0-input')
-    const searchDropDown = document.querySelector('#searchDropDown')
-
-    searchDropDown.onclick = (e) => {
-        if (!hasParent(e.target, 'aa-search-close')) searchInput.focus();
-    }
-    if (searchContainer && searchInput && searchToggle) {
+    if(searchToggle){
         searchToggle.addEventListener('click', function(e) {
             juno.checkToggleSearch();
             if (e) {
@@ -364,10 +357,7 @@ if (cutsTheMustard) {
             }
         }, false);
         juno.checkToggleSearch = function() {
-            searchContainer.parentElement.classList.add('active')
-            document.documentElement.style.overflow = 'hidden'
-            searchInput.focus();
-            juno.searchIsRevealed = true
+            document.getElementsByClassName('boost-sd__search-widget-init-input')[0].click();
         };
     }
 
@@ -458,13 +448,13 @@ if (cutsTheMustard) {
             // check it's not the menu icon itself as this will trigger independently (and would cause the event to be fired twice)
             if ((e.target.id != 'searchToggle') && (!hasParent(e.target, 'searchToggle'))) {
                 // check the click isn't within the nav panel:
-                if (!hasParent(e.target, 'searchDropDown') && !hasParent(e.target, 'aa-search-container') || hasParent(e.target, 'aa-search-close')) {
+                if (!hasParent(e.target, 'searchContainer')) {
                     // hide navigation:
-                    document.documentElement.style.overflow = 'auto'
-                    removeClass(searchContainer.parentElement, 'active');
+                    removeClass(searchToggle, 'active');
                     removeClass(document.documentElement, 'offCanvas');
                     removeClass(document.documentElement, 'offCanvasSearch');
                     juno.searchIsRevealed = false;
+                    e.preventDefault();
                 }
             }
         }
@@ -1260,3 +1250,4 @@ jQuery(function() {
         });
     });
 });
+
